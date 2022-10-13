@@ -5,13 +5,13 @@ import store from "./store";
 import VueAxios from "vue-axios";
 import VueCookies from "vue-cookies";
 import vuetify from "./plugins/vuetify";
-import VueApollo from 'vue-apollo'
+import VueApollo from "vue-apollo";
 import "./plugins/vee-validate";
 import "./plugins/event-bus";
 
 Vue.config.productionTip = false;
 Vue.use(VueCookies);
-Vue.use(VueApollo)
+Vue.use(VueApollo);
 
 new Vue({
   VueAxios,
