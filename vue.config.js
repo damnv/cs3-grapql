@@ -8,5 +8,5 @@ module.exports = defineConfig({
       },
     },
   },
-  lintOnSave: false
+  lintOnSave: false,
 });

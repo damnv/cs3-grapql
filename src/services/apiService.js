@@ -1,13 +1,14 @@
 import axios from "axios";
-import {
-  getToken,
-  getRefreshToken,
-  setToken,
-  removeToken,
-  removeRefreshToken,
-} from "@/utils/auth";
+// import {
+//   getToken,
+//   getRefreshToken,
+//   setToken,
+//   removeToken,
+//   removeRefreshToken,
+// } from "@/utils/auth";
 
-const baseDomain = process.env.VUE_APP_API_URL;
+const baseDomain = process.env.VUE_APP_API_GRAPQL_URL;
+const apiKey = process.env.VUE_APP_API_KEY;
 export const baseURL = `${baseDomain}`;
 export const customHeaders = {
   "Content-Type": "application/json",
@@ -21,10 +22,11 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(
   function (config) {
-    const token = getToken();
-    if (token) {
-      config.headers.authorization = `Bearer ${token}`;
-    }
+    // const token = getToken();
+    // if (token) {
+    //   config.headers.authorization = `Bearer ${token}`;
+    // }
+    config.headers['x-api-key'] = apiKey;
     return config;
   },
   function (error) {
@@ -59,28 +61,28 @@ instance.interceptors.response.use(
        * Eject the interceptor so it doesn't loop in case
        * token refresh causes the 401 response
        */
-      axios.interceptors.response.eject(instance);
-      return instance({
-        url: "/auth/refresh-token",
-        method: "post",
-        data: { refreshToken: getRefreshToken() },
-      })
-        .then(({ data }) => {
-          const { accessToken } = data.data.authToken;
-          setToken(accessToken);
-          error.response.config.headers.authorization = `Bearer ${accessToken}`;
-          return axios(error.response.config);
-        })
-        .catch((error) => {
-          removeToken();
-          removeRefreshToken();
-          location.reload();
-          if (error.status && error.status.code === 403) {
-            return Promise.reject("この機能を実行する権限がありません");
-          } else {
-            return Promise.reject(error);
-          }
-        });
+      // axios.interceptors.response.eject(instance);
+      // return instance({
+      //   url: "/auth/refresh-token",
+      //   method: "post",
+      //   data: { refreshToken: getRefreshToken() },
+      // })
+      //   .then(({ data }) => {
+      //     const { accessToken } = data.data.authToken;
+      //     setToken(accessToken);
+      //     error.response.config.headers.authorization = `Bearer ${accessToken}`;
+      //     return axios(error.response.config);
+      //   })
+      //   .catch((error) => {
+      //     removeToken();
+      //     removeRefreshToken();
+      //     location.reload();
+      //     if (error.status && error.status.code === 403) {
+      //       return Promise.reject("この機能を実行する権限がありません");
+      //     } else {
+      //       return Promise.reject(error);
+      //     }
+      //   });
     }
     if (
       error.response &&

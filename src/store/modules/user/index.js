@@ -25,6 +25,19 @@ const actions = {
         });
     });
   },
+  testCallApi({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      apiService
+        .post('', data)
+        .then((response) => {
+          console.log(response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 };
 
 const mutations = {
