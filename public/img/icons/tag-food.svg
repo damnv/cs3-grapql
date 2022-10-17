@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-tag-food);
+      }
+    </style>
+    <clipPath id="clip-tag-food">
+      <rect width="16" height="16"/>
+    </clipPath>
+  </defs>
+  <g id="tag-food" class="cls-1">
+    <path id="ic_restaurant_24px" d="M8.2,6.55H6.9V2H5.6V6.55H4.3V2H3V6.55A2.591,2.591,0,0,0,5.438,9.131V15H7.063V9.131A2.591,2.591,0,0,0,9.5,6.55V2H8.2ZM11.45,4.6V9.8h1.625V15H14.7V2C12.906,2,11.45,3.456,11.45,4.6Z" transform="translate(-1 -0.5)"/>
+  </g>
+</svg>

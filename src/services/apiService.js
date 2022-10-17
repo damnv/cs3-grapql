@@ -26,7 +26,7 @@ instance.interceptors.request.use(
     // if (token) {
     //   config.headers.authorization = `Bearer ${token}`;
     // }
-    config.headers['x-api-key'] = apiKey;
+    config.headers["x-api-key"] = apiKey;
     return config;
   },
   function (error) {

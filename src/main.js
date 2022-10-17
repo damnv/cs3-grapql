@@ -1,5 +1,6 @@
 import "./plugins/vee-validate";
 import "./plugins/event-bus";
+import "./plugins/filters";
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -20,8 +21,8 @@ const httpLink = createHttpLink({
   // You should use an absolute URL here
   uri: BASE_URL_GRAPQL,
   headers: {
-    "x-api-key": API_KEY
-  }
+    "x-api-key": API_KEY,
+  },
 });
 
 // Cache implementation

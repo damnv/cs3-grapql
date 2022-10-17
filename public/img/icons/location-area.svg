@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="18px" viewBox="0 0 12 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>location-area</title>
+    <desc>Created with Sketch.</desc>
+    <g id="location-area" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill="#000000" id="Combined-Shape">
+            <path d="M6,18 C5.4,18 4.8,16.7 4.8,16.7 C4.8,16.7 0.9,9.8 0.5,8.5 C0.3,7.6 0.1,6.8 0.1,5.9 C0.1,2.6 2.7,0 6,0 C9.2,0 11.9,2.6 11.9,5.8 C11.9,6.7 11.8,7.6 11.5,8.4 C11.1,9.7 7.2,16.6 7.2,16.6 C7.2,16.6 6.6,18 6,18 Z M6,8.2 C7.49116882,8.2 8.7,6.99116882 8.7,5.5 C8.7,4.00883118 7.49116882,2.8 6,2.8 C4.50883118,2.8 3.3,4.00883118 3.3,5.5 C3.3,6.99116882 4.50883118,8.2 6,8.2 Z"></path>
+        </g>
+    </g>
+</svg>

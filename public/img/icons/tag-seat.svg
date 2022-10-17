@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-tag-seat);
+      }
+    </style>
+    <clipPath id="clip-tag-seat">
+      <rect width="16" height="16"/>
+    </clipPath>
+  </defs>
+  <g id="tag-seat" class="cls-1">
+    <path id="ic_airline_seat_recline_normal_24px" d="M6.393,4.271a1.334,1.334,0,1,1,1.886,0A1.336,1.336,0,0,1,6.393,4.271Zm-1.06,7.058v-6H4v6a3.334,3.334,0,0,0,3.332,3.332h4V13.329h-4A2,2,0,0,1,5.333,11.329Zm9.331,2.713-3.379-3.379H9V8.21a6.346,6.346,0,0,0,3.666,1.44V8.21A4.5,4.5,0,0,1,9.552,6.85L8.619,5.817a1.43,1.43,0,0,0-.46-.333,1.483,1.483,0,0,0-.64-.153H7.5A1.5,1.5,0,0,0,6,6.83v3.832a2,2,0,0,0,2,2h3.379l2.333,2.333Z" transform="translate(-1 -0.995)"/>
+  </g>
+</svg>

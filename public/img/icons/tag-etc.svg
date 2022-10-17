@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-tag-etc);
+      }
+    </style>
+    <clipPath id="clip-tag-etc">
+      <rect width="16" height="16"/>
+    </clipPath>
+  </defs>
+  <g id="tag-etc" class="cls-1">
+    <path id="ic_star_24px" d="M9,11.925l4.326,2.425L12.178,9.78,16,6.706l-5.033-.4L9,2,7.033,6.309,2,6.706,5.822,9.78,4.674,14.35Z" transform="translate(-1 -0.5)"/>
+  </g>
+</svg>

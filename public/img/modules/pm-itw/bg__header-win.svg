@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="680px" height="350px" viewBox="0 0 680 350" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.0498532649 0 679.051322 0 679.051322 350 0.0498532649 350"></polygon>
+    </defs>
+    <g id="PCデザイン" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3IW_Win" transform="translate(-258.000000, -241.000000)">
+            <g id="Page-1" transform="translate(258.000000, 241.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask"></g>
+                <g mask="url(#mask-2)">
+                    <g transform="translate(-13.958914, -7.020057)">
+                        <rect id="Rectangle-44" fill="#FFB131" x="5.52463622" y="0" width="690.579527" height="356.471952"></rect>
+                        <polygon id="Fill-1" fill="#FFC15B" points="541.441648 356.471952 590.872626 356.471952 696.479681 282.019136 696.479681 219.205591"></polygon>
+                        <polygon id="Fill-2" fill="#FFC15B" points="693.660528 4.19308311 461.143678 356.471247 485.741132 356.471247 696.479681 94.3058375 696.479681 4.19308311"></polygon>
+                        <polygon id="Fill-3" fill="#FFC15B" points="543.992742 4.19308311 412.224698 356.471247 428.592209 356.471247 594.073768 4.19308311"></polygon>
+                        <polygon id="Fill-4" fill="#FFC15B" points="430.531403 4.19308311 375.137094 356.471247 388.288581 356.471247 470.76421 4.19308311"></polygon>
+                        <polygon id="Fill-5" fill="#FFC15B" points="329.474509 4.19308311 342.105958 356.471247 354.373038 356.471247 367.004487 4.19308311"></polygon>
+                        <polygon id="Fill-6" fill="#FFC15B" points="225.715642 4.19308311 308.18956 356.471247 321.342758 356.471247 265.95187 4.19308311"></polygon>
+                        <polygon id="Fill-7" fill="#FFC15B" points="102.404031 4.19308311 267.88559 356.471247 284.254812 356.471247 152.488479 4.19308311"></polygon>
+                        <polygon id="Fill-8" fill="#FFC15B" points="0 4.19308311 0 94.3011405 210.738549 356.471247 235.332582 356.471247 2.81573195 4.19308311"></polygon>
+                        <polygon id="Fill-9" fill="#FFC15B" points="0 282.015848 105.608765 356.471012 155.038033 356.471012 0 219.202303"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

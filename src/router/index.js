@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/pages/Home.vue";
+import PlacegalleryList from "@/pages/Placegallery/index";
+import PlacegalleryDetail from "@/pages/Placegallery/detail";
 import { DEFAULT_TITLE } from "@/constants/common";
 Vue.use(VueRouter);
 
@@ -9,6 +11,16 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+  },
+  {
+    path: "/placegallery",
+    name: "placegallery-list",
+    component: PlacegalleryList,
+  },
+  {
+    path: "/placegallery/:id",
+    name: "placegallery-detail",
+    component: PlacegalleryDetail,
   },
 ];
 

@@ -1,44 +1,37 @@
 <template>
-  <div>{{ getListReaction }}</div>
+  <div class="pm-home">
+    <div class="pm-home-pgl">
+      <div class="d-flex justify-space-between align-center">
+        <h3 class="mt-4 mb-5">Placegallery</h3>
+        <div class="pm-home-detail-link">
+          <router-link :to="{ name: 'placegallery-list' }"
+            ><v-icon color="navy">mdi-arrow-right</v-icon></router-link
+          >
+        </div>
+      </div>
+      <Placegallery hidden-header-back></Placegallery>
+    </div>
+  </div>
 </template>
 
 <script>
 import gql from "graphql-tag";
-import { mapActions, mapMutations, mapState } from "vuex";
+import Placegallery from "@/pages/Placegallery/index";
 
 export default {
   name: "Home",
   data() {
     return {
+      entries: [],
       getListReaction: [],
     };
   },
+  components: { Placegallery },
   props: {},
   watch: {},
-  methods: {
-    ...mapActions({
-      getData: "user/testCallApi",
-    }),
-  },
-  apollo: {
-    getListReaction: gql`
-    query getListReaction {
-      getListReaction {
-        caption
-        id
-        img
-      }
-    }
-    `,
-  },
-  created(){
-    const graphqlQuery = {
-          "operationName": "MyQuery",
-          "query": "query MyQuery($user_id: Int!, $caption: String) {\n getEntriesByUserId(user_id: $user_id, caption: $caption) {\n    id\n    caption\n    reactions {\n      caption\n      id\n      num_reaction\n      img\n    }\n  }\n}\n",
-          "variables": {user_id: 1, caption: "abc"}
-      };
-    this.getData(graphqlQuery);
-  }
+  methods: {},
+  apollo: {},
+  created() {},
 };
 </script>
 

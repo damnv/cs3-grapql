@@ -28,7 +28,7 @@ const actions = {
   testCallApi({ commit }, data) {
     return new Promise((resolve, reject) => {
       apiService
-        .post('', data)
+        .post("", data)
         .then((response) => {
           console.log(response);
           resolve(response);
@@ -37,7 +37,7 @@ const actions = {
           reject(error);
         });
     });
-  }
+  },
 };
 
 const mutations = {

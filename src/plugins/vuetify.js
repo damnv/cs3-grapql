@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
-import CheckedGreenIcon from "@/components/Icons/CheckedGreenIcon";
+import CheckedGreenIcon from "@/components/icons/CheckedGreenIcon";
+import PreviousIcon from "@/components/icons/PreviousIcon";
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -19,17 +20,14 @@ export default new Vuetify({
         white: "#FFFFFF",
         pink: "#FF95C3",
         navy: "#003AB8",
-        grayLighten2: "#EAEAEF",
-        grayLighten1: "#B8B8BC",
-        grayDarken1: "#9A9A9E",
-        grayDarken2: "#808084",
-        grayDarken3: "#565659",
-        grayDarken4: "#bbbbbb",
-        grayDarken5: "#F7F8F9",
-        grayDarken6: "#d2d2d6",
-        grayDarken7: "#767676",
-        darken1: "#2D3540",
-        darken2: "#26262A",
+        gray700: "#565659",
+        gray600: "#A0A0A0",
+        gray500: "#808084",
+        gray400: "#9A9A9E",
+        gray300: "#B8B8BC",
+        gray200: "#d2d2d6",
+        gray100: "#EAEAEF",
+        gray50: "#F7F8F9",
       },
     },
   },
@@ -37,6 +35,9 @@ export default new Vuetify({
     values: {
       checkedGreenIcon: {
         component: CheckedGreenIcon,
+      },
+      previousIcon: {
+        component: PreviousIcon,
       },
     },
   },

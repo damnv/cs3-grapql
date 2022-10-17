@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import UIToastList from "@/components/Toasts/ToastList";
+import UIToastList from "@/components/toasts/ToastList";
 
 export default {
   name: "defaultLayout",
