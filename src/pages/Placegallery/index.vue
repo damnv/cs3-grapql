@@ -189,64 +189,80 @@ import EntryPlus from "@/components/common/EntryPlus";
 import EntryComment from "@/components/common/EntryComment";
 import EntryView from "@/components/common/EntryView";
 import EntryMenus from "@/components/common/EntryMenus.vue";
+import commonMixins from "@/mixins/common";
+
 export default {
   name: "PlacegalleryList",
+  mixins: [commonMixins],
   props: {},
   components: { EntryPlus, EntryComment, EntryView, EntryMenus },
   data() {
     return {};
   },
   apollo: {
-    getEntries: gql`
-      query MyQuery {
-        getEntries {
-          result_code
-          data {
-            current_page
-            is_last
-            total_count
-            entries {
-              caption
-              id
-              category_l_id
-              created
-              description
-              img
-              img2
-              img3
-              img4
-              img5
-              img_thumbnail
-              is_clip
-              is_following
-              module_entry_id
-              module_id
-              module_type
-              num_comment
-              num_good
-              num_view
-              reactions {
+    getEntries: {
+      query: gql`
+        query MyQuery {
+          getEntries {
+            result_code
+            data {
+              current_page
+              is_last
+              total_count
+              entries {
                 caption
                 id
+                category_l_id
+                created
+                description
                 img
-                is_like
-                num_reaction
-              }
-              user_id
-              user {
-                birthday
-                email
-                gender
-                profile_img
-                introduction
-                nickname
-                id
+                img2
+                img3
+                img4
+                img5
+                img_thumbnail
+                is_clip
+                is_following
+                module_entry_id
+                module_id
+                module_type
+                num_comment
+                num_good
+                num_view
+                reactions {
+                  caption
+                  id
+                  img
+                  is_like
+                  num_reaction
+                }
+                user_id
+                user {
+                  birthday
+                  email
+                  gender
+                  profile_img
+                  introduction
+                  nickname
+                  id
+                }
               }
             }
           }
         }
-      }
-    `,
+      `,
+      update() {},
+      error(error) {
+        if (error.graphQLErrors) {
+          error.graphQLErrors.forEach(({ message }) => {
+            this.newToast({
+              type: "error",
+              message: message,
+            });
+          });
+        }
+      },
+    },
   },
   computed: {
     entries() {

@@ -149,13 +149,15 @@ import EntryComment from "@/components/common/EntryComment";
 import EntryClip from "@/components/common/EntryClip.vue";
 import EntryMenus from "@/components/common/EntryMenus.vue";
 import EntryUserReactions from "@/components/common/EntryUserReactions.vue";
-
-import gql from "graphql-tag";
 import EntrySns from "@/components/common/EntrySns.vue";
 import CommentBlock from "../../components/comments/CommentBlock.vue";
 import EntryFollow from "@/components/common/EntryFollow.vue";
+import commonMixins from "@/mixins/common";
+
+import gql from "graphql-tag";
 export default {
   name: "PlacegalleryDetail",
+  mixins: [commonMixins],
   components: {
     EntryPlus,
     EntryComment,
@@ -167,103 +169,153 @@ export default {
     EntryFollow,
   },
   data: () => ({
-    model: 0,
+    entry: {},
+    userReactions: [],
+    totalUserReactions: 0,
+    totalComments: 0,
+    comments: [],
+    isLoadmoreComments: false,
   }),
   apollo: {
-    getEntryById: gql`
-      query MyQuery {
-        getEntryById(id: 10) {
-          data {
-            caption
-            category_l_id
-            created
-            id
-            img
-            description
-            img2
-            img3
-            img5
-            img4
-            num_view
-            num_good
-            num_comment
-            module_type
-            module_id
-            module_entry_id
-            is_clip
-            img_thumbnail
-            is_following
-            tag
-            user {
-              profile_img
-              nickname
-              introduction
-              gender
-              email
-              birthday
+    getEntryById: {
+      query: gql`
+        query MyQuery {
+          getEntryById(id: 10) {
+            data {
+              caption
+              category_l_id
+              created
               id
-            }
-            user_id
-          }
-        }
-      }
-    `,
-    getUserReactionsByEntryId: gql`
-      query MyQuery {
-        getUserReactionsByEntryId(entry_id: 10) {
-          data {
-            current_page
-            is_last
-            total_count
-            user_reactions {
-              profile_img
-              id
-            }
-          }
-        }
-      }
-    `,
-    getCommentsByEntryId: gql`
-      query MyQuery {
-        getCommentsByEntryId(
-          entry_id: 10
-          limit: 10
-          page: 10
-          user_id: 10
-          sort: ""
-        ) {
-          data {
-            total_count
-            is_last
-            current_page
-            comments {
+              img
+              description
+              img2
+              img3
+              img5
+              img4
+              num_view
               num_good
               num_comment
-              img2
-              img
-              id
-              entry_id
-              description
-              created
-              comment_id
-              caption
-              user_id
+              module_type
+              module_id
+              module_entry_id
+              is_clip
+              img_thumbnail
+              is_following
+              tag
               user {
-                nickname
-                id
                 profile_img
-                created
+                nickname
+                introduction
+                gender
+                email
+                birthday
+                id
+              }
+              user_id
+            }
+          }
+        }
+      `,
+      update({ getEntryById }) {
+        this.entry = getEntryById.data;
+      },
+      error(error) {
+        if (error.graphQLErrors) {
+          error.graphQLErrors.forEach(({ message }) => {
+            this.newToast({
+              type: "error",
+              message: message,
+            });
+          });
+        }
+      },
+    },
+    getUserReactionsByEntryId: {
+      query: gql`
+        query MyQuery {
+          getUserReactionsByEntryId(entry_id: 10) {
+            data {
+              current_page
+              is_last
+              total_count
+              user_reactions {
+                profile_img
+                id
               }
             }
           }
         }
-      }
-    `,
+      `,
+      update({ getUserReactionsByEntryId }) {
+        this.userReactions = getUserReactionsByEntryId.data.user_reactions;
+        this.totalUserReactions = getUserReactionsByEntryId.data.total_count;
+      },
+      error(error) {
+        if (error.graphQLErrors) {
+          error.graphQLErrors.forEach(({ message }) => {
+            this.newToast({
+              type: "error",
+              message: message,
+            });
+          });
+        }
+      },
+    },
+    getCommentsByEntryId: {
+      query: gql`
+        query MyQuery {
+          getCommentsByEntryId(
+            entry_id: 10
+            limit: 10
+            page: 10
+            user_id: 10
+            sort: ""
+          ) {
+            data {
+              total_count
+              is_last
+              current_page
+              comments {
+                num_good
+                num_comment
+                img2
+                img
+                id
+                entry_id
+                description
+                created
+                comment_id
+                caption
+                user_id
+                user {
+                  nickname
+                  id
+                  profile_img
+                  created
+                }
+              }
+            }
+          }
+        }
+      `,
+      update({ getCommentsByEntryId }) {
+        this.comments = getCommentsByEntryId.data.comments;
+        this.totalComments = getCommentsByEntryId.data.total_count;
+        this.isLoadmoreComments = getCommentsByEntryId.data.is_last;
+      },
+      error(error) {
+        if (error.graphQLErrors) {
+          error.graphQLErrors.forEach(({ message }) => {
+            this.newToast({
+              type: "error",
+              message: message,
+            });
+          });
+        }
+      },
+    },
   },
   computed: {
-    entry() {
-      return this.getEntryById?.data ? this.getEntryById.data : [];
-    },
     images() {
       let images = [];
       // if (this.entry.img) images.push(this.entry.img);
@@ -272,31 +324,6 @@ export default {
       if (this.entry.img4) images.push(this.entry.img4);
       if (this.entry.img5) images.push(this.entry.img5);
       return images;
-    },
-    userReactions() {
-      return this.getUserReactionsByEntryId?.data?.user_reactions
-        ? this.getUserReactionsByEntryId.data.user_reactions
-        : [];
-    },
-    totalUserReactions() {
-      return this.getUserReactionsByEntryId?.data?.total_count
-        ? this.getUserReactionsByEntryId.data.total_count
-        : 0;
-    },
-    totalComments() {
-      return this.getCommentsByEntryId?.data?.total_count
-        ? this.getCommentsByEntryId.data.total_count
-        : 0;
-    },
-    comments() {
-      return this.getCommentsByEntryId?.data?.comments
-        ? this.getCommentsByEntryId.data.comments
-        : [];
-    },
-    isLoadmoreComments() {
-      return this.getCommentsByEntryId?.data?.is_last
-        ? this.getCommentsByEntryId.data.is_last
-        : false;
     },
   },
   methods: {
