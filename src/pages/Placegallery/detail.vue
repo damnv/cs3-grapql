@@ -39,7 +39,12 @@
                   </div>
                 </div>
                 <div class="pm-pla-detail__header__right">
-                  <EntryFollow></EntryFollow>
+                  <EntryFollow
+                    :isFollowing="entry.is_following"
+                    :updateFollowing="updateFollowing"
+                    :userId="currentUser"
+                    :followingUserId="entry.user_id"
+                  ></EntryFollow>
                   <!-- Instagramのとき -->
                   <!-- classは、.cs-icn-sns--instagram -->
                 </div>
@@ -119,7 +124,12 @@
                     </div>
                     <div class="cs-resp-set__right">
                       <div class="cs-resp-set__item">
-                        <EntryClip></EntryClip>
+                        <EntryClip
+                          :isClip="entry.is_clip"
+                          :updateClip="updateClip"
+                          :entryId="entry.id"
+                          :userId="1"
+                        ></EntryClip>
                       </div>
                       <EntryMenus></EntryMenus>
                     </div>
@@ -171,6 +181,7 @@ export default {
   },
   data: () => ({
     entry: {},
+    currentUser: 1,
     userReactions: [],
     totalUserReactions: 0,
     totalComments: 0,
@@ -338,6 +349,12 @@ export default {
       }
       this.$router.back();
     },
+    updateClip(isClip){
+      this.entry.is_clip = isClip;
+    },
+    updateFollowing(isFollowing){
+      this.entry.is_following = isFollowing;
+    }
   },
 };
 </script>
