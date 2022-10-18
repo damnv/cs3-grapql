@@ -108,6 +108,7 @@
                       <div class="cs-resp-set__item">
                         <EntryPlus
                           :count="entry.num_good"
+                          :reactions="entry.reactions"
                           show-text
                           class-content="cs-reaction-a"
                         ></EntryPlus>
@@ -202,6 +203,10 @@ export default {
               img_thumbnail
               is_following
               tag
+              reactions {
+                id
+                caption
+              }
               user {
                 profile_img
                 nickname

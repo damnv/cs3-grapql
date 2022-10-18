@@ -3461,11 +3461,13 @@ a.cs-avatar-2:hover {
 
 .cs-reaction-a {
     position: relative;
-    overflow: visible
+    overflow: visible;
+    cursor: pointer;
 }
 
+
 .cs-button-reaction-a {
-    display: none;
+    /* display: none; */
     position: absolute;
     left: 0;
     bottom: 0;
@@ -5023,7 +5025,6 @@ textarea.cs-field--h-auto-mah-10 {
 
 .cs-modal-liked {
     border-radius: 6px;
-    display: none;
     position: fixed;
     left: 50%;
     top: 50%;

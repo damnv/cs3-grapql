@@ -12,6 +12,7 @@ import VueApollo from "vue-apollo";
 import { ApolloClient } from "apollo-client";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+// import { createUploadLink } from "apollo-upload-client";
 
 const BASE_URL_GRAPQL = process.env.VUE_APP_API_GRAPQL_URL;
 const API_KEY = process.env.VUE_APP_API_KEY;

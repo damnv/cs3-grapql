@@ -1,16 +1,54 @@
 <template>
-  <div class="cs-response-c" :class="classContent" @click="onCreate">
-    <div class="cs-response-c__button--like">
-      <v-icon size="20">$likeBlue</v-icon>
-      ><span data-cslike-counter="12345" class="cs-response-c__counter">{{
-        count
-      }}</span>
-      <span
-        v-if="showText"
-        data-csreaction="button-label"
-        class="cs-response-c__label"
-        >いいね！</span
+  <div class="cs-response-c cs-reaction-a" :class="classContent">
+    <div data-csreaction="container" class="cs-reaction-a-container">
+      <div
+        data-csreaction="button"
+        class="cs-response-c__button--like"
+        @click="showReaction"
       >
+        <i data-csreaction="button-icon" class="cs-response-c__icon--medium"></i
+        ><span data-cslike-counter="12345" class="cs-response-c__counter">{{
+          count
+        }}</span
+        ><span
+          data-csreaction="button-label"
+          v-if="showText"
+          class="cs-response-c__label"
+          >いいね！</span
+        >
+      </div>
+      <div
+        data-csreaction="menu"
+        class="cs-button-reaction-a"
+        v-if="isShowReaction && reactions.length"
+      >
+        <div
+          class="cs-button-reaction-a__outer"
+          v-click-outside="onClickOutside"
+        >
+          <div class="cs-button-reaction-a__inner">
+            <div class="cs-button-reaction-a__button-layer">
+              <span
+                data-csreaction-type="1"
+                class="cs-button-reaction-a__item"
+                v-for="(reaction, index) in reactions"
+                :key="index"
+                @click="onCreate"
+              >
+                <i
+                  :data-csreaction-icon="reaction.id"
+                  class="cs-button-reaction-a__icon"
+                ></i>
+                <span
+                  data-csreaction="label"
+                  class="cs-button-reaction-a__emot"
+                  >{{ reaction.caption }}</span
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +60,9 @@ export default {
   name: "EntryPlus",
   mixins: [commonMixins],
   data() {
-    return {};
+    return {
+      isShowReaction: false,
+    };
   },
   props: {
     count: {
@@ -89,7 +129,8 @@ export default {
           update: () => {},
         })
         .then((data) => {
-          console.log(data);
+          this.$emit("onReaction", data);
+          this.isShowReaction = false;
         })
         .catch((error) => {
           if (error.graphQLErrors) {
@@ -101,6 +142,12 @@ export default {
             });
           }
         });
+    },
+    showReaction() {
+      this.isShowReaction = true;
+    },
+    onClickOutside() {
+      this.isShowReaction = false;
     },
   },
 };

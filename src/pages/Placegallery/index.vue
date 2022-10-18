@@ -28,7 +28,7 @@
                   </div>
                   訪れた場所、お店、出逢った人、食べたもの…<br />あなたしか知らない体験やスト―リーを投稿してみよう！
                 </div>
-                <a @click="onCreate" class="pm-pla-promote__button"
+                <a @click="onCreate" class="pm-pla-promote__button white--text"
                   ><i class="pm-pla-promote__button-icon"></i
                   >体験発掘ノートに投稿する</a
                 >
@@ -147,7 +147,10 @@
                       </div> -->
                       <div class="pm-pla-list-item__response-group">
                         <div class="pm-pla-list-item__response-group-left">
-                          <EntryPlus :count="entry.num_good"></EntryPlus>
+                          <EntryPlus
+                            :count="entry.num_good"
+                            :reactions="entry.reactions"
+                          ></EntryPlus>
                           <EntryComment
                             :count="entry.num_comment"
                           ></EntryComment>
@@ -180,7 +183,7 @@
         </div>
       </div>
     </div>
-    <Post v-if="isCreate"></Post>
+    <Post v-if="isCreate" @onClose="onClose" @onChangeData="getData"></Post>
   </div>
   <!-- end module-->
 </template>
@@ -210,77 +213,85 @@ export default {
     onCreate() {
       this.isCreate = true;
     },
-  },
-  apollo: {
-    getEntries: {
-      query: gql`
-        query MyQuery {
-          getEntries {
-            result_code
-            data {
-              current_page
-              is_last
-              total_count
-              entries {
-                caption
-                id
-                category_l_id
-                created
-                description
-                img
-                img2
-                img3
-                img4
-                img5
-                img_thumbnail
-                is_clip
-                is_following
-                module_entry_id
-                module_id
-                module_type
-                num_comment
-                num_good
-                num_view
-                reactions {
-                  caption
-                  id
-                  img
-                  is_like
-                  num_reaction
-                }
-                user_id
-                user {
-                  birthday
-                  email
-                  gender
-                  profile_img
-                  introduction
-                  nickname
-                  id
+    onClose() {
+      this.isCreate = false;
+    },
+    getData() {
+      this.$apollo
+        .query({
+          query: gql`
+            query MyQuery {
+              getEntries {
+                result_code
+                data {
+                  current_page
+                  is_last
+                  total_count
+                  entries {
+                    caption
+                    id
+                    category_l_id
+                    created
+                    description
+                    img
+                    img2
+                    img3
+                    img4
+                    img5
+                    img_thumbnail
+                    is_clip
+                    is_following
+                    module_entry_id
+                    module_id
+                    module_type
+                    num_comment
+                    num_good
+                    num_view
+                    reactions {
+                      caption
+                      id
+                      img
+                      is_like
+                      num_reaction
+                    }
+                    user_id
+                    user {
+                      birthday
+                      email
+                      gender
+                      profile_img
+                      introduction
+                      nickname
+                      id
+                    }
+                  }
                 }
               }
             }
-          }
-        }
-      `,
-      update({ getEntries }) {
-        this.entries = getEntries.data.entries;
-        this.totalCount = getEntries.data.total_count;
-        this.isLoadmore = getEntries.data.is_last;
-      },
-      error(error) {
-        if (error.graphQLErrors) {
-          error.graphQLErrors.forEach(({ message }) => {
-            this.newToast({
-              type: "error",
-              message: message,
+          `,
+        })
+        .then(({ data }) => {
+          this.entries = data.getEntries.data.entries;
+          this.totalCount = data.getEntries.data.total_count;
+          this.isLoadmore = data.getEntries.data.is_last;
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
+              this.newToast({
+                type: "error",
+                message: message,
+              });
             });
-          });
-        }
-      },
+          }
+        });
     },
   },
+  apollo: {},
   computed: {},
+  created() {
+    this.getData();
+  },
 };
 </script>
 <style lang="scss" scoped></style>
