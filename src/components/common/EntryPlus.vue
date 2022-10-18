@@ -36,11 +36,11 @@ export default {
     },
     entryId: {
       type: Number,
-      default: () => "",
+      default: () => 0,
     },
     userId: {
       type: Number,
-      default: () => "",
+      default: () => 0,
     },
     reactions: {
       type: Array,
