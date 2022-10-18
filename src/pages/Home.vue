@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
 import Placegallery from "@/pages/Placegallery/index";
 
 export default {

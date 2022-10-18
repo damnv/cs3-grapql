@@ -98,14 +98,13 @@
 <script>
 export default {
   name: "CommentForm",
-  props:{
+  props: {
     totalComments: {
       type: Number,
       default: () => 0,
     },
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

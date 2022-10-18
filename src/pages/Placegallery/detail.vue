@@ -7,7 +7,9 @@
           <div class="cs-titlebar__title-outer">
             <div class="cs-titlebar__title">体験発掘ノート</div>
           </div>
-          <div class="cs-titlebar__nav-back"><a href="#">&lt;</a></div>
+          <div class="cs-titlebar__nav-back">
+            <a @click="goTo('placegallery-list')">&lt;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -17,9 +19,8 @@
           <div class="cs-pane">
             <div class="cs-pane__inner--c">
               <div class="pm-pla-detail__header">
-                <div class="cs-avatar-2">
+                <div class="cs-avatar-2" v-if="entry.user">
                   <a
-                    href="#"
                     v-bind:style="{
                       'background-image': 'url(' + entry.user.profile_img + ')',
                     }"
@@ -38,13 +39,7 @@
                   </div>
                 </div>
                 <div class="pm-pla-detail__header__right">
-                  <div
-                    data-csaction="follow"
-                    data-id="12345"
-                    class="cs-button-follow-a"
-                  >
-                    フォロー
-                  </div>
+                  <EntryFollow></EntryFollow>
                   <!-- Instagramのとき -->
                   <!-- classは、.cs-icn-sns--instagram -->
                 </div>
@@ -111,192 +106,37 @@
                   <div class="cs-resp-set__row">
                     <div class="cs-resp-set__left">
                       <div class="cs-resp-set__item">
-                        <div class="cs-response-c cs-reaction-a">
-                          <div
-                            data-csreaction="container"
-                            data-cslike-id="3456"
-                            class="cs-reaction-a-container"
-                          >
-                            <div
-                              data-csreaction="button"
-                              class="cs-response-c__button--like"
-                            >
-                              <i
-                                data-csreaction="button-icon"
-                                class="cs-response-c__icon--medium"
-                              ></i
-                              ><span
-                                data-cslike-counter="3456"
-                                class="cs-response-c__counter"
-                                >{{ entry.num_good }}</span
-                              ><span
-                                data-csreaction="button-label"
-                                class="cs-response-c__label"
-                                >いいね！</span
-                              >
-                            </div>
-                          </div>
-                        </div>
+                        <EntryPlus
+                          :count="entry.num_good"
+                          show-text
+                          class-content="cs-reaction-a"
+                        ></EntryPlus>
                       </div>
                       <div class="cs-resp-set__item">
-                        <div class="cs-response-c">
-                          <div class="cs-response-c__button--comment">
-                            <i class="cs-response-c__icon--medium"></i
-                            ><span class="cs-response-c__counter">{{
-                              entry.num_comment
-                            }}</span>
-                          </div>
-                        </div>
+                        <EntryComment :count="entry.num_comment"></EntryComment>
                       </div>
                     </div>
                     <div class="cs-resp-set__right">
                       <div class="cs-resp-set__item">
-                        <div
-                          data-csaction="clip"
-                          data-url="https://www.elife.co.jp/"
-                          data-caption="マーケティング戦略立案から実行のイーライフ"
-                          data-img="https://www.elife.co.jp/images/header_logo_01.png"
-                          class="cs-button-response-d--clip"
-                        >
-                          クリップ
-                        </div>
+                        <EntryClip></EntryClip>
                       </div>
-                      <div data-csdropdown="menu" class="cs-context-menu">
-                        <div
-                          data-csdropdown="trigger"
-                          class="cs-context-menu__trigger"
-                        ></div>
-                        <div
-                          data-csdropdown="content"
-                          data-align="right"
-                          class="cs-context-menu__content"
-                        >
-                          <ul class="cs-context-menu__items">
-                            <li class="cs-context-menu__item">
-                              <a href="#" class="cs-context-menu__link"
-                                >編集する</a
-                              >
-                            </li>
-                            <li class="cs-context-menu__item">
-                              <a
-                                href="#"
-                                data-csmodal="trigger"
-                                data-target="#js-modal-delete-9999999"
-                                class="
-                                  cs-context-menu__link cs-context-menu__link
-                                "
-                                >削除する</a
-                              >
-                            </li>
-                            <li class="cs-context-menu__item">
-                              <a href="#" class="cs-context-menu__link"
-                                >報告する</a
-                              >
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div
-                        id="js-modal-delete-9999999"
-                        class="cs-modal-delete-post"
-                      >
-                        <div class="cs-modal-delete-post__content">
-                          <p class="cs-modal-delete-post__title">
-                            この投稿を削除してもよろしいですか？
-                          </p>
-                          <p class="cs-modal-delete-post__body">
-                            一度削除すると元に戻すことはできません。
-                          </p>
-                          <span
-                            data-csmodal="hide"
-                            onclick="return false;"
-                            class="cs-button-b--1-m"
-                            >キャンセル</span
-                          >&nbsp;&nbsp;<span
-                            onclick="location.href='#'"
-                            class="cs-button-a--1-m"
-                            >削除する</span
-                          >
-                        </div>
-                      </div>
+                      <EntryMenus></EntryMenus>
                     </div>
                   </div>
                 </div>
-                <div class="cs-liked-list">
-                  <div class="cs-liked-list__header">
-                    <span data-cslike-counter="12345">{{
-                      totalUserReactions
-                    }}</span
-                    >人のメンバーがいいね！と言ってます
-                  </div>
-                  <ul
-                    data-csmodal="trigger"
-                    data-target="#js-modal-cs-liked-reaction-list"
-                    class="cs-liked-list__members cs-reaction-list-a"
-                    v-if="userReactions"
-                  >
-                    <li
-                      v-for="(user, index) in userReactions"
-                      :key="index"
-                      v-bind:style="{
-                        'background-image': 'url(' + user.profile_img + ')',
-                      }"
-                      class="cs-liked-list__avatar"
-                    >
-                      <i
-                        data-csreaction-icon="3"
-                        class="cs-button-reaction-a__icon"
-                      ></i>
-                    </li>
-                  </ul>
-                </div>
+                <EntryUserReactions
+                  :users="userReactions"
+                  :total="totalUserReactions"
+                ></EntryUserReactions>
               </div>
             </div>
           </div>
-          <div class="cs-pane">
-            <div class="cs-pane__inner--b">
-              <div class="pm-pla-detail__share">
-                <div class="cs-sns-share">
-                  <div class="cs-sns-share__header">
-                    <div class="cs-sns-share__lead">シェアしよう！</div>
-                  </div>
-                  <ul class="cs-sns-share__buttons">
-                    <li class="cs-sns-share__item">
-                      <a href="#" class="cs-button-sns--facebook"></a>
-                    </li>
-                    <li class="cs-sns-share__item">
-                      <a href="#" class="cs-button-sns--twitter"></a>
-                    </li>
-                    <li class="cs-sns-share__item">
-                      <a href="#" class="cs-button-sns--line"></a>
-                    </li>
-                    <li class="cs-sns-share__item">
-                      <a href="#" class="cs-button-sns--pinterest"></a>
-                    </li>
-                    <li class="cs-sns-share__item">
-                      <a href="#" class="cs-button-sns--hatena"></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cs-pane">
-            <div class="cs-pane__inner--a">
-              <div class="pm-pla-detail__comments">
-                <div class="pm-pla-detail__comments__title">コメント</div>
-                <!-- コメント ブロック-->
-                <!-- ソート機能-->
-                <!-- 上にコメントフォーム data-cscmt-order="top"-->
-                <!-- 下にコメントフォーム data-cscmt-order="bottom"-->
-                <div data-cscmt="root" data-cscmt-order="top" class="cs-cmt">
-                  <CommentForm :total-comments="totalComments"></CommentForm>
-                  <CommentList :comments="comments" :loadmore="isLoadmoreComments"></CommentList>
-                </div>
-                <!-- / コメント ブロック-->
-              </div>
-            </div>
-          </div>
+          <EntrySns></EntrySns>
+          <CommentBlock
+            :total-comments="totalComments"
+            :comments="comments"
+            :loadmore="isLoadmoreComments"
+          ></CommentBlock>
         </div>
       </div>
     </div>
@@ -304,16 +144,30 @@
   <!-- end module-->
 </template>
 <script>
-import CommentList from "@/components/comments/CommentList.vue";
-import CommentForm from "@/components/comments/CommentForm.vue";
+import EntryPlus from "@/components/common/EntryPlus";
+import EntryComment from "@/components/common/EntryComment";
+import EntryClip from "@/components/common/EntryClip.vue";
+import EntryMenus from "@/components/common/EntryMenus.vue";
+import EntryUserReactions from "@/components/common/EntryUserReactions.vue";
 
 import gql from "graphql-tag";
+import EntrySns from "@/components/common/EntrySns.vue";
+import CommentBlock from "../../components/comments/CommentBlock.vue";
+import EntryFollow from "@/components/common/EntryFollow.vue";
 export default {
   name: "PlacegalleryDetail",
-  components: { CommentForm, CommentList },
+  components: {
+    EntryPlus,
+    EntryComment,
+    EntryClip,
+    EntryMenus,
+    EntryUserReactions,
+    EntrySns,
+    CommentBlock,
+    EntryFollow,
+  },
   data: () => ({
     model: 0,
-    colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
   }),
   apollo: {
     getEntryById: gql`
@@ -439,11 +293,19 @@ export default {
         ? this.getCommentsByEntryId.data.comments
         : [];
     },
-    isLoadmoreComments(){
+    isLoadmoreComments() {
       return this.getCommentsByEntryId?.data?.is_last
         ? this.getCommentsByEntryId.data.is_last
         : false;
-    }
+    },
+  },
+  methods: {
+    goTo(name = null) {
+      if (name) {
+        return this.$router.push({ name });
+      }
+      this.$router.back();
+    },
   },
 };
 </script>

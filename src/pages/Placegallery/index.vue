@@ -42,7 +42,7 @@
             <div class="cs-pane__inner--a">
               <div class="pm-pla-list">
                 <h2 class="pm-pla-list__title">みんなの投稿</h2>
-                <div class="pm-pla-list__count">{{totalCount}}件</div>
+                <div class="pm-pla-list__count">{{ totalCount }}件</div>
                 <div class="pm-pla-list__header">
                   <div class="cs-nav-a">
                     <ul class="cs-nav-a__list">
@@ -60,92 +60,61 @@
                   id="js-pla-list"
                   class="pm-pla-list__items-container"
                 >
-                  <div data-cscomments="container" class="pm-pla-list__items" v-if="entries">
-                    <div data-cshistory-id="1" class="pm-pla-list-item" v-for="(entry, index) in entries" :key="index">
+                  <div
+                    data-cscomments="container"
+                    class="pm-pla-list__items"
+                    v-if="entries"
+                  >
+                    <div
+                      data-cshistory-id="1"
+                      class="pm-pla-list-item"
+                      v-for="(entry, index) in entries"
+                      :key="index"
+                    >
                       <div class="pm-pla-list-item__header">
-                        <div class="cs-avatar-2">
+                        <div class="cs-avatar-2" v-if="entry.user">
                           <a
                             href="#"
-                            v-bind:style="{ 'background-image': 'url(' + entry.user.profile_img + ')' }"
+                            v-bind:style="{
+                              'background-image':
+                                'url(' + entry.user.profile_img + ')',
+                            }"
                             class="cs-avatar-2__photo"
                           ></a>
                           <div class="cs-avatar-2__info">
                             <div class="cs-avatar-2__name-group">
-                              <a href="#" class="cs-avatar-2__name"
-                                >{{ entry.user.nickname}}</a
-                              >
+                              <a href="#" class="cs-avatar-2__name">{{
+                                entry.user.nickname
+                              }}</a>
                             </div>
-                            <div class="cs-avatar-2__opt">{{ entry.created}}</div>
+                            <div class="cs-avatar-2__opt">
+                              {{ entry.created }}
+                            </div>
                           </div>
                           <div class="cs-avatar-2__info">
                             <i class="cs-avatar-2__beginner"></i>
                           </div>
                         </div>
-                        <div class="pm-pla-list-item__header-right">
-                          <i class="cs-icn-sns--instagram--gray"></i>
-                          <div data-csdropdown="menu" class="cs-context-menu">
-                            <div
-                              data-csdropdown="trigger"
-                              class="cs-context-menu__trigger"
-                            ></div>
-                            <div
-                              data-csdropdown="content"
-                              data-align="right"
-                              class="cs-context-menu__content"
-                            >
-                              <ul class="cs-context-menu__items">
-                                <li class="cs-context-menu__item">
-                                  <a href="#" class="cs-context-menu__link"
-                                    >編集する</a
-                                  >
-                                </li>
-                                <li class="cs-context-menu__item">
-                                  <a
-                                    href="#"
-                                    data-csmodal="trigger"
-                                    data-target="#js-modal-delete-9999999"
-                                    class="cs-context-menu__link cs-context-menu__link"
-                                    >削除する</a
-                                  >
-                                </li>
-                                <li class="cs-context-menu__item">
-                                  <a href="#" class="cs-context-menu__link"
-                                    >報告する</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div
-                            id="js-modal-delete-9999999"
-                            class="cs-modal-delete-post"
-                          >
-                            <div class="cs-modal-delete-post__content">
-                              <p class="cs-modal-delete-post__title">
-                                この投稿を削除してもよろしいですか？
-                              </p>
-                              <p class="cs-modal-delete-post__body">
-                                一度削除すると元に戻すことはできません。
-                              </p>
-                              <span
-                                data-csmodal="hide"
-                                onclick="return false;"
-                                class="cs-button-b--1-m"
-                                >キャンセル</span
-                              >&nbsp;&nbsp;<span
-                                onclick="location.href='#'"
-                                class="cs-button-a--1-m"
-                                >削除する</span
-                              >
-                            </div>
-                          </div>
-                        </div>
+                        <EntryMenus
+                          class-content="pm-pla-list-item__header-right"
+                        ></EntryMenus>
                       </div>
-                      <router-link :to="{ name:'placegallery-detail', params: { id: entry.id }}" class="pm-pla-list-item__image-link">
+                      <router-link
+                        :to="{
+                          name: 'placegallery-detail',
+                          params: { id: entry.id },
+                        }"
+                        class="pm-pla-list-item__image-link"
+                      >
                         <div
                           class="pm-pla-list-item__image-list pm-pla-list-item__image-list--items-1"
                         >
-                        <div  v-bind:style="{ 'background-image': 'url(' + entry.img + ')' }"  class="pm-pla-list-item__image"></div>
+                          <div
+                            v-bind:style="{
+                              'background-image': 'url(' + entry.img + ')',
+                            }"
+                            class="pm-pla-list-item__image"
+                          ></div>
                           <!-- <div
                             style="background-color: #000"
                             class="pm-pla-list-item__image cs-video-mark"
@@ -158,10 +127,16 @@
                             </video>
                           </div> -->
                         </div></router-link
-                      ><a href="#" class="pm-pla-list-item__text-link">
+                      ><router-link
+                        :to="{
+                          name: 'placegallery-detail',
+                          params: { id: entry.id },
+                        }"
+                        class="pm-pla-list-item__text-link"
+                      >
                         <div class="pm-pla-list-item__text">
-                          {{ entry.caption}}
-                        </div></a
+                          {{ entry.caption }}
+                        </div></router-link
                       >
                       <!-- <div class="pm-pla-list-item__location">
                         <a href="#" class="pm-pla-list-item__location-spot"
@@ -172,32 +147,13 @@
                       </div> -->
                       <div class="pm-pla-list-item__response-group">
                         <div class="pm-pla-list-item__response-group-left">
-                          <div class="cs-response-c">
-                            <div
-                              data-csaction="like"
-                              data-api=""
-                              data-cslike-id="12345"
-                              class="cs-response-c__button--like"
-                            >
-                              <i class="cs-response-c__icon--medium"></i
-                              ><span
-                                data-cslike-counter="12345"
-                                class="cs-response-c__counter"
-                                >{{ entry.num_good}}</span
-                              >
-                            </div>
-                          </div>
-                          <div class="cs-response-c">
-                            <div class="cs-response-c__button--comment">
-                              <i class="cs-response-c__icon--medium"></i
-                              ><span class="cs-response-c__counter">{{ entry.num_comment}}</span>
-                            </div>
-                          </div>
+                          <EntryPlus :count="entry.num_good"></EntryPlus>
+                          <EntryComment
+                            :count="entry.num_comment"
+                          ></EntryComment>
                         </div>
                         <div class="pm-pla-list-item__response-group-right">
-                          <div class="cs-response-c">
-                            <div class="cs-response-c__views">{{ entry.num_view}} views</div>
-                          </div>
+                          <EntryView :count="entry.num_view"></EntryView>
                         </div>
                       </div>
                     </div>
@@ -228,19 +184,15 @@
   <!-- end module-->
 </template>
 <script>
-import Entry from "@/components/partials/Entry";
-import HeaderBack from "@/components/partials/HeaderBack";
 import gql from "graphql-tag";
-
+import EntryPlus from "@/components/common/EntryPlus";
+import EntryComment from "@/components/common/EntryComment";
+import EntryView from "@/components/common/EntryView";
+import EntryMenus from "@/components/common/EntryMenus.vue";
 export default {
   name: "PlacegalleryList",
-  props: {
-    hiddenHeaderBack: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  components: { Entry, HeaderBack },
+  props: {},
+  components: { EntryPlus, EntryComment, EntryView, EntryMenus },
   data() {
     return {};
   },
@@ -302,7 +254,7 @@ export default {
         ? this.getEntries.data.entries
         : [];
     },
-    totalCount(){
+    totalCount() {
       return this.getEntries?.data?.total_count
         ? this.getEntries.data.total_count
         : [];

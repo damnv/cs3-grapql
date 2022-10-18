@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
-import CheckedGreenIcon from "@/components/icons/CheckedGreenIcon";
-import PreviousIcon from "@/components/icons/PreviousIcon";
+import LikeGray from "@/components/icons/LikeGray";
+import LikeBlue from "@/components/icons/LikeBlue";
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -33,11 +33,11 @@ export default new Vuetify({
   },
   icons: {
     values: {
-      checkedGreenIcon: {
-        component: CheckedGreenIcon,
+      likeGray: {
+        component: LikeGray,
       },
-      previousIcon: {
-        component: PreviousIcon,
+      likeBlue: {
+        component: LikeBlue,
       },
     },
   },

@@ -129,16 +129,12 @@
 </template>
 
 <script>
-import SubCommentList from "./SubCommentList";
-
 export default {
   name: "CommentListElement",
   data() {
     return {};
   },
-  components: {
-    SubCommentList,
-  },
+  components: {},
   computed: {},
   props: {
     comment: {
@@ -150,5 +146,4 @@ export default {
   methods: {},
 };
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

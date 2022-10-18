@@ -3,8 +3,11 @@
     <div class="cs-cmt-thread">
       <!-- コメント リスト-->
       <ul data-cscmt="list" class="cs-cmt-thread__items">
-        <CommentListElement         v-for="(comment, index) in comments"
-          :key="index" :comment="comment"></CommentListElement>
+        <CommentListElement
+          v-for="(comment, index) in comments"
+          :key="index"
+          :comment="comment"
+        ></CommentListElement>
       </ul>
       <!-- もっと見るボタン（下部）-->
       <div class="cs-cmt-thread__footer" v-if="loadmore">

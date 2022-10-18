@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <SubCommentListElement></SubCommentListElement>
+  </div>
 </template>
 
 <script>
@@ -21,5 +23,4 @@ export default {
   mounted() {},
 };
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
