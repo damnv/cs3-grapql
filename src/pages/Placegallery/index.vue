@@ -28,7 +28,7 @@
                   </div>
                   訪れた場所、お店、出逢った人、食べたもの…<br />あなたしか知らない体験やスト―リーを投稿してみよう！
                 </div>
-                <a href="#" class="pm-pla-promote__button"
+                <a @click="onCreate" class="pm-pla-promote__button"
                   ><i class="pm-pla-promote__button-icon"></i
                   >体験発掘ノートに投稿する</a
                 >
@@ -180,24 +180,36 @@
         </div>
       </div>
     </div>
+    <Post v-if="isCreate"></Post>
   </div>
   <!-- end module-->
 </template>
 <script>
 import gql from "graphql-tag";
+import commonMixins from "@/mixins/common";
 import EntryPlus from "@/components/common/EntryPlus";
 import EntryComment from "@/components/common/EntryComment";
 import EntryView from "@/components/common/EntryView";
 import EntryMenus from "@/components/common/EntryMenus.vue";
-import commonMixins from "@/mixins/common";
+import Post from "@/components/partials/placegallery/Post.vue";
 
 export default {
   name: "PlacegalleryList",
   mixins: [commonMixins],
   props: {},
-  components: { EntryPlus, EntryComment, EntryView, EntryMenus },
+  components: { EntryPlus, EntryComment, EntryView, EntryMenus, Post },
   data() {
-    return {};
+    return {
+      isCreate: false,
+      entries: [],
+      totalCount: 0,
+      isLoadmore: false,
+    };
+  },
+  methods: {
+    onCreate() {
+      this.isCreate = true;
+    },
   },
   apollo: {
     getEntries: {
@@ -251,7 +263,11 @@ export default {
           }
         }
       `,
-      update() {},
+      update({ getEntries }) {
+        this.entries = getEntries.data.entries;
+        this.totalCount = getEntries.data.total_count;
+        this.isLoadmore = getEntries.data.is_last;
+      },
       error(error) {
         if (error.graphQLErrors) {
           error.graphQLErrors.forEach(({ message }) => {
@@ -264,21 +280,7 @@ export default {
       },
     },
   },
-  computed: {
-    entries() {
-      return this.getEntries?.data?.entries?.length
-        ? this.getEntries.data.entries
-        : [];
-    },
-    totalCount() {
-      return this.getEntries?.data?.total_count
-        ? this.getEntries.data.total_count
-        : [];
-    },
-    isLoadmore() {
-      return this.getEntries?.data?.is_last;
-    },
-  },
+  computed: {},
 };
 </script>
 <style lang="scss" scoped></style>

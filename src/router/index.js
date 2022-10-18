@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { DEFAULT_TITLE } from "@/constants/common";
 import Home from "@/pages/Home.vue";
 import PlacegalleryList from "@/pages/Placegallery/index";
 import PlacegalleryDetail from "@/pages/Placegallery/detail";
-import { DEFAULT_TITLE } from "@/constants/common";
 Vue.use(VueRouter);
 
 const routes = [
