@@ -17,8 +17,10 @@
 
 <script>
 import gql from "graphql-tag";
+import commonMixins from "@/mixins/common";
 export default {
   name: "EntryPlus",
+  mixins: [commonMixins],
   data() {
     return {};
   },
@@ -90,7 +92,14 @@ export default {
           console.log(data);
         })
         .catch((error) => {
-          console.error(error);
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
+              this.newToast({
+                type: "error",
+                message: message,
+              });
+            });
+          }
         });
     },
   },
