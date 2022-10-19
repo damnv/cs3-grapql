@@ -312,6 +312,12 @@ export default {
                   profile_img
                   created
                 }
+                reactions {
+                  id
+                  caption
+                  num_reaction
+                  is_like
+                }
               }
             }
           }

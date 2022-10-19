@@ -42,17 +42,12 @@
         {{ comment.description }}
       </div>
       <div class="cs-cmt-item__res">
+        <CommentPlus
+          :count="comment.num_good"
+          :reactions="comment.reactions"
+          show-text
+        ></CommentPlus>
         <div class="cs-response-a">
-          <div
-            data-csaction="like"
-            data-api=""
-            data-cslike-id="comment1"
-            class="cs-response-a__button--like"
-          >
-            <i class="cs-response-a__icon--small"></i
-            ><span class="cs-response-a__counter">{{ comment.num_good }}</span
-            ><span class="cs-response-a__label">いいね</span>
-          </div>
           <div data-csaction="comment" class="cs-response-a__button--comment">
             <i class="cs-response-a__icon--small"></i
             ><span class="cs-response-a__counter">{{
@@ -129,12 +124,14 @@
 </template>
 
 <script>
+import CommentPlus from "./CommentPlus";
+
 export default {
   name: "CommentListElement",
   data() {
     return {};
   },
-  components: {},
+  components: {CommentPlus},
   computed: {},
   props: {
     comment: {
