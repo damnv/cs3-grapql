@@ -23,13 +23,11 @@
     <div class="cs-cmt-post--top">
       <!-- 動作確認用に method が get になっていますが、組み込み時には post に変えてください。-->
       <form
-        data-cscmt-post="form"
-        action="/_api/cs-comments-post_01.json"
+        @submit="onCreateComment"
         enctype="multipart/form-data"
-        method="get"
+        method="post"
         class="cs-cmt-post__form"
       >
-        <input type="hidden" name="id" value="63821" id="id" />
         <div class="cs-cmt-post__image">
           <div
             style="background-image: url('http://placeimg.com/300/200/people')"
@@ -43,7 +41,7 @@
             data-csfield="h-auto"
             rows="1"
             placeholder="コメントする（1000文字まで）"
-            name="comment_text"
+            v-model="description"
             class="cs-field-a cs-field--w-100p cs-field--h-auto-mah-10"
           ></textarea>
           <!-- エラーテキストを入れる要素。対象入力フォームのname属性とdata-error-name属性を合わせてください-->
@@ -62,7 +60,7 @@
                   accept="image/*"
                   data-cscmt-post="field"
                   data-csimage-preview="field"
-                  name="comment_image"
+                  name="comment_img"
                 />
               </div>
               <!-- エラーテキストを入れる要素。対象入力フォームのname属性とdata-error-name属性を合わせてください-->
@@ -96,12 +94,106 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+import commonMixins from "@/mixins/common";
+
 export default {
   name: "CommentForm",
+  mixins: [commonMixins],
+  data() {
+    return {
+      commentImg: '',
+      description: ''
+    };
+  },
   props: {
     totalComments: {
       type: Number,
       default: () => 0,
+    },
+    entryId: {
+      type: Number,
+      default: () => 0,
+    },
+    userId: {
+      type: Number,
+      default: () => 0,
+    },
+    doAddComment: {
+      type: Function
+    },
+  },
+  methods: {
+    onCreateComment(e){
+      e.preventDefault()
+      this.$apollo
+        .mutate({
+          mutation: gql`
+            mutation MyMutation(
+              $entryId: Int!
+              $userId: Int!
+              $description: String!
+              $commentImg: String
+            ) {
+              createComment(
+                input: {
+                  user_id: $userId
+                  entry_id: $entryId
+                  description: $description
+                  comment_img: $commentImg
+                }
+              ) {
+                result_code
+                data{
+                  id
+                  img
+                  img2
+                  num_comment
+                  num_good
+                  reactions {
+                    id
+                    caption
+                    img
+                    num_reaction
+                    is_like
+                  }
+                  user {
+                    nickname
+                    id
+                    profile_img
+                    created
+                  }
+                  description
+                  caption
+                  created
+                  entry_id
+                  comment_id
+                }
+              }
+            }
+          `,
+          variables: {
+            userId: this.userId,
+            entryId: this.entryId,
+            description: this.description,
+            commentImg: this.commentImg
+          }
+        })
+        .then(({ data }) => {
+          if(data.createComment?.result_code == 0) {
+            this.doAddComment(data.createComment.data);
+          }
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
+              this.newToast({
+                type: "error",
+                message: message,
+              });
+            });
+          }
+        });
     },
   },
 };

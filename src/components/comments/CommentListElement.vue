@@ -39,7 +39,7 @@
     </div>
     <div class="cs-cmt-item__content">
       <div class="cs-cmt-item__body">
-        {{ comment.captions }}
+        {{ comment.description }}
       </div>
       <div class="cs-cmt-item__res">
         <div class="cs-response-a">

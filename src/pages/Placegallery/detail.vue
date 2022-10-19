@@ -146,7 +146,10 @@
           <CommentBlock
             :total-comments="totalComments"
             :comments="comments"
+            :entryId="entry.id"
+            :userId="currentUser"
             :loadmore="isLoadmoreComments"
+            :doAddComment="doAddComment"
           ></CommentBlock>
         </div>
       </div>
@@ -354,6 +357,9 @@ export default {
     },
     updateFollowing(isFollowing){
       this.entry.is_following = isFollowing;
+    },
+    doAddComment(comment){
+      this.comments.unshift({...comment});
     }
   },
 };
