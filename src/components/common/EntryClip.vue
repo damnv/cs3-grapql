@@ -1,6 +1,21 @@
 <template>
-  <div data-csaction="clip" class="cs-button-response-d--clip" data-state="active" v-if="isClip" @click="onDelete">クリップ</div>
-  <div data-csaction="clip" class="cs-button-response-d--clip" v-else @click="onCreate">クリップ</div>
+  <div
+    data-csaction="clip"
+    class="cs-button-response-d--clip"
+    data-state="active"
+    v-if="isClip"
+    @click="onDelete"
+  >
+    クリップ
+  </div>
+  <div
+    data-csaction="clip"
+    class="cs-button-response-d--clip"
+    v-else
+    @click="onCreate"
+  >
+    クリップ
+  </div>
 </template>
 
 <script>
@@ -27,8 +42,8 @@ export default {
       default: () => 0,
     },
     updateClip: {
-      type: Function
-    }
+      type: Function,
+    },
   },
   apollo: {},
   methods: {
@@ -60,12 +75,12 @@ export default {
             entryId: this.entryId,
             userId: this.userId,
             url: this.$route.path,
-            caption: '',
-            img: ''
-          }
+            caption: "",
+            img: "",
+          },
         })
         .then(({ data }) => {
-          if(data.createEntryClip?.result_code == 0) {
+          if (data.createEntryClip?.result_code == 0) {
             this.updateClip(true);
           }
         })
@@ -108,12 +123,12 @@ export default {
             entryId: this.entryId,
             userId: this.userId,
             url: this.$route.path,
-            caption: '',
-            img: ''
-          }
+            caption: "",
+            img: "",
+          },
         })
-        .then(({data}) => {
-          if(data.deleteEntryClip?.result_code == 0) {
+        .then(({ data }) => {
+          if (data.deleteEntryClip?.result_code == 0) {
             this.updateClip(false);
           }
         })

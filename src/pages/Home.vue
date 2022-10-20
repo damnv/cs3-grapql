@@ -11,11 +11,13 @@
       </div>
       <Placegallery hidden-header-back></Placegallery>
     </div>
+    <v-btn @click="getToken">show Token</v-btn>
+    <p>{{ token }}</p>
   </div>
 </template>
 
 <script>
-import Placegallery from "@/pages/Placegallery/index";
+import Placegallery from "@/pages/placegallery/index";
 
 export default {
   name: "Home",
@@ -23,12 +25,18 @@ export default {
     return {
       entries: [],
       getListReaction: [],
+      token: "",
     };
   },
   components: { Placegallery },
   props: {},
   watch: {},
-  methods: {},
+  methods: {
+    async getToken() {
+      // Get the access token from the auth wrapper
+      this.token = await this.$auth.getTokenSilently();
+    },
+  },
   apollo: {},
   created() {},
 };

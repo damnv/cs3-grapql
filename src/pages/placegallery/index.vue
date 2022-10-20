@@ -269,21 +269,34 @@ export default {
               }
             }
           `,
+          error(error) {
+            console.log(error);
+          },
         })
         .then(({ data }) => {
           this.entries = data.getEntries.data.entries;
           this.totalCount = data.getEntries.data.total_count;
           this.isLoadmore = data.getEntries.data.is_last;
         })
-        .catch((error) => {
-          if (error.graphQLErrors) {
-            error.graphQLErrors.forEach(({ message }) => {
-              this.newToast({
-                type: "error",
-                message: message,
+        .catch(({ graphQLErrors, networkError }) => {
+          setTimeout(() => {
+            if (graphQLErrors) {
+              graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
               });
-            });
-          }
+            }
+            if (networkError) {
+              networkError.result.errors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          }, 200);
         });
     },
   },

@@ -1,6 +1,13 @@
 <template>
   <div v-if="userId != followingUserId">
-    <div class="cs-button-follow-a" data-state="active" v-if="isFollowing" @click="onUnFollow">フォロー解除</div>
+    <div
+      class="cs-button-follow-a"
+      data-state="active"
+      v-if="isFollowing"
+      @click="onUnFollow"
+    >
+      フォロー解除
+    </div>
     <div class="cs-button-follow-a" v-else @click="onFollow">フォロー</div>
   </div>
 </template>
@@ -29,18 +36,15 @@ export default {
       default: () => 0,
     },
     updateFollowing: {
-      type: Function
-    }
+      type: Function,
+    },
   },
   methods: {
     onFollow() {
       this.$apollo
         .mutate({
           mutation: gql`
-            mutation MyMutation(
-              $followingUserId: Int!
-              $userId: Int!
-            ) {
+            mutation MyMutation($followingUserId: Int!, $userId: Int!) {
               createUserFollow(
                 following_user_id: $followingUserId
                 user_id: $userId
@@ -52,10 +56,10 @@ export default {
           variables: {
             followingUserId: this.followingUserId,
             userId: this.userId,
-          }
+          },
         })
         .then(({ data }) => {
-          if(data.createUserFollow?.result_code == 0) {
+          if (data.createUserFollow?.result_code == 0) {
             this.updateFollowing(true);
           }
         })
@@ -71,14 +75,11 @@ export default {
         });
     },
     onUnFollow() {
-      console.log(this.followingUserId, this.userId)
+      console.log(this.followingUserId, this.userId);
       this.$apollo
         .mutate({
           mutation: gql`
-            mutation MyMutation(
-              $followingUserId: Int!
-              $userId: Int!
-            ) {
+            mutation MyMutation($followingUserId: Int!, $userId: Int!) {
               deleteUserFollow(
                 following_user_id: $followingUserId
                 user_id: $userId
@@ -90,10 +91,10 @@ export default {
           variables: {
             followingUserId: this.followingUserId,
             userId: this.userId,
-          }
+          },
         })
-        .then(({data}) => {
-          if(data.deleteUserFollow?.result_code == 0) {
+        .then(({ data }) => {
+          if (data.deleteUserFollow?.result_code == 0) {
             this.updateFollowing(false);
           }
         })

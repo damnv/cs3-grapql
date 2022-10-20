@@ -46,9 +46,9 @@ export default {
 <style lang="scss">
 .toast-list {
   position: fixed;
-  z-index: 9999;
   top: 2.6rem;
   right: 2.6rem;
+  z-index:999999999999
 }
 .slide-leave-active,
 .slide-enter-active {

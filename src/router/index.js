@@ -2,8 +2,14 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import { DEFAULT_TITLE } from "@/constants/common";
 import Home from "@/pages/Home.vue";
-import PlacegalleryList from "@/pages/Placegallery/index";
-import PlacegalleryDetail from "@/pages/Placegallery/detail";
+import PlacegalleryList from "@/pages/placegallery/index";
+import PlacegalleryDetail from "@/pages/placegallery/detail";
+import UserHome from "@/pages/user/home";
+import UserProfile from "@/pages/user/profile";
+import Login from "@/pages/auth/login";
+import Register from "@/pages/auth/register";
+import PasswordReminder from "@/pages/auth/password-reminder";
+import NotFound from "@/pages/404/index";
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,6 +27,36 @@ const routes = [
     path: "/placegallery/:id",
     name: "placegallery-detail",
     component: PlacegalleryDetail,
+  },
+  {
+    path: "/user/home",
+    name: "user-home",
+    component: UserHome,
+  },
+  {
+    path: "/user/profile/:id",
+    name: "user-profile",
+    component: UserProfile,
+  },
+  {
+    path: "/auth/register",
+    name: "register",
+    component: Register,
+  },
+  {
+    path: "/auth/login",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/auth/password-reminder",
+    name: "password-reminder",
+    component: PasswordReminder,
+  },
+  {
+    path: "*",
+    name: "not-found",
+    component: NotFound,
   },
 ];
 

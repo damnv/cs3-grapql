@@ -13,6 +13,8 @@ import { ApolloClient } from "apollo-client";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 // import { createUploadLink } from "apollo-upload-client";
+import { Auth0Plugin } from "./plugins/auth0";
+import { domain, clientId, audience } from "./auth_config.json";
 
 const BASE_URL_GRAPQL = process.env.VUE_APP_API_GRAPQL_URL;
 const API_KEY = process.env.VUE_APP_API_KEY;
@@ -38,6 +40,18 @@ const apolloClient = new ApolloClient({
 Vue.config.productionTip = false;
 Vue.use(VueCookies);
 Vue.use(VueApollo);
+Vue.use(Auth0Plugin, {
+  domain,
+  clientId,
+  audience, // NEW - configure the plugin with the audience value
+  onRedirectCallback: (appState) => {
+    router.push(
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname
+    );
+  },
+});
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient,

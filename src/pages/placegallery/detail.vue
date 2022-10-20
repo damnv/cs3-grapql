@@ -349,12 +349,12 @@ export default {
       }
       this.$router.back();
     },
-    updateClip(isClip){
+    updateClip(isClip) {
       this.entry.is_clip = isClip;
     },
-    updateFollowing(isFollowing){
+    updateFollowing(isFollowing) {
       this.entry.is_following = isFollowing;
-    }
+    },
   },
 };
 </script>
