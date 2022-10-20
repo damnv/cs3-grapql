@@ -60,11 +60,6 @@ export default {
       isLoadmore: false,
     };
   },
-  created() {
-    if (!this.$auth.user) {
-      this.$router.push({ name: "home" });
-    }
-  },
   components: {
     UserInfomation,
     UserPoint,
@@ -103,7 +98,7 @@ export default {
                 }
               }
             }
-          `
+          `,
         })
         .then(({ data }) => {
           this.entries = data.getEntriesByUserId.data.entries;
@@ -133,6 +128,9 @@ export default {
     },
   },
   created() {
+    if (!this.$auth.user) {
+      this.$router.push({ name: "home" });
+    }
     this.getData();
   },
 };

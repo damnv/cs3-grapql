@@ -8,8 +8,18 @@
         <!-- 上にコメントフォーム data-cscmt-order="top"-->
         <!-- 下にコメントフォーム data-cscmt-order="bottom"-->
         <div data-cscmt="root" data-cscmt-order="top" class="cs-cmt">
-          <CommentForm :total-comments="totalComments"></CommentForm>
-          <CommentList :comments="comments" :loadmore="loadmore"></CommentList>
+          <CommentForm
+            :total-comments="totalComments"
+            :entryId="entryId"
+            :userId="userId"
+            :doAddComment="doAddComment"
+          ></CommentForm>
+          <CommentList
+            :comments="comments"
+            :loadmore="loadmore"
+            :entryId="entryId"
+            :userId="userId"
+          ></CommentList>
         </div>
         <!-- / コメント ブロック-->
       </div>
@@ -34,6 +44,17 @@ export default {
     loadmore: {
       type: Boolean,
       deafult: () => false,
+    },
+    entryId: {
+      type: Number,
+      deafult: () => 0,
+    },
+    userId: {
+      type: Number,
+      deafult: () => 0,
+    },
+    doAddComment: {
+      type: Function,
     },
   },
 };

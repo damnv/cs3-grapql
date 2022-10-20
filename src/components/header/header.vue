@@ -2,7 +2,11 @@
   <header id="js-cs-header" class="cs-header-2">
     <div class="cs-header-2-navbar">
       <div class="cs-header-2-navbar__inner">
-        <router-link :to="{name:'home'}"  class="cs-header-2-navbar__brand-logo">みんなの眠ラボ | 西川ふとん</router-link>
+        <router-link
+          :to="{ name: 'home' }"
+          class="cs-header-2-navbar__brand-logo"
+          >みんなの眠ラボ | 西川ふとん</router-link
+        >
         <div v-if="$auth.isAuthenticated">
           <div class="cs-header-2-navbar__nav d-flex">
             <router-link :to="{ name: 'user-home' }">

@@ -48,7 +48,7 @@ export default {
   position: fixed;
   top: 2.6rem;
   right: 2.6rem;
-  z-index:999999999999
+  z-index: 999999999999;
 }
 .slide-leave-active,
 .slide-enter-active {

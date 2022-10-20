@@ -51,7 +51,9 @@
                 ><a href="" class="pm-usr-2-profile__edit-menu-link"
                   >配送先情報編集</a
                 >
-                <a @click="logout" class="pm-usr-2-profile__edit-menu-link">ログアウト</a>
+                <a @click="logout" class="pm-usr-2-profile__edit-menu-link"
+                  >ログアウト</a
+                >
               </div>
             </label>
           </div>
@@ -81,17 +83,15 @@
 <script>
 export default {
   name: "UserInfomation",
-  data(){
-    return{
-
-    }
+  data() {
+    return {};
   },
-  methods:{
+  methods: {
     logout() {
       this.$auth.logout();
       this.$router.push({ path: "/" });
     },
-  }
+  },
 };
 </script>
 
