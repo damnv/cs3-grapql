@@ -77,7 +77,7 @@
                             href="#"
                             v-bind:style="{
                               'background-image':
-                                'url(' + entry.user.profile_img + ')',
+                                'url(' + entry.user.profileImg + ')',
                             }"
                             class="cs-avatar-2__photo"
                           ></a>
@@ -111,7 +111,8 @@
                         >
                           <div
                             v-bind:style="{
-                              'background-image': 'url(' + entry.img + ')',
+                              'background-image':
+                                'url(' + entry.thumbnail + ')',
                             }"
                             class="pm-pla-list-item__image"
                           ></div>
@@ -148,15 +149,17 @@
                       <div class="pm-pla-list-item__response-group">
                         <div class="pm-pla-list-item__response-group-left">
                           <EntryPlus
-                            :count="entry.num_good"
-                            :reactions="entry.reactions"
+                            :count="entry.reaction.total"
+                            :reactions="entry.reaction.items"
+                            :user-id="entry.user.id"
+                            :entry-id="entry.id"
+                            :state-active="entry.actionStatus.reaction"
+                            @onUpdate="onUpdateEntry"
                           ></EntryPlus>
-                          <EntryComment
-                            :count="entry.num_comment"
-                          ></EntryComment>
+                          <EntryComment :count="entry.comment"></EntryComment>
                         </div>
                         <div class="pm-pla-list-item__response-group-right">
-                          <EntryView :count="entry.num_view"></EntryView>
+                          <EntryView :count="entry.view"></EntryView>
                         </div>
                       </div>
                     </div>
@@ -220,63 +223,79 @@ export default {
       this.$apollo
         .query({
           query: gql`
-            query MyQuery {
-              getEntries {
+            query MyQuery($count: Int, $from: Int, $sort: String, $userId: Int) {
+              getEntries(count: $count, from: $from, sort: $sort, user_id: $userId) {
                 result_code
                 data {
-                  current_page
-                  is_last
-                  total_count
-                  entries {
+                  count
+                  from
+                  items {
+                    actionStatus {
+                      clip
+                      follow
+                      mute
+                      reaction
+                    }
                     caption
-                    id
-                    category_l_id
-                    created
-                    description
-                    img
-                    img2
-                    img3
-                    img4
-                    img5
-                    img_thumbnail
-                    is_clip
-                    is_following
-                    module_entry_id
-                    module_id
-                    module_type
-                    num_comment
-                    num_good
-                    num_view
-                    reactions {
+                    comment
+                    category {
                       caption
+                      description
                       id
                       img
-                      is_like
-                      num_reaction
+                      module_id
                     }
-                    user_id
-                    user {
-                      birthday
-                      email
-                      gender
-                      profile_img
-                      introduction
-                      nickname
+                    description
+                    curationSource
+                    createTime
+                    view
+                    id
+                    media {
+                      type
+                      url
+                    }
+                    module {
+                      alias
+                      caption
                       id
                     }
+                    reaction {
+                      items {
+                        caption
+                        count
+                        icon
+                        id
+                      }
+                      total
+                    }
+                    tags
+                    thumbnail
+                    user {
+                      id
+                      profileImg
+                      nickname
+                    }
                   }
+                  sort
+                  total
                 }
               }
             }
           `,
+          variables: {
+            count: 1,
+            from: 0,
+            sort: "new",
+            userId: 1
+          },
           error(error) {
             console.log(error);
           },
         })
         .then(({ data }) => {
-          this.entries = data.getEntries.data.entries;
-          this.totalCount = data.getEntries.data.total_count;
-          this.isLoadmore = data.getEntries.data.is_last;
+          this.entries = data.getEntries.data.items;
+          this.totalCount = data.getEntries.data.total;
+          this.isLoadmore = false;
         })
         .catch(({ graphQLErrors, networkError }) => {
           setTimeout(() => {
@@ -299,6 +318,14 @@ export default {
           }, 200);
         });
     },
+    onUpdateEntry(data){
+      this.entries.map((item) => {
+         if(item.id == data.id){
+          item.reaction =  data.reaction
+          item.actionStatus.reaction = data.actionStatus.reaction
+         }
+      })
+    }
   },
   apollo: {},
   computed: {},

@@ -364,9 +364,9 @@ export default {
     updateFollowing(isFollowing) {
       this.entry.is_following = isFollowing;
     },
-    doAddComment(comment){
-      this.comments.unshift({...comment});
-    }
+    doAddComment(comment) {
+      this.comments.unshift({ ...comment });
+    },
   },
 };
 </script>

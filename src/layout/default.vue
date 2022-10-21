@@ -6,7 +6,7 @@
       <UIToastList />
     </v-container>
     <v-overlay
-      v-if="$apollo.loading || $auth.loading"
+      v-if="$apollo.loading || (!$auth && $auth.loading)"
       z-index="9999"
       opacity="0.46"
       color="rgb(33, 33, 33)"

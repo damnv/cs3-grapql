@@ -1,12 +1,25 @@
 <template>
   <div class="cs-response-c cs-reaction-a" :class="classContent">
     <div data-csreaction="container" class="cs-reaction-a-container">
+      dd-> {{ stateActive }} {{ reactionAtive }}
       <div
         data-csreaction="button"
         class="cs-response-c__button--like"
         @click="showReaction"
       >
-        <i data-csreaction="button-icon" class="cs-response-c__icon--medium"></i
+        <i
+          data-csreaction="button-icon"
+          v-if="!reactionAtive"
+          class="cs-response-c__icon--medium"
+        ></i>
+        <i
+          data-csreaction="button-icon"
+          v-else
+          v-bind:style="{
+            'background-image': 'url(' + reactionAtive.icon + ') !important',
+          }"
+          class="cs-response-c__icon--medium"
+        ></i
         ><span data-cslike-counter="12345" class="cs-response-c__counter">{{
           count
         }}</span
@@ -33,10 +46,12 @@
                 class="cs-button-reaction-a__item"
                 v-for="(reaction, index) in reactions"
                 :key="index"
-                @click="onCreate"
+                @click="handleReaction(reaction.id)"
               >
                 <i
-                  :data-csreaction-icon="reaction.id"
+                  v-bind:style="{
+                    'background-image': 'url(' + reaction.icon + ') !important',
+                  }"
                   class="cs-button-reaction-a__icon"
                 ></i>
                 <span
@@ -88,8 +103,21 @@ export default {
       type: Array,
       default: () => [],
     },
+    stateActive: {
+      type: String,
+      default: () => "",
+    },
   },
   apollo: {},
+  computed: {
+    reactionAtive() {
+      let reaction;
+      this.reactions.forEach((item) => {
+        if (item.id == this.stateActive) reaction = item;
+      });
+      return reaction;
+    },
+  },
   methods: {
     onCreate() {
       this.$apollo
@@ -107,17 +135,22 @@ export default {
                   user_id: $userId
                 }
               ) {
-                result_code
                 data {
-                  num_good
-                  reactions {
-                    caption
-                    id
-                    img
-                    is_like
-                    num_reaction
+                  actionStatus {
+                    reaction
+                  }
+                  reaction {
+                    items {
+                      caption
+                      count
+                      icon
+                      id
+                    }
+                    total
                   }
                 }
+                result_code
+              }
               }
             }
           `,
@@ -129,7 +162,7 @@ export default {
           update: () => {},
         })
         .then((data) => {
-          this.$emit("onReaction", data);
+          this.$emit("onUpdate", data);
           this.isShowReaction = false;
         })
         .catch((error) => {
@@ -142,6 +175,64 @@ export default {
             });
           }
         });
+    },
+    onDelete() {
+      this.$apollo
+        .mutate({
+          mutation: gql`
+            mutation MyMutation($userId: Int!, $reactionId: Int, $entryId: Int!) {
+            deleteEntryPlus(user_id: $userId, reaction_id: $reactionId, entry_id: $entryId) {
+              data {
+                actionStatus {
+                  reaction
+                }
+                reaction {
+                  items {
+                    caption
+                    count
+                    icon
+                    id
+                  }
+                  total
+                }
+              }
+              result_code
+
+            }
+          }
+          `,
+          variables: {
+            entryId: this.entryId,
+            reactionId: 1,
+            userId: this.userId,
+          },
+          update: () => {},
+        })
+        .then(({data}) => {
+            let entry = {};
+            entry.actionStatus = data.deleteEntryPlus.data.actionStatus;
+            entry.reaction = data.deleteEntryPlus.data.reaction;
+            entry.id = this.entryId;
+            this.$emit("onUpdate", entry);
+            this.isShowReaction = false;
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
+              this.newToast({
+                type: "error",
+                message: message,
+              });
+            });
+          }
+        });
+    },
+    handleReaction(reactionId) {
+      if (this.reactionAtive && this.stateActive == reactionId) {
+        this.onDelete();
+      } else {
+        this.onCreate();
+      }
     },
     showReaction() {
       this.isShowReaction = true;
