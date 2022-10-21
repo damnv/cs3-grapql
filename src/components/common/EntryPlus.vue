@@ -1,7 +1,6 @@
 <template>
   <div class="cs-response-c cs-reaction-a" :class="classContent">
     <div data-csreaction="container" class="cs-reaction-a-container">
-      dd-> {{ stateActive }} {{ reactionAtive }}
       <div
         data-csreaction="button"
         class="cs-response-c__button--like"
@@ -119,7 +118,7 @@ export default {
     },
   },
   methods: {
-    onCreate() {
+    onCreate(reactionId) {
       this.$apollo
         .mutate({
           mutation: gql`
@@ -129,11 +128,9 @@ export default {
               $userId: Int!
             ) {
               createEntryPlus(
-                input: {
                   entry_id: $entryId
                   reaction_id: $reactionId
                   user_id: $userId
-                }
               ) {
                 data {
                   actionStatus {
@@ -151,19 +148,23 @@ export default {
                 }
                 result_code
               }
-              }
             }
           `,
           variables: {
-            entryId: 1,
-            reactionId: 1,
-            userId: 1,
+            entryId: this.entryId,
+            reactionId: reactionId,
+            userId: this.userId
           },
-          update: () => {},
+          update: () => {
+          },
         })
-        .then((data) => {
-          this.$emit("onUpdate", data);
-          this.isShowReaction = false;
+        .then(({data}) => {
+            let entry = {};
+            entry.actionStatus = data.createEntryPlus.data.actionStatus;
+            entry.reaction = data.createEntryPlus.data.reaction;
+            entry.id = this.entryId;
+            this.$emit("onUpdate", entry);
+            this.isShowReaction = false;
         })
         .catch((error) => {
           if (error.graphQLErrors) {
@@ -176,7 +177,7 @@ export default {
           }
         });
     },
-    onDelete() {
+    onDelete(reactionId) {
       this.$apollo
         .mutate({
           mutation: gql`
@@ -203,7 +204,7 @@ export default {
           `,
           variables: {
             entryId: this.entryId,
-            reactionId: 1,
+            reactionId: reactionId,
             userId: this.userId,
           },
           update: () => {},
@@ -229,9 +230,9 @@ export default {
     },
     handleReaction(reactionId) {
       if (this.reactionAtive && this.stateActive == reactionId) {
-        this.onDelete();
+        this.onDelete(reactionId);
       } else {
-        this.onCreate();
+        this.onCreate(reactionId);
       }
     },
     showReaction() {
