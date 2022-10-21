@@ -58,7 +58,6 @@
 </template>
 
 <script>
-import Entry from "../partials/Entry.vue";
 import EntryBlock from "../common/EntryBlock.vue";
 export default {
   name: "UserActivity",
@@ -76,7 +75,7 @@ export default {
       default: () => 0,
     },
   },
-  components: { Entry, EntryBlock },
+  components: { EntryBlock },
 };
 </script>
 

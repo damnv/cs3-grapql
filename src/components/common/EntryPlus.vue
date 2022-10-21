@@ -128,9 +128,9 @@ export default {
               $userId: Int!
             ) {
               createEntryPlus(
-                  entry_id: $entryId
-                  reaction_id: $reactionId
-                  user_id: $userId
+                entry_id: $entryId
+                reaction_id: $reactionId
+                user_id: $userId
               ) {
                 data {
                   actionStatus {
@@ -153,18 +153,17 @@ export default {
           variables: {
             entryId: this.entryId,
             reactionId: reactionId,
-            userId: this.userId
+            userId: this.userId,
           },
-          update: () => {
-          },
+          update: () => {},
         })
-        .then(({data}) => {
-            let entry = {};
-            entry.actionStatus = data.createEntryPlus.data.actionStatus;
-            entry.reaction = data.createEntryPlus.data.reaction;
-            entry.id = this.entryId;
-            this.$emit("onUpdate", entry);
-            this.isShowReaction = false;
+        .then(({ data }) => {
+          let entry = {};
+          entry.actionStatus = data.createEntryPlus.data.actionStatus;
+          entry.reaction = data.createEntryPlus.data.reaction;
+          entry.id = this.entryId;
+          this.$emit("onUpdate", entry);
+          this.isShowReaction = false;
         })
         .catch((error) => {
           if (error.graphQLErrors) {
@@ -181,26 +180,33 @@ export default {
       this.$apollo
         .mutate({
           mutation: gql`
-            mutation MyMutation($userId: Int!, $reactionId: Int, $entryId: Int!) {
-            deleteEntryPlus(user_id: $userId, reaction_id: $reactionId, entry_id: $entryId) {
-              data {
-                actionStatus {
-                  reaction
-                }
-                reaction {
-                  items {
-                    caption
-                    count
-                    icon
-                    id
+            mutation MyMutation(
+              $userId: Int!
+              $reactionId: Int
+              $entryId: Int!
+            ) {
+              deleteEntryPlus(
+                user_id: $userId
+                reaction_id: $reactionId
+                entry_id: $entryId
+              ) {
+                data {
+                  actionStatus {
+                    reaction
                   }
-                  total
+                  reaction {
+                    items {
+                      caption
+                      count
+                      icon
+                      id
+                    }
+                    total
+                  }
                 }
+                result_code
               }
-              result_code
-
             }
-          }
           `,
           variables: {
             entryId: this.entryId,
@@ -209,13 +215,13 @@ export default {
           },
           update: () => {},
         })
-        .then(({data}) => {
-            let entry = {};
-            entry.actionStatus = data.deleteEntryPlus.data.actionStatus;
-            entry.reaction = data.deleteEntryPlus.data.reaction;
-            entry.id = this.entryId;
-            this.$emit("onUpdate", entry);
-            this.isShowReaction = false;
+        .then(({ data }) => {
+          let entry = {};
+          entry.actionStatus = data.deleteEntryPlus.data.actionStatus;
+          entry.reaction = data.deleteEntryPlus.data.reaction;
+          entry.id = this.entryId;
+          this.$emit("onUpdate", entry);
+          this.isShowReaction = false;
         })
         .catch((error) => {
           if (error.graphQLErrors) {

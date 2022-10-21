@@ -88,7 +88,7 @@
                               }}</a>
                             </div>
                             <div class="cs-avatar-2__opt">
-                              {{ entry.created }}
+                              {{ entry.createdTime }}
                             </div>
                           </div>
                           <div class="cs-avatar-2__info">
@@ -149,8 +149,9 @@
                       <div class="pm-pla-list-item__response-group">
                         <div class="pm-pla-list-item__response-group-left">
                           <EntryPlus
-                            :count="entry.reaction.total"
-                            :reactions="entry.reaction.items"
+                            v-if="entry.reactions"
+                            :count="entry.reactions.total"
+                            :reactions="entry.reactions.items"
                             :user-id="entry.user.id"
                             :entry-id="entry.id"
                             :state-active="entry.actionStatus.reaction"
@@ -210,6 +211,7 @@ export default {
       entries: [],
       totalCount: 0,
       isLoadmore: false,
+      test: "test",
     };
   },
   methods: {
@@ -220,15 +222,25 @@ export default {
       this.isCreate = false;
     },
     getData() {
+      this.setLoading(true);
       this.$apollo
         .query({
           query: gql`
-            query MyQuery($count: Int, $from: Int, $sort: String, $userId: Int) {
-              getEntries(count: $count, from: $from, sort: $sort, user_id: $userId) {
+            query MyQuery(
+              $currentPage: Int
+              $limit: Int
+              $sort: String
+              $userId: Int
+            ) {
+              getEntries(
+                currentPage: $currentPage
+                limit: $limit
+                sort: $sort
+                user_id: $userId
+              ) {
                 result_code
                 data {
-                  count
-                  from
+                  currentPage
                   items {
                     actionStatus {
                       clip
@@ -237,20 +249,18 @@ export default {
                       reaction
                     }
                     caption
-                    comment
                     category {
                       caption
                       description
                       id
                       img
-                      module_id
                     }
-                    description
+                    comment
+                    createdTime
                     curationSource
-                    createTime
-                    view
+                    description
                     id
-                    media {
+                    medias {
                       type
                       url
                     }
@@ -259,23 +269,34 @@ export default {
                       caption
                       id
                     }
-                    reaction {
+                    reactions {
+                      total
                       items {
                         caption
                         count
                         icon
                         id
                       }
-                      total
                     }
                     tags
+                    spot {
+                      name
+                      country
+                      region
+                      city
+                      street
+                    }
                     thumbnail
+                    view
                     user {
                       id
-                      profileImg
+                      isAdmin
                       nickname
+                      profileImg
+                      title
                     }
                   }
+                  limit
                   sort
                   total
                 }
@@ -283,21 +304,25 @@ export default {
             }
           `,
           variables: {
-            count: 1,
-            from: 0,
+            currentPage: 1,
+            limit: 0,
             sort: "new",
-            userId: 1
+            userId: 1,
           },
+          update: () => {},
           error(error) {
             console.log(error);
           },
         })
         .then(({ data }) => {
+          this.test = " damnv";
           this.entries = data.getEntries.data.items;
           this.totalCount = data.getEntries.data.total;
           this.isLoadmore = false;
+          this.setLoading(false);
         })
         .catch(({ graphQLErrors, networkError }) => {
+          this.setLoading(false);
           setTimeout(() => {
             if (graphQLErrors) {
               graphQLErrors.forEach(({ message }) => {
@@ -318,14 +343,14 @@ export default {
           }, 200);
         });
     },
-    onUpdateEntry(data){
+    onUpdateEntry(data) {
       this.entries.map((item) => {
-         if(item.id == data.id){
-          item.reaction =  data.reaction
-          item.actionStatus.reaction = data.actionStatus.reaction
-         }
-      })
-    }
+        if (item.id == data.id) {
+          item.reaction = data.reaction;
+          item.actionStatus.reaction = data.actionStatus.reaction;
+        }
+      });
+    },
   },
   apollo: {},
   computed: {},

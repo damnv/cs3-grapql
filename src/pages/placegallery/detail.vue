@@ -22,7 +22,7 @@
                 <div class="cs-avatar-2" v-if="entry.user">
                   <a
                     v-bind:style="{
-                      'background-image': 'url(' + entry.user.profile_img + ')',
+                      'background-image': 'url(' + entry.user.profileImg + ')',
                     }"
                     class="cs-avatar-2__photo"
                   ></a>
@@ -32,19 +32,19 @@
                         entry.user.nickname
                       }}</a>
                     </div>
-                    <div class="cs-avatar-2__opt">{{ entry.created }}</div>
+                    <div class="cs-avatar-2__opt">{{ entry.createdTime | convertDateTime }}</div>
                   </div>
                   <div class="cs-avatar-2__info">
                     <i class="cs-avatar-2__beginner"></i>
                   </div>
                 </div>
                 <div class="pm-pla-detail__header__right">
-                  <EntryFollow
-                    :isFollowing="entry.is_following"
+                  <!-- <EntryFollow
+                    :isFollowing="entry.actionStatus.follow"
                     :updateFollowing="updateFollowing"
                     :userId="currentUser"
-                    :followingUserId="entry.user_id"
-                  ></EntryFollow>
+                    :followingUserId="entry.userId"
+                  ></EntryFollow> -->
                   <!-- Instagramのとき -->
                   <!-- classは、.cs-icn-sns--instagram -->
                 </div>
@@ -63,12 +63,12 @@
                         type="video/mp4"
                       /></video> -->
                     <!-- 静止画のとき -->
-                    <img :src="`${entry.img}`" alt="" />
+                    <img :src="`${entry.thumbnail}`" alt="" />
                   </div>
                   <div class="pm-pla-detail__content__photo-list">
                     <div
                       class="pm-pla-detail__content__photo-item"
-                      v-for="(image, index) in images"
+                      v-for="(image, index) in entry.medias"
                       :key="index"
                     >
                       <div
@@ -112,24 +112,25 @@
                     <div class="cs-resp-set__left">
                       <div class="cs-resp-set__item">
                         <EntryPlus
-                          :count="entry.num_good"
-                          :reactions="entry.reactions"
+                          v-if="entry.reactions"
+                          :count="entry.reations.total"
+                          :reactions="entry.reactions.items"
                           show-text
                           class-content="cs-reaction-a"
                         ></EntryPlus>
                       </div>
                       <div class="cs-resp-set__item">
-                        <EntryComment :count="entry.num_comment"></EntryComment>
+                        <EntryComment :count="entry.comment"></EntryComment>
                       </div>
                     </div>
                     <div class="cs-resp-set__right">
                       <div class="cs-resp-set__item">
-                        <EntryClip
-                          :isClip="entry.is_clip"
+                        <!-- <EntryClip
+                          :isClip="entry.actionStatus.clip"
                           :updateClip="updateClip"
                           :entryId="entry.id"
                           :userId="1"
-                        ></EntryClip>
+                        ></EntryClip> -->
                       </div>
                       <EntryMenus></EntryMenus>
                     </div>
@@ -190,51 +191,71 @@ export default {
     totalComments: 0,
     comments: [],
     isLoadmoreComments: false,
+    entryId: null,
   }),
   apollo: {
     getEntryById: {
       query: gql`
-        query MyQuery {
-          getEntryById(id: 10) {
+        query MyQuery($entryId: Int!) {
+          getEntryById(id: $entryId) {
             data {
-              caption
-              category_l_id
-              created
-              id
-              img
-              description
-              img2
-              img3
-              img5
-              img4
-              num_view
-              num_good
-              num_comment
-              module_type
-              module_id
-              module_entry_id
-              is_clip
-              img_thumbnail
-              is_following
-              tag
-              reactions {
-                id
-                caption
-              }
-              user {
-                profile_img
-                nickname
-                introduction
-                gender
-                email
-                birthday
-                id
-              }
-              user_id
-            }
-          }
+      actionStatus {
+        clip
+        follow
+        mute
+        reaction
+      }
+      caption
+      category {
+        caption
+        description
+        id
+        img
+      }
+      comment
+      createdTime
+      curationSource
+      description
+      id
+      medias {
+        type
+        url
+      }
+      module {
+        caption
+        alias
+        id
+      }
+      reactions {
+        items {
+          caption
+          count
+          icon
+          id
+        }
+        total
+      }
+      tags
+      thumbnail
+      user {
+        id
+        nickname
+        profileImg
+        title
+        isAdmin
+      }
+      view
+    }
+    result_code
+  }
+  
         }
       `,
+      variables: () => {
+        return {
+          entryId: "3123",
+        }
+      },
       update({ getEntryById }) {
         this.entry = getEntryById.data;
       },
@@ -340,17 +361,7 @@ export default {
       },
     },
   },
-  computed: {
-    images() {
-      let images = [];
-      // if (this.entry.img) images.push(this.entry.img);
-      if (this.entry.img2) images.push(this.entry.img2);
-      if (this.entry.img3) images.push(this.entry.img3);
-      if (this.entry.img4) images.push(this.entry.img4);
-      if (this.entry.img5) images.push(this.entry.img5);
-      return images;
-    },
-  },
+  computed: {},
   methods: {
     goTo(name = null) {
       if (name) {
@@ -359,15 +370,18 @@ export default {
       this.$router.back();
     },
     updateClip(isClip) {
-      this.entry.is_clip = isClip;
+      // this.entry.actionStatus.clip = isClip;
     },
     updateFollowing(isFollowing) {
-      this.entry.is_following = isFollowing;
+      // this.entry.actionStatus.follow = isFollowing;
     },
     doAddComment(comment) {
       this.comments.unshift({ ...comment });
     },
   },
+  created(){
+    this.entryId = this.$route.params.id;
+  }
 };
 </script>
 <style lang="scss"></style>
