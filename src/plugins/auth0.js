@@ -1,6 +1,6 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
-
+import apiService from "@/services/apiService";
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -118,6 +118,25 @@ export const useAuth0 = ({
         this.isAuthenticated = await this.auth0Client.isAuthenticated();
         this.user = await this.auth0Client.getUser();
         this.loading = false;
+        if (this.isAuthenticated) {
+          let idToken = await this.$auth.getTokenSilently();
+
+          const graphqlQuery = {
+            operationName: "MyQuery",
+            query:
+              " query MyQuery($idToken: String) { login(id_token: $idToken) {data { id email nickname } result_code } }",
+            variables: { idToken: idToken },
+          };
+
+          await apiService
+            .post("", graphqlQuery)
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       }
     },
   });

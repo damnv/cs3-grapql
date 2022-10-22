@@ -160,7 +160,7 @@ export default {
         .then(({ data }) => {
           let entry = {};
           entry.actionStatus = data.createEntryPlus.data.actionStatus;
-          entry.reaction = data.createEntryPlus.data.reaction;
+          entry.reactions = data.createEntryPlus.data.reactions;
           entry.id = this.entryId;
           this.$emit("onUpdate", entry);
           this.isShowReaction = false;
@@ -218,7 +218,7 @@ export default {
         .then(({ data }) => {
           let entry = {};
           entry.actionStatus = data.deleteEntryPlus.data.actionStatus;
-          entry.reaction = data.deleteEntryPlus.data.reaction;
+          entry.reactions = data.deleteEntryPlus.data.reactions;
           entry.id = this.entryId;
           this.$emit("onUpdate", entry);
           this.isShowReaction = false;

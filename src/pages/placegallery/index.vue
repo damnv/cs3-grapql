@@ -88,7 +88,7 @@
                               }}</a>
                             </div>
                             <div class="cs-avatar-2__opt">
-                              {{ entry.createdTime }}
+                              {{ entry.createdTime | convertDateTime }}
                             </div>
                           </div>
                           <div class="cs-avatar-2__info">
@@ -346,7 +346,7 @@ export default {
     onUpdateEntry(data) {
       this.entries.map((item) => {
         if (item.id == data.id) {
-          item.reaction = data.reaction;
+          item.reactions = data.reactions;
           item.actionStatus.reaction = data.actionStatus.reaction;
         }
       });

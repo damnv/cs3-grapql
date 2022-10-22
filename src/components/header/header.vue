@@ -58,7 +58,7 @@ export default {
     },
     login() {
       this.$auth.loginWithRedirect({
-        redirect_uri: "http://localhost:8080/callback",
+        // redirect_uri: "/",
       });
     },
     logout() {

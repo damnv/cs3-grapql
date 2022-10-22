@@ -1,6 +1,6 @@
 <template>
   <!-- start module-->
-  <div class="pm-pla">
+  <div class="pm-pla mt-10">
     <div class="cs-titlebar--type-c">
       <div class="cs-titlebar__inner">
         <div class="cs-titlebar__main">
@@ -32,19 +32,22 @@
                         entry.user.nickname
                       }}</a>
                     </div>
-                    <div class="cs-avatar-2__opt">{{ entry.createdTime | convertDateTime }}</div>
+                    <div class="cs-avatar-2__opt">
+                      {{ entry.createdTime | convertDateTime }}
+                    </div>
                   </div>
                   <div class="cs-avatar-2__info">
                     <i class="cs-avatar-2__beginner"></i>
                   </div>
                 </div>
                 <div class="pm-pla-detail__header__right">
-                  <!-- <EntryFollow
+                  <EntryFollow
+                    v-if="entry.actionStatus"
                     :isFollowing="entry.actionStatus.follow"
                     :updateFollowing="updateFollowing"
                     :userId="currentUser"
                     :followingUserId="entry.userId"
-                  ></EntryFollow> -->
+                  ></EntryFollow>
                   <!-- Instagramのとき -->
                   <!-- classは、.cs-icn-sns--instagram -->
                 </div>
@@ -82,10 +85,13 @@
                       ></div>
                     </div>
                   </div>
-                  <div class="pm-pla-detail__content__text">
+                  <h5 class="ml-4">
                     {{ entry.caption }}
+                  </h5>
+                  <div class="pm-pla-detail__content__text mt-4">
+                    {{ entry.description }}
                   </div>
-                  <!-- <div class="pm-pla-detail__content__place">
+                  <div class="pm-pla-detail__content__place" v-if="entry.spot">
                     <div class="pm-pla-detail__content__place__text">
                       <a href="#" class="cs-text--icon-location-spot"
                         >武甲山表参道 一の鳥居 駐車場</a
@@ -97,9 +103,12 @@
                       >
                     </div>
                   </div>
-                  <div class="pm-pla-detail__content__sns-note">
+                  <div
+                    class="pm-pla-detail__content__sns-note"
+                    v-if="entry.curationSource"
+                  >
                     Curated from<i class="cs-icn-sns--twitter--gray"></i>Twitter
-                  </div> -->
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,8 +122,9 @@
                       <div class="cs-resp-set__item">
                         <EntryPlus
                           v-if="entry.reactions"
-                          :count="entry.reations.total"
+                          :count="entry.reactions.total"
                           :reactions="entry.reactions.items"
+                          @onUpdate="onUpdateEntry"
                           show-text
                           class-content="cs-reaction-a"
                         ></EntryPlus>
@@ -125,18 +135,20 @@
                     </div>
                     <div class="cs-resp-set__right">
                       <div class="cs-resp-set__item">
-                        <!-- <EntryClip
+                        <EntryClip
+                          v-if="entry.actionStatus"
                           :isClip="entry.actionStatus.clip"
                           :updateClip="updateClip"
                           :entryId="entry.id"
                           :userId="1"
-                        ></EntryClip> -->
+                        ></EntryClip>
                       </div>
                       <EntryMenus></EntryMenus>
                     </div>
                   </div>
                 </div>
                 <EntryUserReactions
+                  v-if="userReactions"
                   :users="userReactions"
                   :total="totalUserReactions"
                 ></EntryUserReactions>
@@ -199,62 +211,62 @@ export default {
         query MyQuery($entryId: Int!) {
           getEntryById(id: $entryId) {
             data {
-      actionStatus {
-        clip
-        follow
-        mute
-        reaction
-      }
-      caption
-      category {
-        caption
-        description
-        id
-        img
-      }
-      comment
-      createdTime
-      curationSource
-      description
-      id
-      medias {
-        type
-        url
-      }
-      module {
-        caption
-        alias
-        id
-      }
-      reactions {
-        items {
-          caption
-          count
-          icon
-          id
-        }
-        total
-      }
-      tags
-      thumbnail
-      user {
-        id
-        nickname
-        profileImg
-        title
-        isAdmin
-      }
-      view
-    }
-    result_code
-  }
-  
+              actionStatus {
+                clip
+                follow
+                reaction
+                mute
+              }
+              caption
+              comment
+              createdTime
+              curationSource
+              description
+              id
+              view
+              user {
+                isAdmin
+                id
+                nickname
+                profileImg
+                title
+              }
+              tags
+              thumbnail
+              reactions {
+                total
+                items {
+                  caption
+                  count
+                  icon
+                  id
+                }
+              }
+              spot {
+                city
+                country
+                name
+                region
+                street
+              }
+              module {
+                alias
+                caption
+                id
+              }
+              medias {
+                type
+                url
+              }
+            }
+            result_code
+          }
         }
       `,
       variables: () => {
         return {
           entryId: "3123",
-        }
+        };
       },
       update({ getEntryById }) {
         this.entry = getEntryById.data;
@@ -278,10 +290,6 @@ export default {
               current_page
               is_last
               total_count
-              user_reactions {
-                profile_img
-                id
-              }
             }
           }
         }
@@ -305,49 +313,88 @@ export default {
       query: gql`
         query MyQuery {
           getCommentsByEntryId(
+            currentPage: 10
             entry_id: 10
             limit: 10
-            page: 10
-            user_id: 10
             sort: ""
+            user_id: 10
           ) {
             data {
-              total_count
-              is_last
-              current_page
-              comments {
-                num_good
-                num_comment
-                img2
-                img
+              currentPage
+              items {
+                actionStatus {
+                  clip
+                  follow
+                  mute
+                  reaction
+                }
+                commentId
+                content
+                createdTime
+                entryId
                 id
-                entry_id
-                description
-                created
-                comment_id
-                caption
-                user_id
                 user {
+                  title
+                  profileImg
                   nickname
+                  isAdmin
                   id
-                  profile_img
-                  created
+                }
+                replies {
+                  total
+                  limit
+                  sort
+                  currentPage
+                  items {
+                    id
+                    entryId
+                    createdTime
+                    content
+                    comments
+                    commentId
+                    reactions {
+                      total
+                      items {
+                        id
+                        icon
+                        count
+                        caption
+                      }
+                    }
+                    user {
+                      profileImg
+                      title
+                      nickname
+                      isAdmin
+                      id
+                    }
+                  }
                 }
                 reactions {
-                  id
-                  caption
-                  num_reaction
-                  is_like
+                  total
+                  items {
+                    id
+                    icon
+                    count
+                    caption
+                  }
+                }
+                medias {
+                  url
+                  type
                 }
               }
+              total
+              sort
+              limit
             }
+            result_code
           }
         }
       `,
       update({ getCommentsByEntryId }) {
-        this.comments = getCommentsByEntryId.data.comments;
-        this.totalComments = getCommentsByEntryId.data.total_count;
-        this.isLoadmoreComments = getCommentsByEntryId.data.is_last;
+        this.comments = getCommentsByEntryId.data.items;
+        this.totalComments = getCommentsByEntryId.data.total;
       },
       error(error) {
         if (error.graphQLErrors) {
@@ -370,18 +417,22 @@ export default {
       this.$router.back();
     },
     updateClip(isClip) {
-      // this.entry.actionStatus.clip = isClip;
+      this.entry.actionStatus.clip = isClip;
     },
     updateFollowing(isFollowing) {
-      // this.entry.actionStatus.follow = isFollowing;
+      this.entry.actionStatus.follow = isFollowing;
     },
     doAddComment(comment) {
       this.comments.unshift({ ...comment });
     },
+    onUpdateEntry(data) {
+      entry.reactions = data.reaction;
+      entry.actionStatus.reaction = data.actionStatus.reaction;
+    },
   },
-  created(){
+  created() {
     this.entryId = this.$route.params.id;
-  }
+  },
 };
 </script>
 <style lang="scss"></style>

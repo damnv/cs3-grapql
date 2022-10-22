@@ -21,7 +21,7 @@
         <a href="#" class="cs-avatar--black">
           <div
             v-bind:style="{
-              'background-image': 'url(' + comment.user.profile_img + ')',
+              'background-image': 'url(' + comment.user.profileImg + ')',
             }"
             class="cs-avatar-2__photo--ambassador"
           ></div>
@@ -34,7 +34,7 @@
         >
       </div>
       <div class="cs-cmt-item__header-date">
-        {{ comment.created }}
+        {{ comment.createdTime | convertDateTime }}
       </div>
     </div>
     <div class="cs-cmt-item__content">
@@ -43,16 +43,15 @@
       </div>
       <div class="cs-cmt-item__res">
         <CommentPlus
-          :count="comment.num_good"
+          v-if="comment.reations"
+          :count="comment.reations.total"
           :reactions="comment.reactions"
           show-text
         ></CommentPlus>
         <div class="cs-response-a">
           <div data-csaction="comment" class="cs-response-a__button--comment">
             <i class="cs-response-a__icon--small"></i
-            ><span class="cs-response-a__counter">{{
-              comment.num_comment
-            }}</span
+            ><span class="cs-response-a__counter">{{ comment.comment }}</span
             ><span class="cs-response-a__label">返信する</span>
           </div>
         </div>
@@ -94,7 +93,7 @@
             <div class="cs-avatar">
               <div
                 v-bind:style="{
-                  'background-image': 'url(' + comment.user.profile_img + ')',
+                  'background-image': 'url(' + comment.user.profileImg + ')',
                 }"
                 class="cs-avatar__image--35"
               ></div>
