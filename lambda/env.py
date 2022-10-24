@@ -1,0 +1,5 @@
+rds_host = "cs3dev.cr93xtx01yjn.ap-southeast-1.rds.amazonaws.com"
+rds_port = "3306"
+rds_username = "admin"
+rds_password = "123456789"
+rds_database ="cs3dev"

@@ -1,0 +1,3 @@
+# status code
+RESULT_CODE_ERROR = '001'
+RESULT_CODE_SUCCESS = '000'
