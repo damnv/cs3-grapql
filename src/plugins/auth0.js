@@ -1,6 +1,8 @@
 import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
 import apiService from "@/services/apiService";
+import { mapMutations } from "vuex";
+
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -31,6 +33,9 @@ export const useAuth0 = ({
       };
     },
     methods: {
+      ...mapMutations({
+        newToast: "toast/NEW_TOAST",
+      }),
       /** Authenticates the user using a popup window */
       async loginWithPopup(options, config) {
         this.popupOpen = true;
@@ -119,22 +124,31 @@ export const useAuth0 = ({
         this.user = await this.auth0Client.getUser();
         this.loading = false;
         if (this.isAuthenticated) {
-          let idToken = await this.$auth.getTokenSilently();
+          let idToken = await this.$auth.getIdTokenClaims();
 
           const graphqlQuery = {
             operationName: "MyQuery",
             query:
-              " query MyQuery($idToken: String) { login(id_token: $idToken) {data { id email nickname } result_code } }",
-            variables: { idToken: idToken },
+              " query MyQuery($idToken: String) { login(id_token: $idToken) {data { id nickname } result_code } }",
+            variables: { idToken: idToken.__raw },
           };
 
           await apiService
             .post("", graphqlQuery)
-            .then((response) => {
-              console.log(response);
+            .then(({ data }) => {
+              console.log(data)
+              if(data?.errors){
+                data.errors.forEach( error => {
+                  console.log(error.message)
+                  // this.newToast({
+                  //   type: 'error',
+                  //   message: error.message
+                  // });
+                });
+              }
             })
             .catch((error) => {
-              console.log(error);
+              console.log(error)
             });
         }
       }
