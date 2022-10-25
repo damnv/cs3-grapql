@@ -63,10 +63,10 @@ def lambda_handler(event, context):
     reaction_ids = None
     if module:  reaction_ids = module['reaction_ids']
     response_body = {}
-    response_body['reaction'] = {}
-    response_body['reaction']['total'] = num_good
+    response_body['reactions'] = {}
+    response_body['reactions']['total'] = num_good
 
-    response_body['reaction']["items"] = Reaction.getOptionReactions(reaction_ids, entry['id'])
+    response_body['reactions']["items"] = Reaction.getOptionReactions(reaction_ids, entry['id'])
     response_body['actionStatus'] = {}
     response_body['actionStatus']['reaction'] = None
     print(response_body)

@@ -52,7 +52,7 @@ def lambda_handler(event, context):
                         "user_id": user_id,
                         "is_child_comment": True
                     }
-                    reply = EntryComment.getOptionEntryCommentResponse(subItem['id'], optionReplies)
+                    reply = EntryComment.getOptionEntryCommentResponse(subItem, optionReplies)
                     comment['replies']["items"].append(reply)
             comments['items'].append(comment)
 
