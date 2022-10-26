@@ -7,6 +7,7 @@ import model.user_mute as UserMute
 import model.entry_comment_plus as EntryCommentPlus
 import pytz
 tokyoTz = pytz.timezone("Asia/Tokyo")
+NOW = datetime.now(tokyoTz).strftime('%Y-%m-%d %H:%M:%S')
 
 STATUS_NEW       = '1'
 STATUS_APPROVAL  = '2'
@@ -111,3 +112,18 @@ def convertImage(item):
         images.append(image)
 
     return images
+
+def doUpdateComment(entry_id, comment_id):
+    total = countComment(entry_id, comment_id)
+    sql = "UPDATE `cs_entry_comment` SET `num_comment` = %s, `modified` = %s WHERE `id` = %s"
+    val = (total, NOW, comment_id)
+    RDU.insertUpdate(sql, val)
+
+    return True
+
+def getCommentById(id):
+    if not id: return None
+
+    query ="SELECT * FROM `cs_entry_comment` WHERE (deleted IS NULL) AND (id = " + str(id) + ")"
+
+    return RDU.fetchOne(query)

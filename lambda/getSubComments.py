@@ -9,8 +9,8 @@ def lambda_handler(event, context):
     module_id = arguments.get('module_id')
     limit = arguments.get('limit')
     currentPage = arguments.get('currentPage')
+    user_id = arguments.get('user_id')
 
-    user_id = 1
     sort = arguments.get('sort')
     if not limit: limit = 3
     if not currentPage: currentPage = 1

@@ -4,8 +4,8 @@ def lambda_handler(event, context):
     arguments = event.get('arguments')
     limit = arguments.get('limit')
     currentPage = arguments.get('currentPage')
+    user_id = arguments.get('user_id')
 
-    user_id = 1
     input = {}
     sort = arguments.get('sort')
     input['sort'] = Entry.sortCondition(sort)

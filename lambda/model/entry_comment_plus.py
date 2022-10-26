@@ -2,7 +2,7 @@ import services.rds_utils as RDU
 from datetime import datetime
 
 def getCountEntryCommentPlus(entry_id, comment_id, reaction_id = None):
-    if not entry_id: return 0
+    if not entry_id or not comment_id: return 0
     query = "SELECT COUNT(id) as cnt FROM `cs_entry_comment_plus` WHERE (deleted IS NULL) AND (entry_id =  " + str(entry_id) + ") AND (entry_comment_id =  " + str(comment_id) + ")"
     if reaction_id: query += " AND (reaction_id =  " + str(reaction_id) + ")"
 

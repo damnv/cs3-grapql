@@ -1,6 +1,9 @@
 import services.rds_utils as RDU
 from datetime import datetime
 
+LIKE_WITHOUT_LOGIN_FALSE = 0
+LIKE_WITHOUT_LOGIN_TRUE = 1
+
 def getModuleById(module_id):
     if not module_id: return None
 
