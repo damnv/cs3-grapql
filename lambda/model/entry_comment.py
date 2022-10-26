@@ -70,9 +70,9 @@ def getChildComments(comment_id, sort, limit, offset):
     return RDU.fetchAll(query)
 
 def getOptionEntryCommentResponse(item, options):
-    user_id = options['user_id'] if 'user_id' in options and options['user_id'] else None
-    reaction_ids = options['reaction_ids'] if 'reaction_ids' in options and options['reaction_ids'] else None
-    isChildComment = True if 'is_child_comment' in options and options['is_child_comment'] else False
+    user_id = options.get('user_id')
+    reaction_ids = options.get('reaction_ids')
+    isChildComment = True if options.get('is_child_comment') else False
     comment = {}
     comment['id'] = item['id']
     comment['content'] = item['description']

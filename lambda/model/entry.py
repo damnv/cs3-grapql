@@ -160,3 +160,10 @@ def doUpdateComment(entry_id):
     RDU.insertUpdate(sql, val)
 
     return True
+
+def doUpdateNumView(entry_id, num_view):
+    sql = "UPDATE `cs_entry` SET `num_view` = %s,`modified` = %s WHERE `id` = %s"
+    val = (num_view, NOW, entry_id)
+    RDU.insertUpdate(sql, val)
+
+    return True

@@ -4,7 +4,6 @@ import model.module as Module
 import model.reaction as Reaction
 import model.entry_plus as EntryPlus
 import model.entry as Entry
-import model.module as Module
 import pytz
 tokyoTz = pytz.timezone("Asia/Tokyo")
 
