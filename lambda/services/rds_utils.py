@@ -72,3 +72,12 @@ def insertUpdate(sql, data):
         return cursor.lastrowid
     else:
         return False
+
+def deleteRow(sql):
+    conn = make_connection()
+    if not sql or conn == False:
+        return False
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    conn.commit()
+    return True
