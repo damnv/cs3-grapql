@@ -29,7 +29,7 @@ def insertUpdateSpotByEntryId(dataPot, entry_id):
         val = (NOW, google_place_id, name, lat, lng, country, region, city, street)
         RDU.insertUpdate(sqlspot, val)
     else:
-        sqlspot = " INSERT INTO cs_entry_spot (`created`,`modified`,`entry_id`,`google_place_id`,`name`,`lat`,`lng`,`country`,`region`,`city`,`street`) VALUE (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        sqlspot = "INSERT INTO cs_entry_spot (`created`,`modified`,`entry_id`,`google_place_id`,`name`,`lat`,`lng`,`country`,`region`,`city`,`street`) VALUE (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         val = (NOW, NOW, entry_id, google_place_id, name, lat, lng, country, region, city, street)
         RDU.insertUpdate(sqlspot, val)
 
