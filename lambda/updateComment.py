@@ -12,9 +12,10 @@ def lambda_handler(event, context):
     # TODO implement
     arguments = event.get('arguments')
     id = arguments.get('id')
-    user_id = arguments.get('user_id')
     description = arguments.get('description')
     comment_img = arguments.get('comment_img')
+    access_token = arguments.get('access_token')
+    user_id = 1
 
     if not user_id:
         return {

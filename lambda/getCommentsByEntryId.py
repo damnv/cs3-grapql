@@ -9,12 +9,13 @@ def lambda_handler(event, context):
     limit = arguments.get('limit')
     currentPage = arguments.get('currentPage')
     repliesLimit = arguments.get('repliesLimit')
-    user_id = arguments.get('user_id')
+    access_token = arguments.get('access_token')
+    user_id = None
 
     sort = arguments.get('sort')
     if not repliesLimit: repliesLimit = 3
     if not limit: limit = 5
-    if not currentPage: currentPage = 1
+    if not currentPage or currentPage < 1: currentPage = 1
     offset = (int(currentPage) - 1) * int(limit)
 
     module = Module.getModuleById(module_id) if module_id else None

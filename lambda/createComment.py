@@ -12,11 +12,12 @@ def lambda_handler(event, context):
     # TODO implement
     arguments = event.get('arguments')
     entry_id = arguments.get('entry_id')
-    user_id = arguments.get('user_id')
     comment_id = arguments.get('comment_id')
     description = arguments.get('description')
     comment_img = arguments.get('comment_img')
+    access_token = arguments.get('access_token')
 
+    user_id = 1
     entry = Entry.getEntryById(entry_id)
     if not user_id:
         return {
@@ -24,6 +25,15 @@ def lambda_handler(event, context):
             "error": {
                 "error_code": "UXD_123",
                 "error_message": "user_id not existed"
+            }
+        }
+
+    if not description:
+        return {
+            "result_code": 1,
+            "error": {
+                "error_code": "UXD_123",
+                "error_message": "description empty"
             }
         }
 
@@ -67,7 +77,7 @@ def lambda_handler(event, context):
             Entry.doUpdateComment(entry_id)
 
         item = EntryComment.getCommentById(rowId)
-        response_body['item'] = EntryComment.getOptionEntryCommentResponse(item, options)
+        response_body = EntryComment.getOptionEntryCommentResponse(item, options)
 
     return {
         'result_code': 0,

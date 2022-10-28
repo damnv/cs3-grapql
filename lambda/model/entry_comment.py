@@ -92,7 +92,7 @@ def getOptionEntryCommentResponse(item, options):
         comment['user']['title'] = user['title']
         comment['user']['isAdmin'] = user['is_admin']
     comment['actionStatus'] = {}
-    comment['actionStatus']['reaction'] = EntryCommentPlus.isEntryCommentPlus(item['entry_id'], item['id'], user_id) if user_id else False
+    comment['actionStatus']['reaction'] = EntryCommentPlus.isEntryCommentPlus(item['entry_id'], item['id'], user_id) if user_id else ""
     comment['actionStatus']['follow'] =  UserFollow.isFollowing(user_id, item['user_id']) if user_id else False
     comment['actionStatus']['mute'] =  UserMute.isMuting(user_id, item['user_id']) if user_id else False
     return comment
