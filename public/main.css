@@ -346,7 +346,7 @@ img.emoji {
 
 @media all and (max-width:700px) {
     .cs-header-navbar__brand-logo {
-        background-image: url(../img/frame/brand_logo_sp.svg);
+        background-image: url(./img/frame/brand_logo_sp.svg);
         width: 190px;
         height: 28px;
         margin-top: 16px;
@@ -356,7 +356,7 @@ img.emoji {
 
 @media all and (min-width:701px) {
     .cs-header-navbar__brand-logo {
-        background-image: url(../img/frame/brand_logo_pc.svg);
+        background-image: url(./img/frame/brand_logo_pc.svg);
         width: 230px;
         height: 38px;
         margin-top: 18px;
@@ -365,7 +365,7 @@ img.emoji {
 }
 
 .cs-footer-brand__logo {
-    background-image: url(../img/frame/footer_brand_logo.svg)
+    background-image: url(./img/frame/footer_brand_logo.svg)
 }
 
 @media all and (max-width:700px) {
@@ -979,7 +979,7 @@ img.emoji {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    background-image: url(../img/icons/location-spot.svg)
+    background-image: url(./img/icons/location-spot.svg)
 }
 
 .cs-text--icon-location-area {
@@ -992,7 +992,7 @@ img.emoji {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    background-image: url(../img/icons/location-area.svg)
+    background-image: url(./img/icons/location-area.svg)
 }
 
 .cs-text--icon-ambassador-mark {
@@ -1005,7 +1005,7 @@ img.emoji {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    background-image: url(../img/icons/ambassador-mark.svg)
+    background-image: url(./img/icons/ambassador-mark.svg)
 }
 
 .cs-avatar,
@@ -1333,7 +1333,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1362,7 +1362,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1391,7 +1391,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1420,7 +1420,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1449,7 +1449,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1478,7 +1478,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1507,7 +1507,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1543,7 +1543,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -1579,7 +1579,7 @@ img.emoji {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -6%;
     bottom: -4%
@@ -2290,7 +2290,7 @@ a.cs-avatar-2:hover {
 .cs-response-a__button--like .cs-response-a__icon,
 .cs-response-a__button--like .cs-response-a__icon--small,
 .cs-response-a__button--like .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/like--gray.svg)
+    background-image: url(./img/icons/like--gray.svg)
 }
 
 .cs-response-a__button--like[data-csaction] {
@@ -2307,7 +2307,7 @@ a.cs-avatar-2:hover {
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon,
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon--small,
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/like-b--blue.svg)
+    background-image: url(./img/icons/like-b--blue.svg)
 }
 
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__counter {
@@ -2321,7 +2321,7 @@ a.cs-avatar-2:hover {
 .cs-response-a__button--clip .cs-response-a__icon,
 .cs-response-a__button--clip .cs-response-a__icon--small,
 .cs-response-a__button--clip .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/clip-b--gray.svg)
+    background-image: url(./img/icons/clip-b--gray.svg)
 }
 
 .cs-response-a__button--clip[data-csaction] {
@@ -2338,7 +2338,7 @@ a.cs-avatar-2:hover {
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__icon,
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__icon--small,
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/clip-b--blue.svg)
+    background-image: url(./img/icons/clip-b--blue.svg)
 }
 
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__counter {
@@ -2352,7 +2352,7 @@ a.cs-avatar-2:hover {
 .cs-response-a__button--comment .cs-response-a__icon,
 .cs-response-a__button--comment .cs-response-a__icon--small,
 .cs-response-a__button--comment .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/comment--gray.svg)
+    background-image: url(./img/icons/comment--gray.svg)
 }
 
 .cs-response-a__button--comment[data-csaction] {
@@ -2423,13 +2423,13 @@ a.cs-avatar-2:hover {
 .cs-response-a--light .cs-response-a__button--like .cs-response-a__icon,
 .cs-response-a--light .cs-response-a__button--like .cs-response-a__icon--small,
 .cs-response-a--light .cs-response-a__button--like .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/like--white.svg)
+    background-image: url(./img/icons/like--white.svg)
 }
 
 .cs-response-a--light .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon,
 .cs-response-a--light .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon--small,
 .cs-response-a--light .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/like-b--white.svg)
+    background-image: url(./img/icons/like-b--white.svg)
 }
 
 .cs-response-a--light .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__counter {
@@ -2439,7 +2439,7 @@ a.cs-avatar-2:hover {
 .cs-response-a--light .cs-response-a__button--clip .cs-response-a__icon,
 .cs-response-a--light .cs-response-a__button--clip .cs-response-a__icon--small,
 .cs-response-a--light .cs-response-a__button--clip .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/clip-b--white.svg)
+    background-image: url(./img/icons/clip-b--white.svg)
 }
 
 .cs-response-a--light .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__counter {
@@ -2449,7 +2449,7 @@ a.cs-avatar-2:hover {
 .cs-response-a--light .cs-response-a__button--comment .cs-response-a__icon,
 .cs-response-a--light .cs-response-a__button--comment .cs-response-a__icon--small,
 .cs-response-a--light .cs-response-a__button--comment .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/comment--white.svg)
+    background-image: url(./img/icons/comment--white.svg)
 }
 
 .cs-response-c,
@@ -2538,7 +2538,7 @@ a.cs-avatar-2:hover {
 .cs-response-c__button--like .cs-response-c__icon--medium,
 .cs-response-c__button--like .cs-response-c__icon--small,
 .cs-response-c__button--like .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/like--gray.svg)
+    background-image: url(./img/icons/like--gray.svg)
 }
 
 .cs-response-c__button--like[data-csaction] {
@@ -2556,7 +2556,7 @@ a.cs-avatar-2:hover {
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--medium,
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--small,
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/like-b--blue.svg)
+    background-image: url(./img/icons/like-b--blue.svg)
 }
 
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__counter {
@@ -2575,7 +2575,7 @@ a.cs-avatar-2:hover {
 .cs-response-c__button--clip .cs-response-c__icon--medium,
 .cs-response-c__button--clip .cs-response-c__icon--small,
 .cs-response-c__button--clip .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/clip-b--gray.svg)
+    background-image: url(./img/icons/clip-b--gray.svg)
 }
 
 .cs-response-c__button--clip[data-csaction] {
@@ -2593,7 +2593,7 @@ a.cs-avatar-2:hover {
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon--medium,
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon--small,
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/clip-b--blue.svg)
+    background-image: url(./img/icons/clip-b--blue.svg)
 }
 
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__counter {
@@ -2608,7 +2608,7 @@ a.cs-avatar-2:hover {
 .cs-response-c__button--comment .cs-response-c__icon--medium,
 .cs-response-c__button--comment .cs-response-c__icon--small,
 .cs-response-c__button--comment .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/comment--gray.svg)
+    background-image: url(./img/icons/comment--gray.svg)
 }
 
 .cs-response-c__button--comment[data-csaction] {
@@ -2682,13 +2682,13 @@ a.cs-avatar-2:hover {
 .cs-response-c--light .cs-response-c__button--like .cs-response-c__icon,
 .cs-response-c--light .cs-response-c__button--like .cs-response-c__icon--small,
 .cs-response-c--light .cs-response-c__button--like .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/like--white.svg)
+    background-image: url(./img/icons/like--white.svg)
 }
 
 .cs-response-c--light .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon,
 .cs-response-c--light .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--small,
 .cs-response-c--light .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/like-b--white.svg)
+    background-image: url(./img/icons/like-b--white.svg)
 }
 
 .cs-response-c--light .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__counter {
@@ -2698,7 +2698,7 @@ a.cs-avatar-2:hover {
 .cs-response-c--light .cs-response-c__button--clip .cs-response-c__icon,
 .cs-response-c--light .cs-response-c__button--clip .cs-response-c__icon--small,
 .cs-response-c--light .cs-response-c__button--clip .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/clip-b--white.svg)
+    background-image: url(./img/icons/clip-b--white.svg)
 }
 
 .cs-response-c--light .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__counter {
@@ -2708,7 +2708,7 @@ a.cs-avatar-2:hover {
 .cs-response-c--light .cs-response-c__button--comment .cs-response-c__icon,
 .cs-response-c--light .cs-response-c__button--comment .cs-response-c__icon--small,
 .cs-response-c--light .cs-response-c__button--comment .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/comment--white.svg)
+    background-image: url(./img/icons/comment--white.svg)
 }
 
 .cs-button-follow-a {
@@ -2860,27 +2860,27 @@ a.cs-avatar-2:hover {
 }
 
 .cs-button-response-b--like:before {
-    background-image: url(../img/icons/like--red.svg)
+    background-image: url(./img/icons/like--red.svg)
 }
 
 .cs-button-response-b--like[data-state=active]:before {
-    background-image: url(../img/icons/like--white.svg)
+    background-image: url(./img/icons/like--white.svg)
 }
 
 .cs-button-response-b--comment:before {
-    background-image: url(../img/icons/comment--blue.svg)
+    background-image: url(./img/icons/comment--blue.svg)
 }
 
 .cs-button-response-b--comment[data-state=active]:before {
-    background-image: url(../img/icons/comment--white.svg)
+    background-image: url(./img/icons/comment--white.svg)
 }
 
 .cs-button-response-b--clip:before {
-    background-image: url(../img/icons/clip-b--red.svg)
+    background-image: url(./img/icons/clip-b--red.svg)
 }
 
 .cs-button-response-b--clip[data-state=active]:before {
-    background-image: url(../img/icons/clip-b--white.svg)
+    background-image: url(./img/icons/clip-b--white.svg)
 }
 
 .cs-response-d {
@@ -2982,27 +2982,27 @@ a.cs-avatar-2:hover {
 }
 
 .cs-button-response-d--like:before {
-    background-image: url(../img/icons/like--red.svg)
+    background-image: url(./img/icons/like--red.svg)
 }
 
 .cs-button-response-d--like[data-state=active]:before {
-    background-image: url(../img/icons/like--white.svg)
+    background-image: url(./img/icons/like--white.svg)
 }
 
 .cs-button-response-d--comment:before {
-    background-image: url(../img/icons/comment--blue.svg)
+    background-image: url(./img/icons/comment--blue.svg)
 }
 
 .cs-button-response-d--comment[data-state=active]:before {
-    background-image: url(../img/icons/comment--white.svg)
+    background-image: url(./img/icons/comment--white.svg)
 }
 
 .cs-button-response-d--clip:before {
-    background-image: url(../img/icons/clip-b--red.svg)
+    background-image: url(./img/icons/clip-b--red.svg)
 }
 
 .cs-button-response-d--clip[data-state=active]:before {
-    background-image: url(../img/icons/clip-b--white.svg)
+    background-image: url(./img/icons/clip-b--white.svg)
 }
 
 .cs-response-e {
@@ -3111,27 +3111,27 @@ a.cs-avatar-2:hover {
 }
 
 .cs-button-response-e--like:before {
-    background-image: url(../img/icons/like--red.svg)
+    background-image: url(./img/icons/like--red.svg)
 }
 
 .cs-button-response-e--like[data-state=active]:before {
-    background-image: url(../img/icons/like--white.svg)
+    background-image: url(./img/icons/like--white.svg)
 }
 
 .cs-button-response-e--comment:before {
-    background-image: url(../img/icons/comment--blue.svg)
+    background-image: url(./img/icons/comment--blue.svg)
 }
 
 .cs-button-response-e--comment[data-state=active]:before {
-    background-image: url(../img/icons/comment--white.svg)
+    background-image: url(./img/icons/comment--white.svg)
 }
 
 .cs-button-response-e--clip:before {
-    background-image: url(../img/icons/clip-b--red.svg)
+    background-image: url(./img/icons/clip-b--red.svg)
 }
 
 .cs-button-response-e--clip[data-state=active]:before {
-    background-image: url(../img/icons/clip-b--white.svg)
+    background-image: url(./img/icons/clip-b--white.svg)
 }
 
 .cs-sns-share {
@@ -3359,19 +3359,19 @@ a.cs-avatar-2:hover {
 }
 
 .cs-button-sns--facebook:before {
-    background-image: url(../img/icons/facebook-logo--circle.svg)
+    background-image: url(./img/icons/facebook-logo--circle.svg)
 }
 
 .cs-button-sns--twitter:before {
-    background-image: url(../img/icons/twitter-logo--circle.svg)
+    background-image: url(./img/icons/twitter-logo--circle.svg)
 }
 
 .cs-button-sns--line:before {
-    background-image: url(../img/icons/line-logo--circle.svg)
+    background-image: url(./img/icons/line-logo--circle.svg)
 }
 
 .cs-button-sns--hatena:before {
-    background-image: url(../img/icons/hatena-logo--circle.svg)
+    background-image: url(./img/icons/hatena-logo--circle.svg)
 }
 
 .cs-resp-set__row {
@@ -3644,7 +3644,7 @@ a.cs-avatar-2:hover {
     display: block;
     width: 34px;
     height: 34px;
-    background-image: url(../img/icons/reaction-a__icon--00.png);
+    background-image: url(./img/icons/reaction-a__icon--00.png);
     background-size: 100%;
     background-repeat: no-repeat
 }
@@ -3740,7 +3740,7 @@ a.cs-avatar-2:hover {
 }
 
 .cs-button--arrow-white {
-    background-image: url(../img/icons/button-arrow-white.svg);
+    background-image: url(./img/icons/button-arrow-white.svg);
     background-position: right 10px center;
     background-repeat: no-repeat;
     background-size: auto 40%;
@@ -3762,7 +3762,7 @@ a.cs-avatar-2:hover {
 .cs-media-upload__button-add {
     width: 100%;
     height: 100%;
-    background: url(../img/icons/media-upload.svg) 50% 50% no-repeat;
+    background: url(./img/icons/media-upload.svg) 50% 50% no-repeat;
     background-size: 45% auto;
     cursor: pointer;
     position: relative;
@@ -3786,7 +3786,7 @@ a.cs-avatar-2:hover {
 .cs-media-upload__button-delete {
     width: 34px;
     height: 34px;
-    background: url(../img/icons/media-delete.svg) 50% 50% no-repeat;
+    background: url(./img/icons/media-delete.svg) 50% 50% no-repeat;
     background-size: 20px auto;
     cursor: pointer;
     position: absolute;
@@ -3807,7 +3807,7 @@ a.cs-avatar-2:hover {
     right: 0;
     width: 100px;
     height: 100px;
-    background-image: url(../img/icons/play--white.svg);
+    background-image: url(./img/icons/play--white.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -3825,7 +3825,7 @@ a.cs-avatar-2:hover {
     width: 40px;
     height: 40px;
     border-radius: 100px;
-    background-image: url(../img/icons/mute--white.svg);
+    background-image: url(./img/icons/mute--white.svg);
     background-size: 50% 50%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -3845,7 +3845,7 @@ a.cs-avatar-2:hover {
     width: 40px;
     height: 40px;
     border-radius: 100px;
-    background-image: url(../img/icons/volume--white.svg);
+    background-image: url(./img/icons/volume--white.svg);
     background-size: 50% 50%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -3922,7 +3922,7 @@ a.cs-response-c--light .cs-response-c__label {
     background-color: rgba(255, 255, 255, .65);
     -webkit-backdrop-filter: saturate(1.8) blur(10px);
     backdrop-filter: saturate(1.8) blur(10px);
-    background-image: url(../img/icons/close--black.svg);
+    background-image: url(./img/icons/close--black.svg);
     background-size: 20px auto;
     background-position: center center
 }
@@ -3948,7 +3948,7 @@ a.cs-response-c--light .cs-response-c__label {
 .cs-float-compose-trigger {
     border: 1px solid #fff;
     background-color: #c00;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 31px auto;
     background-position: 22px 12px;
     outline: 0
@@ -4094,7 +4094,7 @@ a.cs-response-c--light .cs-response-c__label {
     height: 24px;
     left: 0;
     top: 0;
-    background-image: url(../img/icons/tag--gray.svg)
+    background-image: url(./img/icons/tag--gray.svg)
 }
 
 .cs-tags-a__item {
@@ -4127,7 +4127,7 @@ a.cs-response-c--light .cs-response-c__label {
     line-height: 25px;
     color: #666;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/tag--gray.svg)
+    background-image: url(./img/icons/tag--gray.svg)
 }
 
 .cs-tags-b__items {
@@ -4178,7 +4178,7 @@ a.cs-response-c--light .cs-response-c__label {
     width: 20px;
     height: 20px;
     margin-right: 5px;
-    background-image: url(../img/icons/like--gray.svg);
+    background-image: url(./img/icons/like--gray.svg);
     background-size: 20px 20px;
     vertical-align: -4px
 }
@@ -4358,7 +4358,7 @@ textarea.cs-field-a--s {
 
 select.cs-field-a {
     padding-right: 24px;
-    background-image: url(../img/icons/dropdown-arrow--black.svg);
+    background-image: url(./img/icons/dropdown-arrow--black.svg);
     background-position: 100% 50%;
     background-repeat: no-repeat
 }
@@ -4369,7 +4369,7 @@ html.ie9 select.cs-field-a {
 
 select.cs-field-a--s {
     padding-right: 16px;
-    background-image: url(../img/icons/dropdown-arrow--black.svg);
+    background-image: url(./img/icons/dropdown-arrow--black.svg);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     background-size: 16px auto;
@@ -4410,7 +4410,7 @@ textarea.cs-field-b {
 
 select.cs-field-b {
     padding-right: 24px;
-    background-image: url(../img/icons/dropdown-arrow--black.svg);
+    background-image: url(./img/icons/dropdown-arrow--black.svg);
     background-position: 100% 50%;
     background-repeat: no-repeat
 }
@@ -4728,7 +4728,7 @@ textarea.cs-field--h-auto-mah-10 {
     background-position: 50% 50%;
     width: 24px;
     height: 24px;
-    background-image: url(../img/icons/context-menu--gray.svg)
+    background-image: url(./img/icons/context-menu--gray.svg)
 }
 
 .cs-context-menu__content {
@@ -4969,7 +4969,7 @@ textarea.cs-field--h-auto-mah-10 {
     min-height: 20px;
     padding-left: 25px;
     padding-right: 40px;
-    background: url(../img/icons/info--red.svg) no-repeat 0 0;
+    background: url(./img/icons/info--red.svg) no-repeat 0 0;
     background-size: 18px auto
 }
 
@@ -5284,7 +5284,7 @@ textarea.cs-field--h-auto-mah-10 {
     background: #ddd;
     box-sizing: border-box;
     padding: 10px 10px 10px 30px;
-    background: url(../img/icons/input-radio.svg) left 8px top 50% no-repeat;
+    background: url(./img/icons/input-radio.svg) left 8px top 50% no-repeat;
     background-size: 16px 16px;
     border: 1px solid #ccc;
     display: block;
@@ -5295,7 +5295,7 @@ textarea.cs-field--h-auto-mah-10 {
 }
 
 .cs-modal-report__radio:checked+.cs-modal-report__radio-text {
-    background-image: url(../img/icons/input-radio-checked.svg);
+    background-image: url(./img/icons/input-radio-checked.svg);
     background-color: #fff5f5;
     border-color: #c00
 }
@@ -5400,7 +5400,7 @@ textarea.cs-field--h-auto-mah-10 {
     width: 20px;
     height: 20px;
     margin-right: 5px;
-    background: url(../img/icons/comment--gray.svg) no-repeat 0 50%;
+    background: url(./img/icons/comment--gray.svg) no-repeat 0 50%;
     background-size: 20px;
     vertical-align: -4px
 }
@@ -5708,7 +5708,7 @@ textarea.cs-field--h-auto-mah-10 {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -5744,7 +5744,7 @@ textarea.cs-field--h-auto-mah-10 {
     height: 25px;
     border-radius: 50%;
     background-color: #666;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -5829,7 +5829,7 @@ html.ios .cs-instantview {
     height: 20px;
     z-index: 10;
     margin-left: 722px;
-    background: url(../img/icons/instantview-close.svg) no-repeat 50% 50%;
+    background: url(./img/icons/instantview-close.svg) no-repeat 50% 50%;
     background-size: 20px auto
 }
 
@@ -5846,7 +5846,7 @@ html.ios .cs-instantview {
     margin-top: -22px;
     margin-left: -64px;
     border-radius: 50%;
-    background: url(../img/icons/instantview-prev.svg) no-repeat 50% 50%;
+    background: url(./img/icons/instantview-prev.svg) no-repeat 50% 50%;
     background-size: 44px auto
 }
 
@@ -5863,7 +5863,7 @@ html.ios .cs-instantview {
     margin-top: -22px;
     margin-left: 722px;
     border-radius: 50%;
-    background: url(../img/icons/instantview-next.svg) no-repeat 50% 50%;
+    background: url(./img/icons/instantview-next.svg) no-repeat 50% 50%;
     background-size: 44px auto
 }
 
@@ -5906,7 +5906,7 @@ html.ios .cs-instantview {
 
 .cs-sidebar-tags__heading {
     padding-left: 39px;
-    background-image: url(../img/icons/tag--gray.svg);
+    background-image: url(./img/icons/tag--gray.svg);
     background-repeat: no-repeat;
     background-position: 11px center
 }
@@ -7206,7 +7206,7 @@ html.ios .cs-instantview {
     font-size: 0;
     content: '';
     background-size: cover;
-    background-image: url(../img/icons/outlink--gray.svg)
+    background-image: url(./img/icons/outlink--gray.svg)
 }
 
 .pm-frp-list-item>a[target="_blank"]:after {
@@ -7223,7 +7223,7 @@ html.ios .cs-instantview {
     font-size: 0;
     content: '';
     background-size: cover;
-    background-image: url(../img/icons/outlink--gray.svg)
+    background-image: url(./img/icons/outlink--gray.svg)
 }
 
 .cs-h-menu-nav-list__item>a[target="_blank"]:after {
@@ -7240,48 +7240,48 @@ html.ios .cs-instantview {
     font-size: 0;
     content: '';
     background-size: cover;
-    background-image: url(../img/icons/outlink--white.svg)
+    background-image: url(./img/icons/outlink--white.svg)
 }
 
 .cs-header-2-menu__item a[target="_blank"] {
-    background-image: url(../img/icons/outlink--gray.svg);
+    background-image: url(./img/icons/outlink--gray.svg);
     background-size: auto 12px
 }
 
 .cs-icn-sns--twitter {
-    background-image: url(../img/icons/twitter--color.svg)
+    background-image: url(./img/icons/twitter--color.svg)
 }
 
 .cs-icn-sns--twitter--gray {
-    background-image: url(../img/icons/twitter--gray.svg)
+    background-image: url(./img/icons/twitter--gray.svg)
 }
 
 .cs-icn-sns--twitter--white {
-    background-image: url(../img/icons/twitter--white.svg)
+    background-image: url(./img/icons/twitter--white.svg)
 }
 
 .cs-icn-sns--facebook {
-    background-image: url(../img/icons/facebook--color.svg)
+    background-image: url(./img/icons/facebook--color.svg)
 }
 
 .cs-icn-sns--facebook--gray {
-    /* background-image: url(../img/icons/facebook--gray.svg) */
+    /* background-image: url(./img/icons/facebook--gray.svg) */
 }
 
 .cs-icn-sns--facebook--white {
-    background-image: url(../img/icons/facebook--white.svg)
+    background-image: url(./img/icons/facebook--white.svg)
 }
 
 .cs-icn-sns--instagram {
-    background-image: url(../img/icons/instagram--color.png)
+    background-image: url(./img/icons/instagram--color.png)
 }
 
 .cs-icn-sns--instagram--gray {
-    background-image: url(../img/icons/instagram--gray.svg)
+    background-image: url(./img/icons/instagram--gray.svg)
 }
 
 .cs-icn-sns--instagram--white {
-    background-image: url(../img/icons/instagram--white.svg)
+    background-image: url(./img/icons/instagram--white.svg)
 }
 
 .cs-icn-sns--facebook,
@@ -7473,7 +7473,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -7588,7 +7588,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -7758,7 +7758,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -7919,7 +7919,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -8066,7 +8066,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     padding-bottom: 100%;
     border-radius: 5px;
@@ -8159,7 +8159,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     padding-bottom: 75%;
     border-radius: 5px;
@@ -8251,7 +8251,7 @@ a.cs-tag:hover {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-    /* background-image: url(../img/noimage.png); */
+    /* background-image: url(./img/noimage.png); */
     width: 100%;
     padding-bottom: 100%;
     border-radius: 5px;
@@ -8913,7 +8913,7 @@ a.cs-tag:hover {
     height: 30px;
     bottom: -29px;
     left: 5px;
-    background: url(../img/components/list-pickup__catch-el.svg) center top no-repeat;
+    background: url(./img/components/list-pickup__catch-el.svg) center top no-repeat;
     background-size: 20px auto
 }
 
@@ -8988,7 +8988,7 @@ a.cs-tag:hover {
     display: block;
     width: 25px;
     height: 22px;
-    background: url(../img/components/list-pickup-a__quote.svg) 50% 50% no-repeat;
+    background: url(./img/components/list-pickup-a__quote.svg) 50% 50% no-repeat;
     background-size: contain;
     position: absolute;
     top: -5px;
@@ -9414,7 +9414,7 @@ a.cs-tag:hover {
     display: block;
     width: 15px;
     height: 15px;
-    background: url(../img/icons/movie-white.svg) right bottom no-repeat;
+    background: url(./img/icons/movie-white.svg) right bottom no-repeat;
     background-size: contain;
     position: absolute;
     right: 3px;
@@ -9642,11 +9642,11 @@ html.is-post-modal-active .cs-page {
     user-select: none;
     display: inline-block;
     border-radius: 5px;
-    background-image: url(../img/icons/navigation--gray.svg)
+    background-image: url(./img/icons/navigation--gray.svg)
 }
 
 .cs-header-navbar__nav-icon.is-active {
-    background-image: url(../img/icons/navigation--white.svg);
+    background-image: url(./img/icons/navigation--white.svg);
     background-color: #adaba7
 }
 
@@ -9685,11 +9685,11 @@ html.is-post-modal-active .cs-page {
     user-select: none;
     display: inline-block;
     border-radius: 5px;
-    background-image: url(../img/icons/search--gray.svg)
+    background-image: url(./img/icons/search--gray.svg)
 }
 
 .cs-header-navbar__search-icon.is-active {
-    background-image: url(../img/icons/search--white.svg);
+    background-image: url(./img/icons/search--white.svg);
     background-color: #adaba7
 }
 
@@ -9849,13 +9849,13 @@ html.is-post-modal-active .cs-page {
 
 @media all and (min-width:701px) {
     .cs-h-toolbar-item--notifier .cs-h-toolbar-item__trigger.is-active .cs-h-toolbar-item__icon {
-        background-image: url(../img/icons/notifier--blue.svg)
+        background-image: url(./img/icons/notifier--blue.svg)
     }
 }
 
 .cs-h-toolbar-item--notifier .cs-h-toolbar-item__icon {
     position: relative;
-    background-image: url(../img/icons/notifier--white.svg)
+    background-image: url(./img/icons/notifier--white.svg)
 }
 
 .cs-h-toolbar-item--notifier .cs-h-toolbar-item__icon:after {
@@ -9900,12 +9900,12 @@ html.is-post-modal-active .cs-page {
 
 @media all and (min-width:701px) {
     .cs-h-toolbar-item--user .cs-h-toolbar-item__trigger.is-active .cs-h-toolbar-item__icon {
-        background-image: url(../img/icons/user--blue.svg)
+        background-image: url(./img/icons/user--blue.svg)
     }
 }
 
 .cs-h-toolbar-item--user .cs-h-toolbar-item__icon {
-    background-image: url(../img/icons/user--white.svg)
+    background-image: url(./img/icons/user--white.svg)
 }
 
 .cs-h-toolbar-item--user .cs-h-toolbar-item__name {
@@ -10431,11 +10431,11 @@ html.is-post-modal-active .cs-page {
 }
 
 .cs-h-toolbar-menu--notifier .cs-h-toolbar-menu__icon {
-    background-image: url(../img/icons/notifier--black.svg)
+    background-image: url(./img/icons/notifier--black.svg)
 }
 
 .cs-h-toolbar-menu--user .cs-h-toolbar-menu__icon {
-    background-image: url(../img/icons/user--black.svg)
+    background-image: url(./img/icons/user--black.svg)
 }
 
 .cs-h-search__form {
@@ -10523,7 +10523,7 @@ html.is-post-modal-active .cs-page {
     border-radius: 5px;
     border: 1px solid #918f8a;
     background: #fff no-repeat 5px 50%;
-    background-image: url(../img/icons/search--gray.svg);
+    background-image: url(./img/icons/search--gray.svg);
     background-size: 20px auto;
     color: #333;
     font-size: 15px;
@@ -11097,27 +11097,27 @@ html.is-post-modal-active .cs-page {
 }
 
 .cs-h-user-menu__item--activity a:before {
-    background-image: url(../img/icons/activity--black.svg)
+    background-image: url(./img/icons/activity--black.svg)
 }
 
 .cs-h-user-menu__item--clip a:before {
-    background-image: url(../img/icons/clip--black.svg)
+    background-image: url(./img/icons/clip--black.svg)
 }
 
 .cs-h-user-menu__item--edit-profile a:before {
-    background-image: url(../img/icons/profile--black.svg)
+    background-image: url(./img/icons/profile--black.svg)
 }
 
 .cs-h-user-menu__item--settings a:before {
-    background-image: url(../img/icons/account--black.svg)
+    background-image: url(./img/icons/account--black.svg)
 }
 
 .cs-h-user-menu__item--blog a:before {
-    background-image: url(../img/icons/blog--black.svg)
+    background-image: url(./img/icons/blog--black.svg)
 }
 
 .cs-h-user-menu__item--message a:before {
-    background-image: url(../img/icons/chat--black.svg)
+    background-image: url(./img/icons/chat--black.svg)
 }
 
 .cs-footer {
@@ -11819,7 +11819,7 @@ html.ie9 .cs-post-report-category__field option {
 .cs-header-2-navbar__brand-logo {
     display: block;
     width: 33%;
-    background: url(../img/frame/brand_logo.svg) 50% 50% no-repeat;
+    background: url(./img/frame/brand_logo.svg) 50% 50% no-repeat;
     background-size: contain;
     white-space: nowrap;
     text-indent: 100%;
@@ -11860,7 +11860,7 @@ html.ie9 .cs-post-report-category__field option {
     background: #ddd;
     margin-left: 20px;
     cursor: pointer;
-    background: url(../img/icons/notifier.svg) 50% 50% no-repeat;
+    background: url(./img/icons/notifier.svg) 50% 50% no-repeat;
     background-size: 76% auto;
     position: relative
 }
@@ -11924,7 +11924,7 @@ html.ie9 .cs-post-report-category__field option {
     display: block;
     width: 40%;
     height: 40%;
-    background: url(../img/icons/ambassador-mark.svg) 50% 50% no-repeat;
+    background: url(./img/icons/ambassador-mark.svg) 50% 50% no-repeat;
     position: absolute;
     right: -2px;
     bottom: -1px
@@ -12075,7 +12075,7 @@ html.ie9 .cs-post-report-category__field option {
 .cs-header-2-menu__search-input input {
     padding-left: 30px;
     width: 100%;
-    background-image: url(../img/icons/search--gray.svg);
+    background-image: url(./img/icons/search--gray.svg);
     background-repeat: no-repeat;
     background-position: 6px center;
     background-size: 20px auto
@@ -12117,7 +12117,7 @@ html.ie9 .cs-post-report-category__field option {
     align-items: center;
     min-height: 45px;
     padding: 5px 15px;
-    background: url(../img/icons/button-arrow-glay-a.svg) right center no-repeat;
+    background: url(./img/icons/button-arrow-glay-a.svg) right center no-repeat;
     background-size: auto 15px
 }
 
@@ -12377,7 +12377,7 @@ html.ie9 .cs-post-report-category__field option {
 .cs-header-2-search__input input {
     padding-left: 30px;
     width: 100%;
-    background-image: url(../img/icons/search--gray.svg);
+    background-image: url(./img/icons/search--gray.svg);
     background-repeat: no-repeat;
     background-position: 6px center;
     background-size: 20px auto
@@ -13051,7 +13051,7 @@ html.ie9 .cs-post-report-category__field option {
 .pm-lgn-sns__link-tw span {
     display: inline-block;
     padding: 0 0 0 25px;
-    background: url(../img/icons/twitter--white.svg) no-repeat 0 50%;
+    background: url(./img/icons/twitter--white.svg) no-repeat 0 50%;
     background-size: contain
 }
 
@@ -13071,7 +13071,7 @@ html.ie9 .cs-post-report-category__field option {
 .pm-lgn-sns__link-fb span {
     display: inline-block;
     padding: 0 0 0 25px;
-    background: url(../img/icons/facebook--white.svg) no-repeat 0 50%;
+    background: url(./img/icons/facebook--white.svg) no-repeat 0 50%;
     background-size: contain
 }
 
@@ -13091,7 +13091,7 @@ html.ie9 .cs-post-report-category__field option {
 .pm-lgn-sns__link-line span {
     display: inline-block;
     padding: 0 0 0 25px;
-    background: url(../img/icons/line--white.svg) no-repeat 0 50%;
+    background: url(./img/icons/line--white.svg) no-repeat 0 50%;
     background-size: contain
 }
 
@@ -13111,7 +13111,7 @@ html.ie9 .cs-post-report-category__field option {
 .pm-lgn-sns__link-ig span {
     display: inline-block;
     padding: 0 0 0 25px;
-    background: url(../img/icons/instagram--white.svg) no-repeat 0 50%;
+    background: url(./img/icons/instagram--white.svg) no-repeat 0 50%;
     background-size: contain
 }
 
@@ -13226,7 +13226,7 @@ html.ie9 .cs-post-report-category__field option {
     content: "";
     width: 24px;
     height: 24px;
-    background: url(../img/icons/resign--black.svg);
+    background: url(./img/icons/resign--black.svg);
     vertical-align: middle
 }
 
@@ -13653,7 +13653,7 @@ html.ie9 .cs-post-report-category__field option {
     border-radius: 5px;
     border: 1px solid #ccc;
     background: #fff no-repeat 5px 50%;
-    background-image: url(../img/icons/search--gray.svg);
+    background-image: url(./img/icons/search--gray.svg);
     background-size: 20px auto;
     color: #333;
     font-size: 15px;
@@ -13812,7 +13812,7 @@ html.ie9 .cs-post-report-category__field option {
     width: 20px;
     height: 20px;
     margin-right: 3px;
-    background: url(../img/icons/comment--gray.svg) no-repeat 50% 50%;
+    background: url(./img/icons/comment--gray.svg) no-repeat 50% 50%;
     background-size: 20px auto;
     vertical-align: -5px
 }
@@ -14101,7 +14101,7 @@ html.ie9 .cs-post-report-category__field option {
     display: block;
     width: 100%;
     margin-bottom: 15px;
-    /* background-image: url(../img/noimage.png) */
+    /* background-image: url(./img/noimage.png) */
 }
 
 @media all and (max-width:700px) {
@@ -14794,21 +14794,21 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-usr-home-tabs__item--activity a {
-    background: url(../img/icons/activity--blue.svg) no-repeat 0 50%
+    background: url(./img/icons/activity--blue.svg) no-repeat 0 50%
 }
 
 .pm-usr-home-tabs__item--activity a.is-active {
     display: inline-block;
-    background: url(../img/icons/activity--black.svg) no-repeat 0 50%
+    background: url(./img/icons/activity--black.svg) no-repeat 0 50%
 }
 
 .pm-usr-home-tabs__item--clip a {
-    background: url(../img/icons/clip--blue.svg) no-repeat 0 50%
+    background: url(./img/icons/clip--blue.svg) no-repeat 0 50%
 }
 
 .pm-usr-home-tabs__item--clip a.is-active {
     display: inline-block;
-    background: url(../img/icons/clip--black.svg) no-repeat 0 50%
+    background: url(./img/icons/clip--black.svg) no-repeat 0 50%
 }
 
 .pm-usr-home-tabs__item a {
@@ -15165,7 +15165,7 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-icon--list {
-    background-image: url(../img/icons/icon_view-article.svg);
+    background-image: url(./img/icons/icon_view-article.svg);
     display: inline-block;
     width: 17px;
     height: 17px;
@@ -15175,7 +15175,7 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-icon--grid {
-    background-image: url(../img/icons/icon_view-photo.svg);
+    background-image: url(./img/icons/icon_view-photo.svg);
     display: inline-block;
     width: 17px;
     height: 17px;
@@ -15497,7 +15497,7 @@ html.ie9 .cs-post-report-category__field option {
 .pm-usr-edit-profile-image-cover__icon {
     width: 28px;
     height: 28px;
-    background: url(../img/icons/photo-upload--white.svg);
+    background: url(./img/icons/photo-upload--white.svg);
     background-size: 28px 28px;
     margin: 0 auto 10px
 }
@@ -15583,7 +15583,7 @@ html.ie9 .cs-post-report-category__field option {
     transform: translate(-50%, -50%);
     width: 28px;
     height: 28px;
-    background: url(../img/icons/photo-upload--white.svg);
+    background: url(./img/icons/photo-upload--white.svg);
     background-size: 28px 28px
 }
 
@@ -15979,7 +15979,7 @@ html.ie9 .cs-post-report-category__field option {
     position: absolute;
     right: 0;
     bottom: 0;
-    background: url(../img/icons/badge-locked.svg) right bottom no-repeat;
+    background: url(./img/icons/badge-locked.svg) right bottom no-repeat;
     background-size: contain
 }
 
@@ -16134,7 +16134,7 @@ html.ie9 .cs-post-report-category__field option {
     background-size: cover;
     width: 26px;
     height: 26px;
-    background-image: url(../img/icons/instagram-logo--circle.svg)
+    background-image: url(./img/icons/instagram-logo--circle.svg)
 }
 
 .pm-usr-2-profile__sns-button--twitter {
@@ -16144,7 +16144,7 @@ html.ie9 .cs-post-report-category__field option {
     background-size: cover;
     width: 26px;
     height: 26px;
-    background-image: url(../img/icons/twitter-logo--circle.svg)
+    background-image: url(./img/icons/twitter-logo--circle.svg)
 }
 
 .pm-usr-2-profile__sns-button--facebook {
@@ -16154,7 +16154,7 @@ html.ie9 .cs-post-report-category__field option {
     background-size: cover;
     width: 26px;
     height: 26px;
-    background-image: url(../img/icons/facebook-logo--circle.svg)
+    background-image: url(./img/icons/facebook-logo--circle.svg)
 }
 
 .pm-usr-2-profile__edit-group {
@@ -16192,7 +16192,7 @@ html.ie9 .cs-post-report-category__field option {
     display: block;
     width: 16px;
     height: 16px;
-    background: url(../img/icons/setting.svg) 50% 50% no-repeat;
+    background: url(./img/icons/setting.svg) 50% 50% no-repeat;
     background-size: contain
 }
 
@@ -16227,7 +16227,7 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-usr-2-profile__edit-checkbox:checked+.pm-usr-2-profile__edit-button:after {
-    background: url(../img/icons/close--black.svg) 50% 50% no-repeat;
+    background: url(./img/icons/close--black.svg) 50% 50% no-repeat;
     background-size: 14px auto
 }
 
@@ -17241,7 +17241,7 @@ html.ie9 .cs-post-report-category__field option {
     width: 100%;
     height: 20px;
     text-align: center;
-    background: url(../img/modules/pm-cpn/ribbon-a--pink.svg) no-repeat center center
+    background: url(./img/modules/pm-cpn/ribbon-a--pink.svg) no-repeat center center
 }
 
 .pm-cpn-list-mark-text {
@@ -18365,7 +18365,7 @@ html.ie9 .cs-post-report-category__field option {
     height: 16px;
     margin-right: 5px;
     background: no-repeat 50% 50%;
-    background-image: url(../img/modules/pm-gly/camera--white.svg);
+    background-image: url(./img/modules/pm-gly/camera--white.svg);
     background-size: contain;
     vertical-align: -.25em
 }
@@ -18385,7 +18385,7 @@ html.ie9 .cs-post-report-category__field option {
     height: 16px;
     margin-right: 5px;
     background: no-repeat 50% 50%;
-    background-image: url(../img/modules/pm-gly/clock--white.svg);
+    background-image: url(./img/modules/pm-gly/clock--white.svg);
     background-size: contain;
     vertical-align: -.25em
 }
@@ -18670,7 +18670,7 @@ html.ie9 .cs-post-report-category__field option {
     height: 16px;
     margin-right: 5px;
     background: no-repeat 50% 50%;
-    background-image: url(../img/modules/pm-gly/camera--gray.svg);
+    background-image: url(./img/modules/pm-gly/camera--gray.svg);
     background-size: contain;
     vertical-align: -.25em
 }
@@ -18690,7 +18690,7 @@ html.ie9 .cs-post-report-category__field option {
     height: 16px;
     margin-right: 5px;
     background: no-repeat 50% 50%;
-    background-image: url(../img/modules/pm-gly/clock--gray.svg);
+    background-image: url(./img/modules/pm-gly/clock--gray.svg);
     background-size: contain;
     vertical-align: -.25em
 }
@@ -18780,7 +18780,7 @@ html.ie9 .cs-post-report-category__field option {
     height: 16px;
     margin-right: 5px;
     background: no-repeat 50% 50%;
-    background-image: url(../img/modules/pm-gly/camera--gray.svg);
+    background-image: url(./img/modules/pm-gly/camera--gray.svg);
     background-size: contain;
     vertical-align: -.25em
 }
@@ -18800,7 +18800,7 @@ html.ie9 .cs-post-report-category__field option {
     height: 16px;
     margin-right: 5px;
     background: no-repeat 50% 50%;
-    background-image: url(../img/modules/pm-gly/clock--gray.svg);
+    background-image: url(./img/modules/pm-gly/clock--gray.svg);
     background-size: contain;
     vertical-align: -.25em
 }
@@ -19174,11 +19174,11 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-gly-article-via__icon--instagram:before {
-    background-image: url(../img/modules/pm-gly/bg_pm-gly-article-via__icon--instagram.png)
+    background-image: url(./img/modules/pm-gly/bg_pm-gly-article-via__icon--instagram.png)
 }
 
 .pm-gly-article-via__icon--twitter:before {
-    background-image: url(../img/modules/pm-gly/twitter--blue.svg)
+    background-image: url(./img/modules/pm-gly/twitter--blue.svg)
 }
 
 .pm-gly-article__image img {
@@ -19295,7 +19295,7 @@ html.ie9 .cs-post-report-category__field option {
     width: 20px;
     height: 20px;
     margin: 0 5px 0 0;
-    background-image: url(../img/icons/comment--gray.svg);
+    background-image: url(./img/icons/comment--gray.svg);
     background-size: 20px 20px;
     vertical-align: -4px
 }
@@ -19446,7 +19446,7 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-gly-response-b--like-via:before {
-    background-image: url(../img/icons/like-b--white.svg)
+    background-image: url(./img/icons/like-b--white.svg)
 }
 
 .pm-gly-response-b--clip-via {
@@ -19459,7 +19459,7 @@ html.ie9 .cs-post-report-category__field option {
 }
 
 .pm-gly-response-b--clip-via:before {
-    background-image: url(../img/icons/like-b--white.svg)
+    background-image: url(./img/icons/like-b--white.svg)
 }
 
 .pm-gly-avatar {
@@ -19554,7 +19554,7 @@ textarea.pm-gly-field-a--via {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -19589,7 +19589,7 @@ textarea.pm-gly-field-a--via {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -19892,7 +19892,7 @@ html.ie9 .cs-post-gly-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -19911,7 +19911,7 @@ html.ie9 .cs-post-gly-category__field option {
     z-index: 2;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     overflow: visible
 }
 
@@ -20037,7 +20037,7 @@ html.ie9 .cs-post-gly-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-gly-photo-add__button input[type=file] {
@@ -20099,7 +20099,7 @@ html.ie9 .cs-post-gly-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -20150,7 +20150,7 @@ html.ie9 .cs-post-gly-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -21504,20 +21504,20 @@ html.ie9 .cs-post-gly-category__field option {
 }
 
 .pm-hom-module-list__label-icon.is-cart {
-    background-image: url(../img/modules/pm-hom/icon-cart--white.svg)
+    background-image: url(./img/modules/pm-hom/icon-cart--white.svg)
 }
 
 .pm-hom-module-list__label-icon.is-cible {
-    background-image: url(../img/modules/pm-hom/icon-cible--white.svg)
+    background-image: url(./img/modules/pm-hom/icon-cible--white.svg)
 }
 
 .pm-hom-module-list__label-icon.is-sheet {
-    background-image: url(../img/modules/pm-hom/icon-sheet--white.svg);
+    background-image: url(./img/modules/pm-hom/icon-sheet--white.svg);
     background-size: 90%
 }
 
 .pm-hom-module-list__label-icon.is-pen {
-    background-image: url(../img/modules/pm-hom/icon-pen--white.svg)
+    background-image: url(./img/modules/pm-hom/icon-pen--white.svg)
 }
 
 .pm-hom-module-list__heading {
@@ -22277,7 +22277,7 @@ html.ie9 .cs-post-gly-category__field option {
 }
 
 .pm-hom-flexbox--qna .pm-hom-flexbox-list__item.is-best-answer .pm-hom-flexbox-list__footer-comments {
-    background-image: url(../img/modules/pm-hom/icon-qna--resolved.png);
+    background-image: url(./img/modules/pm-hom/icon-qna--resolved.png);
     background-repeat: no-repeat;
     background-position: right 9px top -6px
 }
@@ -22424,7 +22424,7 @@ html.ie9 .cs-post-gly-category__field option {
 .pm-hom-flexbox--mak .pm-hom-flexbox-list__footer-data--mak {
     margin: 10px;
     padding: 10px;
-    background-image: url(../img/modules/pm-hom/icon-mak--complete.png);
+    background-image: url(./img/modules/pm-hom/icon-mak--complete.png);
     background-repeat: no-repeat;
     background-position: right 5px top 5px
 }
@@ -22761,7 +22761,7 @@ html.ie9 .cs-post-gly-category__field option {
     width: 44px;
     height: 44px;
     background-color: rgba(0, 0, 0, .5);
-    background-image: url(../img/modules/pm-hom/plus--white.svg);
+    background-image: url(./img/modules/pm-hom/plus--white.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%
 }
@@ -22773,7 +22773,7 @@ html.ie9 .cs-post-gly-category__field option {
 }
 
 .pm-hom-b-topic-header.is-active::before {
-    background-image: url(../img/modules/pm-hom/minus--white.svg);
+    background-image: url(./img/modules/pm-hom/minus--white.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%
 }
@@ -23202,7 +23202,7 @@ html.ie9 .cs-post-gly-category__field option {
     height: 50px;
     top: 200px;
     margin-top: -30px;
-    background: url(../img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: auto 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -23218,7 +23218,7 @@ html.ie9 .cs-post-gly-category__field option {
     height: 50px;
     top: 200px;
     margin-top: -30px;
-    background: url(../img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: auto 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -23782,7 +23782,7 @@ html.ie9 .cs-post-gly-category__field option {
     display: block;
     width: 100%;
     margin-bottom: 15px;
-    /* background-image: url(../img/noimage.png) */
+    /* background-image: url(./img/noimage.png) */
 }
 
 @media all and (max-width:700px) {
@@ -25557,7 +25557,7 @@ a:hover .pm-idx-enq-item__title {
     bottom: -30px;
     width: 100%;
     height: 30px;
-    background: url(../img/modules/pm-mak/arrow-down-gray-mak.svg) no-repeat center center;
+    background: url(./img/modules/pm-mak/arrow-down-gray-mak.svg) no-repeat center center;
     content: ""
 }
 
@@ -25998,7 +25998,7 @@ a:hover .pm-idx-enq-item__title {
     width: 20px;
     height: 20px;
     margin: 0 5px 0 0;
-    background-image: url(../img/icons/comment--gray.svg);
+    background-image: url(./img/icons/comment--gray.svg);
     background-size: 20px 20px;
     vertical-align: -4px
 }
@@ -26707,7 +26707,7 @@ a:hover .pm-idx-enq-item__title {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-image: url(../img/icons/comment--gray.svg);
+    background-image: url(./img/icons/comment--gray.svg);
     background-size: 20px 20px;
     vertical-align: -5px
 }
@@ -26921,7 +26921,7 @@ a:hover .pm-idx-enq-item__title {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -26957,7 +26957,7 @@ a:hover .pm-idx-enq-item__title {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -27650,7 +27650,7 @@ a:hover .pm-idx-enq-item__title {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-image: url(../img/icons/comment--gray.svg);
+    background-image: url(./img/icons/comment--gray.svg);
     background-size: 20px 20px;
     vertical-align: -5px
 }
@@ -27864,7 +27864,7 @@ a:hover .pm-idx-enq-item__title {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -27900,7 +27900,7 @@ a:hover .pm-idx-enq-item__title {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -28042,7 +28042,7 @@ a:hover .pm-idx-enq-item__title {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -28443,7 +28443,7 @@ html.ie9 .cs-post-amb-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -28461,7 +28461,7 @@ html.ie9 .cs-post-amb-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-amb-photos__button input[type=file] {
@@ -28533,7 +28533,7 @@ html.ie9 .cs-post-amb-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -29907,7 +29907,7 @@ html.ie9 .cs-post-amb-category__field option {
     padding: 15px 15px 15px 55px;
     border-bottom: 1px solid #eee;
     color: #666;
-    background: url(../img/icons/comment--gray.svg) no-repeat 30px 50%;
+    background: url(./img/icons/comment--gray.svg) no-repeat 30px 50%;
     background-size: 20px
 }
 
@@ -29916,7 +29916,7 @@ html.ie9 .cs-post-amb-category__field option {
     .pm-qna-reply-list__heading,
     .pm-qna-reply-list__heading--best-answer {
         padding: 15px 15px 15px 47px;
-        background: url(../img/icons/comment--gray.svg) no-repeat 15px 50%;
+        background: url(./img/icons/comment--gray.svg) no-repeat 15px 50%;
         background-size: 20px
     }
 }
@@ -29938,7 +29938,7 @@ html.ie9 .cs-post-amb-category__field option {
 }
 
 .pm-qna-reply-list-item--best-answer {
-    background: url(../img/modules/pm-qna/stamp--best-answer.svg) no-repeat 95% 15px;
+    background: url(./img/modules/pm-qna/stamp--best-answer.svg) no-repeat 95% 15px;
     background-size: 100px auto
 }
 
@@ -30161,7 +30161,7 @@ html.ie9 .cs-post-amb-category__field option {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -30197,7 +30197,7 @@ html.ie9 .cs-post-amb-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -30282,7 +30282,7 @@ html.ie9 .cs-post-amb-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -30338,7 +30338,7 @@ html.ie9 .cs-post-amb-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -30374,7 +30374,7 @@ html.ie9 .cs-post-amb-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -30704,7 +30704,7 @@ html.ie9 .cs-post-qna-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -30722,7 +30722,7 @@ html.ie9 .cs-post-qna-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-qna-photos__button input[type=file] {
@@ -30851,7 +30851,7 @@ html.ie9 .cs-post-qna-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -32402,7 +32402,7 @@ html.ie9 .cs-post-qna-category__field option {
     padding: 15px 15px 15px 55px;
     border-bottom: 1px solid #eee;
     color: #ccc;
-    background: url(../img/icons/comment--gray.svg) no-repeat 30px 50%;
+    background: url(./img/icons/comment--gray.svg) no-repeat 30px 50%;
     background-size: 20px
 }
 
@@ -32670,7 +32670,7 @@ html.ie9 .cs-post-qna-category__field option {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -32702,7 +32702,7 @@ html.ie9 .cs-post-qna-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -32769,7 +32769,7 @@ html.ie9 .cs-post-qna-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -32804,7 +32804,7 @@ html.ie9 .cs-post-qna-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -32918,7 +32918,7 @@ html.ie9 .cs-post-qna-category__field option {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -32954,7 +32954,7 @@ html.ie9 .cs-post-qna-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -33256,7 +33256,7 @@ html.ie9 .cs-post-tlk-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -33274,7 +33274,7 @@ html.ie9 .cs-post-tlk-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-tlk-photos__button input[type=file] {
@@ -33346,7 +33346,7 @@ html.ie9 .cs-post-tlk-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -33770,7 +33770,7 @@ html.ie9 .cs-post-tlk-category__field option {
     height: 20px;
     margin-right: 5px;
     background-size: 20px 20px;
-    background-image: url(../img/icons/comment--gray.svg);
+    background-image: url(./img/icons/comment--gray.svg);
     vertical-align: -5px
 }
 
@@ -33899,7 +33899,7 @@ html.ie9 .cs-post-tlk-category__field option {
     height: 20px;
     margin-right: 5px;
     background-size: 20px 20px;
-    background-image: url(../img/icons/comment--gray.svg);
+    background-image: url(./img/icons/comment--gray.svg);
     vertical-align: -5px
 }
 
@@ -34006,7 +34006,7 @@ html.ie9 .cs-post-tlk-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -34332,7 +34332,7 @@ html.ie9 .cs-post-tbk-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -34350,7 +34350,7 @@ html.ie9 .cs-post-tbk-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-tbk-photos__button input[type=file] {
@@ -34479,7 +34479,7 @@ html.ie9 .cs-post-tbk-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -34958,7 +34958,7 @@ html.ie9 .cs-post-tbk-category__field option {
     padding-left: 35px;
     color: #ccc;
     font-weight: 700;
-    background: url(../img/icons/like--gray.svg) no-repeat 10px 0;
+    background: url(./img/icons/like--gray.svg) no-repeat 10px 0;
     background-size: 20px 20px
 }
 
@@ -34968,7 +34968,7 @@ html.ie9 .cs-post-tbk-category__field option {
     padding-left: 25px;
     color: #ccc;
     font-weight: 700;
-    background: url(../img/icons/comment--gray.svg) no-repeat 0 0;
+    background: url(./img/icons/comment--gray.svg) no-repeat 0 0;
     background-size: 20px 20px
 }
 
@@ -35370,7 +35370,7 @@ html.ie9 .cs-post-tbk-category__field option {
     height: 18px;
     vertical-align: middle;
     margin-right: 5px;
-    background: url(../img/modules/pm-thm/camera--gray.svg) no-repeat 0 0;
+    background: url(./img/modules/pm-thm/camera--gray.svg) no-repeat 0 0;
     background-size: 15px auto
 }
 
@@ -35380,7 +35380,7 @@ html.ie9 .cs-post-tbk-category__field option {
     height: 18px;
     vertical-align: middle;
     margin-right: 5px;
-    background: url(../img/modules/pm-thm/clock--gray.svg) no-repeat 0 0;
+    background: url(./img/modules/pm-thm/clock--gray.svg) no-repeat 0 0;
     background-size: 15px auto
 }
 
@@ -35390,7 +35390,7 @@ html.ie9 .cs-post-tbk-category__field option {
     height: 20px;
     vertical-align: middle;
     margin-right: 10px;
-    background: url(../img/modules/pm-thm/pencil--white.svg) no-repeat 0 50%;
+    background: url(./img/modules/pm-thm/pencil--white.svg) no-repeat 0 50%;
     background-size: 20px auto
 }
 
@@ -35424,7 +35424,7 @@ html.ie9 .cs-post-tbk-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -35750,7 +35750,7 @@ html.ie9 .cs-post-thm-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -35768,7 +35768,7 @@ html.ie9 .cs-post-thm-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-thm-photos__button input[type=file] {
@@ -35897,7 +35897,7 @@ html.ie9 .cs-post-thm-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -36384,7 +36384,7 @@ html.ie9 .cs-post-thm-category__field option {
     align-items: center;
     min-height: 82px;
     cursor: pointer;
-    background-image: url(../img/modules/pm-vot/bg_pm-vot-vote__item.svg);
+    background-image: url(./img/modules/pm-vot/bg_pm-vot-vote__item.svg);
     background-repeat: no-repeat;
     background-position: 95% 50%;
     background-size: 60px auto
@@ -36402,7 +36402,7 @@ html.ie9 .cs-post-thm-category__field option {
 
 .pm-vot-vote-list__item.is-active {
     background-color: #fff5f5;
-    background-image: url(../img/modules/pm-vot/bg_pm-vot-vote__item--active.svg);
+    background-image: url(./img/modules/pm-vot/bg_pm-vot-vote__item--active.svg);
     border-color: #c00
 }
 
@@ -36482,7 +36482,7 @@ html.ie9 .cs-post-thm-category__field option {
 
 .pm-vot-vote-list.is-with-big-image .pm-vot-vote-list__item .pm-vot-vote-list__title {
     padding: 0 0 0 25px;
-    background-image: url(../img/modules/pm-vot/bg_pm-vot-vote__item.svg);
+    background-image: url(./img/modules/pm-vot/bg_pm-vot-vote__item.svg);
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 21px auto
@@ -36494,7 +36494,7 @@ html.ie9 .cs-post-thm-category__field option {
 }
 
 .pm-vot-vote-list.is-with-big-image .pm-vot-vote-list__item.is-active .pm-vot-vote-list__title {
-    background-image: url(../img/modules/pm-vot/bg_pm-vot-vote__item--active.svg)
+    background-image: url(./img/modules/pm-vot/bg_pm-vot-vote__item--active.svg)
 }
 
 .pm-vot-vote-comment {
@@ -36991,7 +36991,7 @@ html.ie9 .cs-post-thm-category__field option {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -37027,7 +37027,7 @@ html.ie9 .cs-post-thm-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -37822,7 +37822,7 @@ html.ie9 .cs-post-thm-category__field option {
     display: table;
     width: 100%;
     padding-left: 40px !important;
-    background-image: url(../img/modules/pm-rcp/tag--white.svg);
+    background-image: url(./img/modules/pm-rcp/tag--white.svg);
     background-repeat: no-repeat;
     background-position: 10px 50%
 }
@@ -37910,7 +37910,7 @@ html.ie9 .cs-post-thm-category__field option {
     display: table;
     width: 100%;
     padding-left: 40px !important;
-    background-image: url(../img/icons/comment--white.svg);
+    background-image: url(./img/icons/comment--white.svg);
     background-repeat: no-repeat;
     background-position: 10px 50%
 }
@@ -38480,7 +38480,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 20px 20px;
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge.svg)
 }
 
 .pm-rcp-top-list__badge i {
@@ -38500,15 +38500,15 @@ html.ie9 .cs-post-thm-category__field option {
 }
 
 .pm-rcp-top-list__badge--num01 {
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge--num01.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge--num01.svg)
 }
 
 .pm-rcp-top-list__badge--num02 {
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge--num02.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge--num02.svg)
 }
 
 .pm-rcp-top-list__badge--num03 {
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge--num03.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge--num03.svg)
 }
 
 .pm-rcp-top-list__badge-name {
@@ -38683,7 +38683,7 @@ html.ie9 .cs-post-thm-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -38718,7 +38718,7 @@ html.ie9 .cs-post-thm-category__field option {
     height: 28px;
     margin-right: 5px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 28px 28px;
     vertical-align: -7px
 }
@@ -38819,7 +38819,7 @@ html.ie9 .cs-post-thm-category__field option {
     border-radius: 5px;
     border: 1px solid #ccc;
     background: transparent no-repeat 5px 50%;
-    background-image: url(../img/icons/search--gray.svg);
+    background-image: url(./img/icons/search--gray.svg);
     background-size: 20px auto;
     color: #333;
     font-size: 15px;
@@ -38932,7 +38932,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 30px 30px;
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge.svg)
 }
 
 @media all and (min-width:701px) {
@@ -38963,15 +38963,15 @@ html.ie9 .cs-post-thm-category__field option {
 }
 
 .pm-rcp-list__badge--num01 {
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge--num01.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge--num01.svg)
 }
 
 .pm-rcp-list__badge--num02 {
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge--num02.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge--num02.svg)
 }
 
 .pm-rcp-list__badge--num03 {
-    background-image: url(../img/modules/pm-rcp/bg_pm-vot-result-list__badge--num03.svg)
+    background-image: url(./img/modules/pm-rcp/bg_pm-vot-result-list__badge--num03.svg)
 }
 
 .pm-rcp-list__img {
@@ -39168,7 +39168,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 20px 20px;
-    background-image: url(../img/modules/pm-rcp/fire.svg);
+    background-image: url(./img/modules/pm-rcp/fire.svg);
     width: 20px;
     height: 20px
 }
@@ -39207,7 +39207,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 18px 18px;
-    background-image: url(../img/modules/pm-rcp/spoon.svg);
+    background-image: url(./img/modules/pm-rcp/spoon.svg);
     width: 18px;
     height: 18px
 }
@@ -39238,7 +39238,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 18px 18px;
-    background-image: url(../img/modules/pm-rcp/microwaveoven.svg);
+    background-image: url(./img/modules/pm-rcp/microwaveoven.svg);
     width: 18px;
     height: 18px
 }
@@ -40170,7 +40170,7 @@ html.ie9 .cs-post-thm-category__field option {
     width: 30px;
     height: 30px;
     margin-right: 7px;
-    background-image: url(../img/icons/photo-upload--white.svg);
+    background-image: url(./img/icons/photo-upload--white.svg);
     background-size: 30px 30px;
     vertical-align: middle
 }
@@ -40190,7 +40190,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 20px 20px;
-    background-image: url(../img/modules/pm-rcp/fire.svg)
+    background-image: url(./img/modules/pm-rcp/fire.svg)
 }
 
 .pm-rcp-icon--salt {
@@ -40202,7 +40202,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 18px 18px;
-    background-image: url(../img/modules/pm-rcp/spoon.svg)
+    background-image: url(./img/modules/pm-rcp/spoon.svg)
 }
 
 .pm-rcp-icon--oven {
@@ -40214,7 +40214,7 @@ html.ie9 .cs-post-thm-category__field option {
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 18px 18px;
-    background-image: url(../img/modules/pm-rcp/microwaveoven.svg)
+    background-image: url(./img/modules/pm-rcp/microwaveoven.svg)
 }
 
 .pm-rcp-item-button--sp {
@@ -40351,7 +40351,7 @@ html.ie9 .cs-post-thm-category__field option {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -40387,7 +40387,7 @@ html.ie9 .cs-post-thm-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -40826,7 +40826,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-rcp-photos__button input[type=file] {
@@ -41139,7 +41139,7 @@ html.ie9 .cs-post-rcp-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -41705,7 +41705,7 @@ html.ie9 .cs-post-rcp-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -41899,7 +41899,7 @@ html.ie9 .cs-post-rcp-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -41917,7 +41917,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-rcp-photos__button input[type=file] {
@@ -41989,7 +41989,7 @@ html.ie9 .cs-post-rcp-category__field option {
     position: relative;
     min-height: 33px;
     padding-left: 50px;
-    background: url(../img/icons/tag--gray.svg) no-repeat 0 3px;
+    background: url(./img/icons/tag--gray.svg) no-repeat 0 3px;
     background-size: 24px 24px
 }
 
@@ -42449,7 +42449,7 @@ html.ie9 .cs-post-rcp-category__field option {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     margin-right: 6px;
-    background-image: url(../img/icons/photo-upload--blue.svg);
+    background-image: url(./img/icons/photo-upload--blue.svg);
     background-size: 30px 30px;
     vertical-align: middle
 }
@@ -42522,7 +42522,7 @@ html.ie9 .cs-post-rcp-category__field option {
 .pm-rvw-lists-head {
     padding: 12px 12px 12px 32px;
     border-bottom: 1px solid #ccc;
-    background-image: url(../img/modules/pm-rvw/ico_balloon.svg);
+    background-image: url(./img/modules/pm-rvw/ico_balloon.svg);
     background-repeat: no-repeat;
     background-position: 12px 50%;
     background-size: 18px 18px
@@ -42935,7 +42935,7 @@ html.ie9 .cs-post-rcp-category__field option {
 .pm-rvw-item__count {
     margin: 0 0 20px;
     padding: 0 0 0 22px;
-    background-image: url(../img/modules/pm-rvw/ico_balloon.svg);
+    background-image: url(./img/modules/pm-rvw/ico_balloon.svg);
     background-repeat: no-repeat;
     background-position: 0 50%;
     background-size: 18px 18px;
@@ -42962,7 +42962,7 @@ html.ie9 .cs-post-rcp-category__field option {
 
 .pm-rvw-useful[data-state=active] .pm-rvw-useful__icon,
 .pm-rvw-wantto[data-state=active] .pm-rvw-useful__icon {
-    background-image: url(../img/modules/pm-rvw/ico_point.svg)
+    background-image: url(./img/modules/pm-rvw/ico_point.svg)
 }
 
 .pm-rvw-useful[data-state=active]:hover,
@@ -42998,26 +42998,26 @@ html.ie9 .cs-post-rcp-category__field option {
     width: 24px;
     height: 24px;
     vertical-align: middle;
-    background-image: url(../img/modules/pm-rvw/ico_point-d.svg);
+    background-image: url(./img/modules/pm-rvw/ico_point-d.svg);
     background-repeat: no-repeat;
     background-size: 24px 24px
 }
 
 .is-disabled .pm-rvw-useful__icon,
 .is-disabled .pm-rvw-wantto__icon {
-    background-image: url(../img/modules/pm-rvw/ico_point.svg)
+    background-image: url(./img/modules/pm-rvw/ico_point.svg)
 }
 
 .pm-rvw-wantto[data-state=active] .pm-rvw-wantto__icon {
-    background-image: url(../img/modules/pm-rvw/ico_favorite.svg)
+    background-image: url(./img/modules/pm-rvw/ico_favorite.svg)
 }
 
 .pm-rvw-wantto__icon {
-    background-image: url(../img/modules/pm-rvw/ico_favorite-d.svg)
+    background-image: url(./img/modules/pm-rvw/ico_favorite-d.svg)
 }
 
 .is-disabled .pm-rvw-wantto__icon {
-    background-image: url(../img/modules/pm-rvw/ico_favorite.svg)
+    background-image: url(./img/modules/pm-rvw/ico_favorite.svg)
 }
 
 .pm-rvw-titlebar {
@@ -43067,7 +43067,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 10%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43076,7 +43076,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 20%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43085,7 +43085,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 30%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43094,7 +43094,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 40%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43103,7 +43103,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 50%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43112,7 +43112,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 60%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43121,7 +43121,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 70%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43130,7 +43130,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 80%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43139,7 +43139,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 90%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43148,7 +43148,7 @@ html.ie9 .cs-post-rcp-category__field option {
         display: inline-block;
         width: 100%;
         height: 14px;
-        background-image: url(../img/modules/pm-rvw/ico_star.svg);
+        background-image: url(./img/modules/pm-rvw/ico_star.svg);
         background-repeat: repeat-x;
         background-size: 14px 14px
     }
@@ -43187,7 +43187,7 @@ html.ie9 .cs-post-rcp-category__field option {
 }
 
 .pm-rvw-response-a__button--review .cs-response-a__icon--small {
-    background-image: url(../img/modules/pm-rvw/ico_balloon.svg)
+    background-image: url(./img/modules/pm-rvw/ico_balloon.svg)
 }
 
 .pm-rvw-button-a--1-xl {
@@ -43362,7 +43362,7 @@ html.ie9 .cs-post-rcp-category__field option {
     margin-bottom: 6px;
     margin-right: 4px;
     overflow: hidden;
-    background-image: url(../img/modules/pm-rvw/ico_star-d.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star-d.svg);
     background-repeat: repeat-x
 }
 
@@ -43370,7 +43370,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 10%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43378,7 +43378,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 20%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43386,7 +43386,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 30%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43394,7 +43394,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 40%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43402,7 +43402,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 50%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43410,7 +43410,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 60%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43418,7 +43418,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 70%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43426,7 +43426,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 80%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43434,7 +43434,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 90%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43442,7 +43442,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 100%;
     height: 19px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: repeat-x
 }
 
@@ -43530,7 +43530,7 @@ html.ie9 .cs-post-rcp-category__field option {
     float: right;
     padding-right: 6px;
     position: relative;
-    background-image: url(../img/modules/pm-rvw/ico_star-d.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star-d.svg);
     background-repeat: no-repeat;
     background-size: 24px 24px
 }
@@ -43540,7 +43540,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: block;
     width: 24px;
     height: 24px;
-    background-image: url(../img/modules/pm-rvw/ico_star.svg);
+    background-image: url(./img/modules/pm-rvw/ico_star.svg);
     background-repeat: no-repeat;
     background-size: 24px 24px;
     opacity: 0
@@ -43633,7 +43633,7 @@ html.ie9 .cs-post-rcp-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #666;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -43651,7 +43651,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     border-radius: 2px;
     border: 1px solid #c00;
-    background-image: url(../img/icons/photo-upload--red.svg)
+    background-image: url(./img/icons/photo-upload--red.svg)
 }
 
 .cs-post-rvw-photos__button input[type=file] {
@@ -43695,7 +43695,7 @@ html.ie9 .cs-post-rcp-category__field option {
     width: 680px;
     color: #fff;
     background-color: #d0021b;
-    background-image: url(../img/modules/pm-itw/bg__header.svg);
+    background-image: url(./img/modules/pm-itw/bg__header.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
@@ -43709,13 +43709,13 @@ html.ie9 .cs-post-rcp-category__field option {
     left: 0;
     z-index: 0;
     width: 100%;
-    content: url(../img/modules/pm-itw/bg__header-before.svg)
+    content: url(./img/modules/pm-itw/bg__header-before.svg)
 }
 
 @media all and (max-width:700px) {
     .pm-itw-content-header {
         width: 100%;
-        background-image: url(../img/modules/pm-itw/bg__header--m.svg);
+        background-image: url(./img/modules/pm-itw/bg__header--m.svg);
         background-repeat: no-repeat
     }
 
@@ -43728,7 +43728,7 @@ html.ie9 .cs-post-rcp-category__field option {
         width: 100%;
         height: 497px;
         content: '';
-        background-image: url(../img/modules/pm-itw/bg__header-before--m.svg);
+        background-image: url(./img/modules/pm-itw/bg__header-before--m.svg);
         background-size: 90%;
         background-position: center 10%;
         background-repeat: no-repeat
@@ -43842,7 +43842,7 @@ html.ie9 .cs-post-rcp-category__field option {
     width: 33px;
     height: 33px;
     content: '';
-    background-image: url(../img/modules/pm-itw/icon__target--white.svg);
+    background-image: url(./img/modules/pm-itw/icon__target--white.svg);
     background-repeat: no-repeat;
     background-position: 0 0
 }
@@ -43920,7 +43920,7 @@ html.ie9 .cs-post-rcp-category__field option {
 .pm-itw-content-header--result {
     padding: 10px 0;
     background-color: #085a9f;
-    background-image: url(../img/modules/pm-itw/bg__header-lose.svg);
+    background-image: url(./img/modules/pm-itw/bg__header-lose.svg);
     background-repeat: repeat-y !important;
     background-size: initial
 }
@@ -43931,7 +43931,7 @@ html.ie9 .cs-post-rcp-category__field option {
 
 @media all and (max-width:700px) {
     .pm-itw-content-header--result {
-        background-image: url(../img/modules/pm-itw/bg__header-lose--m.svg);
+        background-image: url(./img/modules/pm-itw/bg__header-lose--m.svg);
         background-repeat: repeat-y
     }
 }
@@ -43981,7 +43981,7 @@ html.ie9 .cs-post-rcp-category__field option {
     height: auto;
     min-height: 330px;
     background: 0 0;
-    background-image: url(../img/modules/pm-itw/bg__header-win.svg);
+    background-image: url(./img/modules/pm-itw/bg__header-win.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover
@@ -43995,14 +43995,14 @@ html.ie9 .cs-post-rcp-category__field option {
     left: 0;
     z-index: 0;
     width: 100%;
-    content: url(../img/modules/pm-itw/bg__header-win-before.svg)
+    content: url(./img/modules/pm-itw/bg__header-win-before.svg)
 }
 
 @media all and (max-width:700px) {
     .pm-itw-content-header.is-win {
         width: 100%;
         min-height: 370px;
-        background-image: url(../img/modules/pm-itw/bg__header-win--m.svg);
+        background-image: url(./img/modules/pm-itw/bg__header-win--m.svg);
         background-repeat: no-repeat
     }
 
@@ -44015,7 +44015,7 @@ html.ie9 .cs-post-rcp-category__field option {
         width: 100%;
         height: 390px;
         content: '';
-        background-image: url(../img/modules/pm-itw/bg__header-win-before--m.svg);
+        background-image: url(./img/modules/pm-itw/bg__header-win-before--m.svg);
         background-size: 100%;
         background-position: center bottom;
         background-repeat: no-repeat
@@ -44188,7 +44188,7 @@ html.ie9 .cs-post-rcp-category__field option {
     display: inline-block;
     width: 24px;
     height: 24px;
-    background-image: url(../img/icons/comment--white.svg);
+    background-image: url(./img/icons/comment--white.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 24px 24px;
@@ -44501,7 +44501,7 @@ html.ie9 .cs-post-rcp-category__field option {
     border-bottom: 1px solid #eee;
     color: #ccc;
     font-size: 14px;
-    background: url(../img/icons/comment--gray.svg) no-repeat 15px 50%
+    background: url(./img/icons/comment--gray.svg) no-repeat 15px 50%
 }
 
 .pm-itw-detail-reply {
@@ -44610,7 +44610,7 @@ html.ie9 .cs-post-rcp-category__field option {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background-image: url(../img/icons/photo-upload--red.svg);
+    background-image: url(./img/icons/photo-upload--red.svg);
     vertical-align: middle
 }
 
@@ -44638,7 +44638,7 @@ html.ie9 .cs-post-rcp-category__field option {
     height: 25px;
     border-radius: 50%;
     background-color: #eee;
-    background-image: url(../img/icons/close--white.svg);
+    background-image: url(./img/icons/close--white.svg);
     background-size: 12px 12px
 }
 
@@ -46040,7 +46040,7 @@ _:future {
     margin: -1px;
     position: relative;
     z-index: 1;
-    background-image: url(../img/modules/pm-mby/seal-done.png);
+    background-image: url(./img/modules/pm-mby/seal-done.png);
     background-size: cover
 }
 
@@ -47411,7 +47411,7 @@ _:future {
 }
 
 .pm-mby-response--like::before {
-    background-image: url(../img/icons/like--gray.svg)
+    background-image: url(./img/icons/like--gray.svg)
 }
 
 .pm-mby-response--clip {
@@ -47420,7 +47420,7 @@ _:future {
 }
 
 .pm-mby-response--clip::before {
-    background-image: url(../img/icons/clip-b--gray.svg)
+    background-image: url(./img/icons/clip-b--gray.svg)
 }
 
 .pm-mby-liked-list {
@@ -48269,7 +48269,7 @@ _:future {
     height: 21px;
     margin-right: 10px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 21px 21px;
     vertical-align: -4px
 }
@@ -48492,7 +48492,7 @@ _:future {
     display: block;
     width: 25px;
     height: 25px;
-    background: url(../img/icons/movie-white.svg) right bottom no-repeat;
+    background: url(./img/icons/movie-white.svg) right bottom no-repeat;
     background-size: contain;
     position: absolute;
     right: 5px;
@@ -48560,7 +48560,7 @@ _:future {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    background-image: url(../img/icons/location-spot.svg);
+    background-image: url(./img/icons/location-spot.svg);
     margin-right: 10px
 }
 
@@ -48577,7 +48577,7 @@ _:future {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    background-image: url(../img/icons/location-area.svg)
+    background-image: url(./img/icons/location-area.svg)
 }
 
 .pm-pla-list-item__response-group {
@@ -48911,7 +48911,7 @@ _:future {
     z-index: 9000011;
     width: 40px;
     height: 40px;
-    background: url(../img/icons/close--white.svg) 50% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/close--white.svg) 50% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: 80% auto;
     cursor: pointer;
     border-radius: 4px
@@ -48920,7 +48920,7 @@ _:future {
 .pm-pla-detail__content__photo__modal .swiper-button-prev {
     width: 25px;
     height: 50px;
-    background: url(../img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: auto 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -48935,7 +48935,7 @@ _:future {
 .pm-pla-detail__content__photo__modal .swiper-button-next {
     width: 25px;
     height: 50px;
-    background: url(../img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: auto 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -49200,7 +49200,7 @@ _:future {
     padding: 4px 10px;
     cursor: pointer;
     border-radius: 14px;
-    background: url(../img/icons/spot-search.svg) left 10px center no-repeat;
+    background: url(./img/icons/spot-search.svg) left 10px center no-repeat;
     background-size: 10px auto;
     padding: 4px 10px 4px 23px
 }
@@ -49244,7 +49244,7 @@ _:future {
 .pm-pla-spot-select__current {
     font-size: 14px;
     font-weight: 700;
-    background: url(../img/icons/location-spot.svg) left 10px center no-repeat #f7f7f7;
+    background: url(./img/icons/location-spot.svg) left 10px center no-repeat #f7f7f7;
     background-size: 1em 1em;
     height: 35px;
     padding: 0 10px 0 30px;
@@ -49739,7 +49739,7 @@ _:future {
     right: 12.5px;
     width: 25px;
     height: 25px;
-    background-image: url(../img/icons/close--black.svg);
+    background-image: url(./img/icons/close--black.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -50059,12 +50059,12 @@ _:future {
 }
 
 .pm-ita-promote__button--a {
-    background-image: url(../img/modules/pm-ita/promote-button-a.svg);
+    background-image: url(./img/modules/pm-ita/promote-button-a.svg);
     background-position: 50% 40%
 }
 
 .pm-ita-promote__button--b {
-    background-image: url(../img/modules/pm-ita/promote-button-b.svg);
+    background-image: url(./img/modules/pm-ita/promote-button-b.svg);
     background-position: 53% 40%
 }
 
@@ -50074,7 +50074,7 @@ _:future {
     height: 21px;
     margin-right: 10px;
     background-repeat: no-repeat;
-    background-image: url(../img/icons/post--white.svg);
+    background-image: url(./img/icons/post--white.svg);
     background-size: 21px 21px;
     vertical-align: -4px
 }
@@ -50114,7 +50114,7 @@ _:future {
     margin-left: 0;
     background-size: 17px 17px;
     vertical-align: -5px;
-    background-image: url(../img/icons/filter--gray.svg)
+    background-image: url(./img/icons/filter--gray.svg)
 }
 
 .pm-ita-list__items {
@@ -50612,7 +50612,7 @@ _:future {
     z-index: 9000011;
     width: 40px;
     height: 40px;
-    background: url(../img/icons/close--white.svg) 50% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/close--white.svg) 50% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: 80% auto;
     cursor: pointer;
     border-radius: 4px
@@ -50621,7 +50621,7 @@ _:future {
 .pm-ita-detail__content__photo__modal .swiper-button-prev {
     width: 25px;
     height: 50px;
-    background: url(../img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: auto 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -50636,7 +50636,7 @@ _:future {
 .pm-ita-detail__content__photo__modal .swiper-button-next {
     width: 25px;
     height: 50px;
-    background: url(../img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
+    background: url(./img/icons/button-arrow-white.svg) 52% 50% no-repeat rgba(0, 0, 0, .5);
     background-size: auto 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -50993,7 +50993,7 @@ _:future {
     right: 12.5px;
     width: 25px;
     height: 25px;
-    background-image: url(../img/icons/close--black.svg);
+    background-image: url(./img/icons/close--black.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -51296,7 +51296,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-food.svg)
+    background-image: url(./img/modules/pm-ita/tag-food.svg)
 }
 
 .cs-text--icon-tag-seat {
@@ -51310,7 +51310,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-seat.svg)
+    background-image: url(./img/modules/pm-ita/tag-seat.svg)
 }
 
 .cs-text--icon-tag-equipment {
@@ -51324,7 +51324,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-equipment.svg)
+    background-image: url(./img/modules/pm-ita/tag-equipment.svg)
 }
 
 .cs-text--icon-tag-flight-service {
@@ -51338,7 +51338,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-flight-service.svg)
+    background-image: url(./img/modules/pm-ita/tag-flight-service.svg)
 }
 
 .cs-text--icon-tag-flight-equipment {
@@ -51352,7 +51352,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-flight-equipment.svg)
+    background-image: url(./img/modules/pm-ita/tag-flight-equipment.svg)
 }
 
 .cs-text--icon-tag-airport-service {
@@ -51366,7 +51366,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-airport-service.svg)
+    background-image: url(./img/modules/pm-ita/tag-airport-service.svg)
 }
 
 .cs-text--icon-tag-ticket {
@@ -51380,7 +51380,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-ticket.svg)
+    background-image: url(./img/modules/pm-ita/tag-ticket.svg)
 }
 
 .cs-text--icon-tag-mileage {
@@ -51394,7 +51394,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-mileage.svg)
+    background-image: url(./img/modules/pm-ita/tag-mileage.svg)
 }
 
 .cs-text--icon-tag-etc {
@@ -51408,7 +51408,7 @@ _:future {
     display: -ms-inline-flexbox;
     display: inline-flex;
     padding-left: 1.8em;
-    background-image: url(../img/modules/pm-ita/tag-etc.svg)
+    background-image: url(./img/modules/pm-ita/tag-etc.svg)
 }
 
 body {
@@ -51761,27 +51761,27 @@ html.is-header-menu-active body {
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon,
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon--small,
 .cs-response-a__button--like[data-csaction][data-state=active] .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/like-b--red.svg)
+    background-image: url(./img/icons/like-b--red.svg)
 }
 
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon,
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--medium,
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--small,
 .cs-response-c__button--like[data-csaction][data-state=active] .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/like-b--red.svg)
+    background-image: url(./img/icons/like-b--red.svg)
 }
 
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__icon,
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__icon--small,
 .cs-response-a__button--clip[data-csaction][data-state=active] .cs-response-a__icon--xsmall {
-    background-image: url(../img/icons/clip-b--red.svg)
+    background-image: url(./img/icons/clip-b--red.svg)
 }
 
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon,
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon--medium,
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon--small,
 .cs-response-c__button--clip[data-csaction][data-state=active] .cs-response-c__icon--xsmall {
-    background-image: url(../img/icons/clip-b--red.svg)
+    background-image: url(./img/icons/clip-b--red.svg)
 }
 
 @media all and (max-width:460px) {
@@ -52048,7 +52048,7 @@ html.is-header-menu-active body {
 }
 
 .pm-usr-2__badge--locked:after {
-    background-image: url(../img/icons/badge-locked--airplane.svg)
+    background-image: url(./img/icons/badge-locked--airplane.svg)
 }
 
 .cs-float-compose-button a {
@@ -52461,7 +52461,7 @@ html.is-header-menu-active body {
     display: block;
     width: 25px;
     height: 25px;
-    background: url(../img/icons/movie-white.svg) right bottom no-repeat;
+    background: url(./img/icons/movie-white.svg) right bottom no-repeat;
     background-size: contain;
     position: absolute;
     right: 5px;

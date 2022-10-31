@@ -19,6 +19,11 @@ const routes = [
     component: Home,
   },
   {
+    path: "/cs3-demo",
+    name: "home",
+    component: Home,
+  },
+  {
     path: "/placegallery",
     name: "placegallery-list",
     component: PlacegalleryList,
