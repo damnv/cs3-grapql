@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
+import { CREATE_COMMENT_PLUS_MUTATION } from "@/graphql/mutations";
 export default {
   name: "CommentPlus",
   mixins: [commonMixins],
@@ -82,37 +82,11 @@ export default {
     onCreate() {
       this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $commentId: Int!
-              $reactionId: Int!
-              $userId: Int!
-            ) {
-              createCommentPlus(
-                input: {
-                  comment_id: $commentId
-                  reaction_id: $reactionId
-                  user_id: $userId
-                }
-              ) {
-                result_code
-                data {
-                  num_good
-                  reactions {
-                    caption
-                    id
-                    img
-                    is_like
-                    num_reaction
-                  }
-                }
-              }
-            }
-          `,
+          mutation: CREATE_COMMENT_PLUS_MUTATION,
           variables: {
             commentId: 1,
             reactionId: 1,
-            userId: 1,
+            accessToken: "",
           },
           update: () => {},
         })

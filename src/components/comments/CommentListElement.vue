@@ -2,20 +2,7 @@
   <li class="cs-cmt-item js-thread-item">
     <div class="cs-cmt-item__header">
       <div class="cs-cmt-menu">
-        <div data-csdropdown="menu" class="cs-context-menu">
-          <div data-csdropdown="trigger" class="cs-context-menu__trigger"></div>
-          <div
-            data-csdropdown="content"
-            data-align="right"
-            class="cs-context-menu__content"
-          >
-            <ul class="cs-context-menu__items">
-              <li class="cs-context-menu__item">
-                <a href="#" class="cs-context-menu__link">報告する</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <EntryMenus></EntryMenus>
       </div>
       <div class="cs-cmt-item__header-author">
         <a href="#" class="cs-avatar--black">
@@ -39,53 +26,53 @@
     </div>
     <div class="cs-cmt-item__content">
       <div class="cs-cmt-item__body">
-        {{ comment.description }}
+        {{ comment.content }}
       </div>
       <div class="cs-cmt-item__res">
         <CommentPlus
-          v-if="comment.reations"
-          :count="comment.reations.total"
-          :reactions="comment.reactions"
+          v-if="comment.id"
+          :count="comment.reactions.total"
+          :reactions="comment.reactions.items"
           show-text
         ></CommentPlus>
         <div class="cs-response-a">
           <div data-csaction="comment" class="cs-response-a__button--comment">
             <i class="cs-response-a__icon--small"></i
             ><span class="cs-response-a__counter">{{ comment.comment }}</span
-            ><span class="cs-response-a__label">返信する</span>
+            ><span class="cs-response-a__label" @click="onReply">返信する</span>
           </div>
         </div>
       </div>
     </div>
     <!-- サブコメント-->
     <div data-cscmt-sub="root" class="cs-cmt-subthread">
-      <form data-cscmt-sub="form" data-api="/_api/cs-comments_02.json">
-        <input type="hidden" name="hoge" value="html-hoge" />
-        <input type="hidden" name="fuga" value="html-fuga" />
-      </form>
+      <form data-cscmt-sub="form"></form>
       <!-- サブコメント もっと見るボタン（上部）-->
-      <div class="cs-cmt-subthread__header">
+      <div class="cs-cmt-subthread__header" v-if="totalComment > 0">
         <div class="cs-cmt-subthread-more">
           <div
-            data-cscmt-sub="indicator"
-            class="cs-cmt-subthread-more__indicator is-hidden"
+            data-cscmt-sub="trigger"
+            class="cs-cmt-subthread-more__button"
+            @click="onLoadmore"
           >
-            <div class="cs-spinner-b--m">読み込み中</div>
-          </div>
-          <div data-cscmt-sub="trigger" class="cs-cmt-subthread-more__button">
-            他3件を見る
+            他{{ totalComment }}件を見る
           </div>
         </div>
       </div>
       <!-- / サブコメント もっと見るボタン（上部）-->
       <!-- サブコメント リスト-->
-      <ul data-cscmt-sub="list" class="cs-cmt-subthread__items"></ul>
+      <SubCommentList
+        :replies="comment.replies.items"
+        @onReply="onReply"
+      ></SubCommentList>
       <!-- サブコメント フォーム-->
-      <div class="cs-cmt-subitem-form is-hidden js-thread-item__form">
+      <div
+        class="cs-cmt-subitem-form js-thread-item__form"
+        :class="{ 'is-hidden': !isReply }"
+      >
         <!-- 動作確認用に method が get になっていますが、組み込み時には post に変えてください。-->
         <form
           data-cscmt-post-sub="form"
-          action="/_api/cs-comments-post_02.json"
           enctype="multipart/form-data"
           method="get"
         >
@@ -93,7 +80,7 @@
             <div class="cs-avatar">
               <div
                 v-bind:style="{
-                  'background-image': 'url(' + comment.user.profileImg + ')',
+                  'background-image': 'url(' + $auth.user.picture + ')',
                 }"
                 class="cs-avatar__image--35"
               ></div>
@@ -101,6 +88,7 @@
           </div>
           <div class="cs-cmt-subitem-form__button">
             <button
+              @click="onCreateComment"
               data-cscmt-post-sub="trigger"
               class="cs-button-b--1-m cs-button--w-50"
             >
@@ -109,6 +97,7 @@
           </div>
           <div class="cs-cmt-subitem-form__field">
             <textarea
+              v-model="description"
               data-cscmt-post-sub="field"
               data-csfield="h-auto"
               rows="1"
@@ -124,14 +113,42 @@
 
 <script>
 import CommentPlus from "./CommentPlus";
+import SubCommentList from "./SubCommentList.vue";
+import EntryMenus from "../common/EntryMenus.vue";
+import commonMixins from "@/mixins/common";
+import gql from "graphql-tag";
+
+import {
+  CREATE_COMMENT_MUTATION,
+  GET_SUB_COMMENTS_QUERY,
+} from "@/graphql/mutations";
 
 export default {
   name: "CommentListElement",
+  mixins: [commonMixins],
   data() {
-    return {};
+    return {
+      isReply: false,
+      description: "",
+    };
   },
-  components: { CommentPlus },
-  computed: {},
+  components: { CommentPlus, SubCommentList, EntryMenus },
+  computed: {
+    totalPage() {
+      return Math.ceil(this.comment.replies.total / this.comment.replies.limit);
+    },
+    totalComment() {
+      if (
+        !this.comment.replies ||
+        this.comment.replies.currentPage === this.totalPage
+      )
+        return 0;
+      return (
+        this.comment.replies.total -
+        this.comment.replies.limit * this.comment.replies.currentPage
+      );
+    },
+  },
   props: {
     comment: {
       type: Object,
@@ -139,7 +156,129 @@ export default {
     },
   },
   watch: {},
-  methods: {},
+  methods: {
+    onReply() {
+      this.isReply = true;
+    },
+    onCreateComment(e) {
+      e.preventDefault();
+      this.$apollo
+        .mutate({
+          mutation: CREATE_COMMENT_MUTATION,
+          variables: {
+            accessToken: "",
+            entryId: this.comment.entryId,
+            description: this.description,
+            commentImg: this.commentImg,
+            commentId: this.comment.id,
+          },
+        })
+        .then(({ data }) => {
+          this.description = "";
+          if (data.createComment?.result_code == 0) {
+            this.$emit("onUpdateComment", data.createComment.data);
+          }
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
+              this.newToast({
+                type: "error",
+                message: message,
+              });
+            });
+          }
+        });
+    },
+    onLoadmore(e) {
+      e.preventDefault();
+      this.$apollo
+        .query({
+          query: gql`
+            query MyQuery(
+              $commentId: Int!
+              $entryId: Int!
+              $accessToken: String
+              $currentPage: Int
+              $limit: Int
+              $sort: String
+              $moduleId: Int
+            ) {
+              getSubComments(
+                comment_id: $commentId
+                entry_id: $entryId
+                access_token: $accessToken
+                currentPage: $currentPage
+                limit: $limit
+                sort: $sort
+                module_id: $moduleId
+              ) {
+                result_code
+                data {
+                  total
+                  sort
+                  limit
+                  items {
+                    actionStatus {
+                      clip
+                      follow
+                      mute
+                      reaction
+                    }
+                    id
+                    entryId
+                    createdTime
+                    content
+                    comments
+                    commentId
+                    reactions {
+                      items {
+                        id
+                        icon
+                        count
+                        caption
+                      }
+                      total
+                    }
+                    user {
+                      id
+                      isAdmin
+                      nickname
+                      profileImg
+                      title
+                    }
+                  }
+                  currentPage
+                }
+              }
+            }
+          `,
+          variables: {
+            accessToken: "",
+            entryId: this.comment.entryId,
+            commentId: this.comment.id,
+            currentPage: this.comment.replies.currentPage + 1,
+          },
+        })
+        .then(({ data }) => {
+          this.description = "";
+          if (data.getSubComments?.result_code == 0) {
+            data.getSubComments.data.commentId = this.comment.id;
+            this.$emit("onUpdateSubComment", data.getSubComments.data);
+          }
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
+              this.newToast({
+                type: "error",
+                message: message,
+              });
+            });
+          }
+        });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped></style>

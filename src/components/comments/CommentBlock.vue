@@ -12,13 +12,19 @@
             :total-comments="totalComments"
             :entryId="entryId"
             :userId="userId"
+            :moudle="module"
             :doAddComment="doAddComment"
           ></CommentForm>
           <CommentList
             :comments="comments"
+            :currentPage="currentPage"
             :loadmore="loadmore"
             :entryId="entryId"
             :userId="userId"
+            :limit="limit"
+            @onUpdateComment="onUpdateComment"
+            @onUpdateSubComment="onUpdateSubComment"
+            @onUpdateCommentLoadmore="onUpdateCommentLoadmore"
           ></CommentList>
         </div>
         <!-- / コメント ブロック-->
@@ -37,13 +43,17 @@ export default {
     totalComments: {
       default: () => 0,
     },
+    currentPage: {
+      type: Number,
+      deafult: () => 1,
+    },
+    limit: {
+      type: Number,
+      deafult: () => 10,
+    },
     comments: {
       type: Array,
       default: () => [],
-    },
-    loadmore: {
-      type: Boolean,
-      deafult: () => false,
     },
     entryId: {
       type: Number,
@@ -53,8 +63,31 @@ export default {
       type: Number,
       deafult: () => 0,
     },
+    module: {
+      type: Object,
+      deafult: () => {},
+    },
     doAddComment: {
       type: Function,
+    },
+  },
+  computed: {
+    totalPage() {
+      return Math.ceil(this.totalComments / this.limit);
+    },
+    loadmore() {
+      return this.currentPage < this.totalPage;
+    },
+  },
+  methods: {
+    onUpdateComment(data) {
+      this.$emit("onUpdateComment", data);
+    },
+    onUpdateSubComment(data) {
+      this.$emit("onUpdateSubComment", data);
+    },
+    onUpdateCommentLoadmore(data) {
+      this.$emit("onUpdateCommentLoadmore", data);
     },
   },
 };

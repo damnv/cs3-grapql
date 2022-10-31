@@ -192,13 +192,13 @@
   <!-- end module-->
 </template>
 <script>
-import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
 import EntryPlus from "@/components/common/EntryPlus";
 import EntryComment from "@/components/common/EntryComment";
 import EntryView from "@/components/common/EntryView";
 import EntryMenus from "@/components/common/EntryMenus.vue";
 import Post from "@/components/partials/placegallery/Post.vue";
+import { GET_ENTRIES_QUERY } from "@/graphql/queries";
 
 export default {
   name: "PlacegalleryList",
@@ -225,89 +225,12 @@ export default {
       this.setLoading(true);
       this.$apollo
         .query({
-          query: gql`
-            query MyQuery(
-              $currentPage: Int
-              $limit: Int
-              $sort: String
-              $userId: Int
-            ) {
-              getEntries(
-                currentPage: $currentPage
-                limit: $limit
-                sort: $sort
-                user_id: $userId
-              ) {
-                result_code
-                data {
-                  currentPage
-                  items {
-                    actionStatus {
-                      clip
-                      follow
-                      mute
-                      reaction
-                    }
-                    caption
-                    category {
-                      caption
-                      description
-                      id
-                      img
-                    }
-                    comment
-                    createdTime
-                    curationSource
-                    description
-                    id
-                    medias {
-                      type
-                      url
-                    }
-                    module {
-                      alias
-                      caption
-                      id
-                    }
-                    reactions {
-                      total
-                      items {
-                        caption
-                        count
-                        icon
-                        id
-                      }
-                    }
-                    tags
-                    spot {
-                      name
-                      country
-                      region
-                      city
-                      street
-                    }
-                    thumbnail
-                    view
-                    user {
-                      id
-                      isAdmin
-                      nickname
-                      profileImg
-                      title
-                    }
-                  }
-                  limit
-                  sort
-                  total
-                }
-              }
-            }
-          `,
+          query: GET_ENTRIES_QUERY,
           variables: {
             currentPage: 1,
             limit: 0,
             sort: "new",
-            userId: 1,
+            accsetToken: "27655",
           },
           update: () => {},
           error(error) {
@@ -315,7 +238,6 @@ export default {
           },
         })
         .then(({ data }) => {
-          this.test = " damnv";
           this.entries = data.getEntries.data.items;
           this.totalCount = data.getEntries.data.total;
           this.isLoadmore = false;
@@ -354,8 +276,9 @@ export default {
   },
   apollo: {},
   computed: {},
-  created() {
-    this.getData();
+  created() {},
+  async mounted() {
+    await this.getData();
   },
 };
 </script>

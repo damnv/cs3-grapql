@@ -1,9 +1,10 @@
 import { DATE_TIME_FORMAT } from "@/constants/common";
 import moment from "moment";
+moment.locale("ja");
 
 export const convertDateTime = (value, format = DATE_TIME_FORMAT) => {
   if (!moment(value).isValid()) return;
-  return moment(value).format(format);
+  return moment.unix(value).format(format);
 };
 
 export const getRandomUUID = () => {

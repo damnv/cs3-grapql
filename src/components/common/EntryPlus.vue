@@ -8,14 +8,14 @@
       >
         <i
           data-csreaction="button-icon"
-          v-if="!reactionAtive"
+          v-if="!reactionActive"
           class="cs-response-c__icon--medium"
         ></i>
         <i
           data-csreaction="button-icon"
           v-else
           v-bind:style="{
-            'background-image': 'url(' + reactionAtive.icon + ') !important',
+            'background-image': 'url(' + reactionActive.icon + ') !important',
           }"
           class="cs-response-c__icon--medium"
         ></i
@@ -68,8 +68,12 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
+import {
+  CREATE_ENTRY_PLUS_MUTATION,
+  DELETE_ENTRY_PLUS_MUTATION,
+} from "@/graphql/mutations";
+
 export default {
   name: "EntryPlus",
   mixins: [commonMixins],
@@ -109,7 +113,7 @@ export default {
   },
   apollo: {},
   computed: {
-    reactionAtive() {
+    reactionActive() {
       let reaction;
       this.reactions.forEach((item) => {
         if (item.id == this.stateActive) reaction = item;
@@ -121,39 +125,11 @@ export default {
     onCreate(reactionId) {
       this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $entryId: Int!
-              $reactionId: Int!
-              $userId: Int!
-            ) {
-              createEntryPlus(
-                entry_id: $entryId
-                reaction_id: $reactionId
-                user_id: $userId
-              ) {
-                data {
-                  actionStatus {
-                    reaction
-                  }
-                  reaction {
-                    items {
-                      caption
-                      count
-                      icon
-                      id
-                    }
-                    total
-                  }
-                }
-                result_code
-              }
-            }
-          `,
+          mutation: CREATE_ENTRY_PLUS_MUTATION,
           variables: {
             entryId: this.entryId,
             reactionId: reactionId,
-            userId: this.userId,
+            accessToken: "",
           },
           update: () => {},
         })
@@ -176,42 +152,13 @@ export default {
           }
         });
     },
-    onDelete(reactionId) {
+    onDelete() {
       this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $userId: Int!
-              $reactionId: Int
-              $entryId: Int!
-            ) {
-              deleteEntryPlus(
-                user_id: $userId
-                reaction_id: $reactionId
-                entry_id: $entryId
-              ) {
-                data {
-                  actionStatus {
-                    reaction
-                  }
-                  reaction {
-                    items {
-                      caption
-                      count
-                      icon
-                      id
-                    }
-                    total
-                  }
-                }
-                result_code
-              }
-            }
-          `,
+          mutation: DELETE_ENTRY_PLUS_MUTATION,
           variables: {
             entryId: this.entryId,
-            reactionId: reactionId,
-            userId: this.userId,
+            accessToken: "",
           },
           update: () => {},
         })
@@ -235,8 +182,8 @@ export default {
         });
     },
     handleReaction(reactionId) {
-      if (this.reactionAtive && this.stateActive == reactionId) {
-        this.onDelete(reactionId);
+      if (this.reactionActive && this.stateActive == reactionId) {
+        this.onDelete();
       } else {
         this.onCreate(reactionId);
       }

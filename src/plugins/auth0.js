@@ -136,10 +136,13 @@ export const useAuth0 = ({
           await apiService
             .post("", graphqlQuery)
             .then(({ data }) => {
-              console.log(data)
-              if(data?.errors){
-                data.errors.forEach( error => {
-                  console.log(error.message)
+              if (data.data.login) {
+                this.user.id = data.data.login.data.id;
+                console.log(this.user);
+              }
+              if (data?.errors) {
+                data.errors.forEach((error) => {
+                  console.log(error.message);
                   // this.newToast({
                   //   type: 'error',
                   //   message: error.message
@@ -148,7 +151,7 @@ export const useAuth0 = ({
               }
             })
             .catch((error) => {
-              console.log(error)
+              console.log(error);
             });
         }
       }

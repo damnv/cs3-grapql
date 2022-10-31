@@ -7,7 +7,7 @@ import axios from "axios";
 //   removeRefreshToken,
 // } from "@/utils/auth";
 
-const baseDomain = process.env.VUE_APP_API_GRAPQL_URL;
+const baseDomain = process.env.VUE_APP_API_GRAPHQL_URL;
 const apiKey = process.env.VUE_APP_API_KEY;
 export const baseURL = `${baseDomain}`;
 export const customHeaders = {

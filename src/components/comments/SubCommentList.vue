@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <SubCommentListElement></SubCommentListElement>
-  </div>
+  <ul
+    data-cscmt-sub="list"
+    class="cs-cmt-subthread__items"
+    v-if="replies.length"
+  >
+    <SubCommentListElement
+      v-for="(reply, index) in replies"
+      :reply="reply"
+      :key="index"
+      @onReply="onReply"
+    ></SubCommentListElement>
+  </ul>
 </template>
 
 <script>
@@ -14,11 +23,19 @@ export default {
   },
   computed: {},
   props: {
-    subComments: Object,
+    replies: {
+      type: Array,
+      default: () => [],
+    },
     commentId: Number,
   },
   components: {
     SubCommentListElement,
+  },
+  methods: {
+    onReply() {
+      this.$emit("onReply");
+    },
   },
   mounted() {},
 };

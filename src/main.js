@@ -16,7 +16,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { Auth0Plugin } from "./plugins/auth0";
 import { domain, clientId, audience } from "./auth_config.json";
 
-const BASE_URL_GRAPQL = process.env.VUE_APP_API_GRAPQL_URL;
+const BASE_URL_GRAPQL = process.env.VUE_APP_API_GRAPHQL_URL;
 const API_KEY = process.env.VUE_APP_API_KEY;
 
 // HTTP connection to the API
@@ -35,6 +35,9 @@ const cache = new InMemoryCache();
 const apolloClient = new ApolloClient({
   link: httpLink,
   cache,
+  onError(err) {
+    console.log(err);
+  },
 });
 
 Vue.config.productionTip = false;

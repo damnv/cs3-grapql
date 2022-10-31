@@ -88,9 +88,10 @@
                   <h5 class="ml-4">
                     {{ entry.caption }}
                   </h5>
-                  <div class="pm-pla-detail__content__text mt-4">
-                    {{ entry.description }}
-                  </div>
+                  <div
+                    class="pm-pla-detail__content__text mt-4"
+                    v-html="entry.description"
+                  ></div>
                   <div class="pm-pla-detail__content__place" v-if="entry.spot">
                     <div class="pm-pla-detail__content__place__text">
                       <a href="#" class="cs-text--icon-location-spot"
@@ -122,8 +123,10 @@
                       <div class="cs-resp-set__item">
                         <EntryPlus
                           v-if="entry.reactions"
+                          :entry-id="entry.id"
                           :count="entry.reactions.total"
                           :reactions="entry.reactions.items"
+                          :state-active="entry.actionStatus.reaction"
                           @onUpdate="onUpdateEntry"
                           show-text
                           class-content="cs-reaction-a"
@@ -160,9 +163,14 @@
             :total-comments="totalComments"
             :comments="comments"
             :entryId="entry.id"
-            :userId="currentUser"
+            :userId="$auth.user.id"
             :loadmore="isLoadmoreComments"
+            :current-page="currentPage"
+            :limit="limitOfPage"
             :doAddComment="doAddComment"
+            @onUpdateComment="onUpdateComment"
+            @onUpdateSubComment="onUpdateSubComment"
+            @onUpdateCommentLoadmore="onUpdateCommentLoadmore"
           ></CommentBlock>
         </div>
       </div>
@@ -181,6 +189,8 @@ import CommentBlock from "../../components/comments/CommentBlock.vue";
 import EntryFollow from "@/components/common/EntryFollow.vue";
 import commonMixins from "@/mixins/common";
 
+import { GET_COMMENT_ENTRY_QUERY, GET_ENTRY_QUERY } from "@/graphql/queries";
+
 import gql from "graphql-tag";
 export default {
   name: "PlacegalleryDetail",
@@ -197,91 +207,16 @@ export default {
   },
   data: () => ({
     entry: {},
-    currentUser: 1,
     userReactions: [],
     totalUserReactions: 0,
     totalComments: 0,
+    currentPage: 1,
+    limitOfPage: 10,
     comments: [],
     isLoadmoreComments: false,
     entryId: null,
   }),
   apollo: {
-    getEntryById: {
-      query: gql`
-        query MyQuery($entryId: Int!) {
-          getEntryById(id: $entryId) {
-            data {
-              actionStatus {
-                clip
-                follow
-                reaction
-                mute
-              }
-              caption
-              comment
-              createdTime
-              curationSource
-              description
-              id
-              view
-              user {
-                isAdmin
-                id
-                nickname
-                profileImg
-                title
-              }
-              tags
-              thumbnail
-              reactions {
-                total
-                items {
-                  caption
-                  count
-                  icon
-                  id
-                }
-              }
-              spot {
-                city
-                country
-                name
-                region
-                street
-              }
-              module {
-                alias
-                caption
-                id
-              }
-              medias {
-                type
-                url
-              }
-            }
-            result_code
-          }
-        }
-      `,
-      variables: () => {
-        return {
-          entryId: "3123",
-        };
-      },
-      update({ getEntryById }) {
-        this.entry = getEntryById.data;
-      },
-      error(error) {
-        if (error.graphQLErrors) {
-          error.graphQLErrors.forEach(({ message }) => {
-            this.newToast({
-              type: "error",
-              message: message,
-            });
-          });
-        }
-      },
-    },
     getUserReactionsByEntryId: {
       query: gql`
         query MyQuery {
@@ -309,106 +244,12 @@ export default {
         }
       },
     },
-    getCommentsByEntryId: {
-      query: gql`
-        query MyQuery {
-          getCommentsByEntryId(
-            currentPage: 10
-            entry_id: 10
-            limit: 10
-            sort: ""
-            user_id: 10
-          ) {
-            data {
-              currentPage
-              items {
-                actionStatus {
-                  clip
-                  follow
-                  mute
-                  reaction
-                }
-                commentId
-                content
-                createdTime
-                entryId
-                id
-                user {
-                  title
-                  profileImg
-                  nickname
-                  isAdmin
-                  id
-                }
-                replies {
-                  total
-                  limit
-                  sort
-                  currentPage
-                  items {
-                    id
-                    entryId
-                    createdTime
-                    content
-                    comments
-                    commentId
-                    reactions {
-                      total
-                      items {
-                        id
-                        icon
-                        count
-                        caption
-                      }
-                    }
-                    user {
-                      profileImg
-                      title
-                      nickname
-                      isAdmin
-                      id
-                    }
-                  }
-                }
-                reactions {
-                  total
-                  items {
-                    id
-                    icon
-                    count
-                    caption
-                  }
-                }
-                medias {
-                  url
-                  type
-                }
-              }
-              total
-              sort
-              limit
-            }
-            result_code
-          }
-        }
-      `,
-      update({ getCommentsByEntryId }) {
-        this.comments = getCommentsByEntryId.data.items;
-        this.totalComments = getCommentsByEntryId.data.total;
-      },
-      error(error) {
-        if (error.graphQLErrors) {
-          error.graphQLErrors.forEach(({ message }) => {
-            this.newToast({
-              type: "error",
-              message: message,
-            });
-          });
-        }
-      },
+  },
+  computed: {
+    currentUser() {
+      return this.$auth.user.id;
     },
   },
-  computed: {},
   methods: {
     goTo(name = null) {
       if (name) {
@@ -426,12 +267,125 @@ export default {
       this.comments.unshift({ ...comment });
     },
     onUpdateEntry(data) {
-      entry.reactions = data.reaction;
-      entry.actionStatus.reaction = data.actionStatus.reaction;
+      if (data) {
+        this.entry.reactions = data.reactions;
+        this.entry.actionStatus.reaction = data.actionStatus.reaction;
+      }
+    },
+    onUpdateComment(data) {
+      this.comments.map((item) => {
+        if ((item.id = data.commentId)) {
+          item.replies.items.push(data);
+        }
+      });
+    },
+    onUpdateSubComment(data) {
+      this.comments.map((comment) => {
+        if (comment.id === data.commentId) {
+          comment.replies.currentPage = data.currentPage;
+          comment.replies.items = comment.replies.items.concat(data.items);
+        }
+      });
+    },
+    onUpdateCommentLoadmore(data) {
+      this.comments = this.comments.concat(data.items);
+      this.currentPage = data.currentPage;
+    },
+    getEntryById(entryId) {
+      this.setLoading(true);
+      this.$apollo
+        .query({
+          query: GET_ENTRY_QUERY,
+          variables: {
+            currentPage: 1,
+            entryId: entryId,
+            limit: 10,
+            sort: "new",
+            userId: 213,
+          },
+          update: () => {},
+          error(error) {
+            console.log(error);
+          },
+        })
+        .then(({ data }) => {
+          this.entry = data.getEntryById.data;
+          this.setLoading(false);
+        })
+        .catch(({ graphQLErrors, networkError }) => {
+          this.setLoading(false);
+          setTimeout(() => {
+            if (graphQLErrors) {
+              graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+            if (networkError) {
+              networkError.result.errors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          }, 200);
+        });
+    },
+    getCommentByEntryId(entryId) {
+      this.setLoading(true);
+      this.$apollo
+        .query({
+          query: GET_COMMENT_ENTRY_QUERY,
+          variables: {
+            currentPage: 1,
+            entryId: entryId,
+            limit: 10,
+            sort: "new",
+            userId: 213,
+          },
+          update: ({ getCommentsByEntryId }) => {
+            console.log(getCommentsByEntryId);
+          },
+          error(error) {
+            console.log(error);
+          },
+        })
+        .then(({ data }) => {
+          this.comments = data.getCommentsByEntryId.data.items;
+          this.totalComments = data.getCommentsByEntryId.data.total;
+          this.currentPage = data.getCommentsByEntryId.data.currentPage;
+          this.limitOfPage = data.getCommentsByEntryId.data.limit;
+          this.setLoading(false);
+        })
+        .catch(({ graphQLErrors, networkError }) => {
+          this.setLoading(false);
+          setTimeout(() => {
+            if (graphQLErrors) {
+              graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+            if (networkError) {
+              networkError.result.errors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          }, 200);
+        });
     },
   },
-  created() {
-    this.entryId = this.$route.params.id;
+  async created() {
+    await this.getEntryById(this.$route.params.id);
+    await this.getCommentByEntryId(this.$route.params.id);
   },
 };
 </script>

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <form data-cscmt="form" data-api="/_api/cs-comments_01.json">
-      <input type="hidden" name="hoge" value="html-hoge" />
-      <input type="hidden" name="fuga" value="html-fuga" />
-    </form>
+    <form data-cscmt="form"></form>
     <div class="cs-cmt__header">
       <div class="cs-cmt-header">
         <div class="cs-cmt-header__left">
@@ -30,7 +27,9 @@
       >
         <div class="cs-cmt-post__image">
           <div
-            style="background-image: url('http://placeimg.com/300/200/people')"
+            v-bind:style="{
+              'background-image': 'url(' + $auth.user.picture + ')',
+            }"
             class="cs-avatar__image--35"
           ></div>
         </div>
@@ -48,8 +47,10 @@
           <div data-error-name="comment_text" class="cs-cmt-post-error"></div>
           <div class="cs-cmt-post__footer">
             <div class="cs-cmt-post__characters">
-              あと<span data-cstextcounter="counter" class="cs-cmt-post__count"
-                >1000</span
+              あと<span
+                data-cstextcounter="counter"
+                class="cs-cmt-post__count"
+                >{{ descCounter }}</span
               >文字
             </div>
             <div data-csimage-preview="container" class="cs-cmt-post__image">
@@ -94,9 +95,8 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
-
+import { CREATE_COMMENT_MUTATION } from "@/graphql/mutations";
 export default {
   name: "CommentForm",
   mixins: [commonMixins],
@@ -122,64 +122,31 @@ export default {
     doAddComment: {
       type: Function,
     },
+    module: {
+      type: Object,
+      deafult: () => {},
+    },
+  },
+  computed: {
+    descCounter() {
+      return 1000 - this.description.length;
+    },
   },
   methods: {
     onCreateComment(e) {
       e.preventDefault();
       this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $entryId: Int!
-              $userId: Int!
-              $description: String!
-              $commentImg: String
-            ) {
-              createComment(
-                input: {
-                  user_id: $userId
-                  entry_id: $entryId
-                  description: $description
-                  comment_img: $commentImg
-                }
-              ) {
-                result_code
-                data {
-                  id
-                  img
-                  img2
-                  num_comment
-                  num_good
-                  reactions {
-                    id
-                    caption
-                    img
-                    num_reaction
-                    is_like
-                  }
-                  user {
-                    nickname
-                    id
-                    profile_img
-                    created
-                  }
-                  description
-                  caption
-                  created
-                  entry_id
-                  comment_id
-                }
-              }
-            }
-          `,
+          mutation: CREATE_COMMENT_MUTATION,
           variables: {
-            userId: this.userId,
+            accessToken: "",
             entryId: this.entryId,
             description: this.description,
             commentImg: this.commentImg,
           },
         })
         .then(({ data }) => {
+          this.description = "";
           if (data.createComment?.result_code == 0) {
             this.doAddComment(data.createComment.data);
           }
