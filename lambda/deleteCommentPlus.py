@@ -2,23 +2,21 @@ import json
 import sys
 import services.rds_utils as RDU
 from datetime import datetime
-import model.module as Module
-import model.reaction as Reaction
-import model.entry_plus as EntryPlus
 import model.entry as Entry
+import model.module as Module
+import model.entry_comment as EntryComment
+import model.entry_comment_plus as EntryCommentPlus
+import model.reaction as Reaction
 import pytz
 tokyoTz = pytz.timezone("Asia/Tokyo")
 
 TODAY = datetime.now(tokyoTz).strftime('%Y-%m-%d %H:%M:%S')
 
-
 def lambda_handler(event, context):
     # TODO implement
     arguments = event.get('arguments')
-    entry_id = arguments.get('entry_id')
+    comment_id = arguments.get('comment_id')
     user_id = arguments.get('user_id')
-
-    entry = Entry.getEntryById(entry_id)
 
     if not user_id:
         return {
@@ -29,7 +27,8 @@ def lambda_handler(event, context):
             }
         }
 
-    if not entry:
+    comment = EntryComment.getEntryById(comment_id)
+    if not comment:
         return {
             "result_code": 1,
             "error": {
@@ -37,11 +36,10 @@ def lambda_handler(event, context):
                 "error_message": "entry not existed"
             }
         }
-
-    entry_plus = EntryPlus.getEntryPlus(entry_id, user_id)
-    if entry_plus:
-        sql = "UPDATE `cs_entry_plus` SET `deleted` = %s, `modified` = %s WHERE `id` = %s"
-        val = (TODAY, TODAY, entry_plus['id'])
+    entry_comment_plus = EntryCommentPlus.getEntryCommentPlus(comment.get('entry_id'), comment.get('id') , user_id)
+    if entry_comment_plus:
+        sql = "UPDATE `cs_entry_comment_plus` SET `deleted` = %s, `modified` = %s WHERE `id` = %s"
+        val = (TODAY, TODAY, entry_comment_plus['id'])
         RDU.insertUpdate(sql, val)
     else:
         return {
@@ -51,23 +49,20 @@ def lambda_handler(event, context):
                 "error_message": "user not reaction"
             }
         }
-
-    sql = "UPDATE `cs_entry` SET `num_good` = %s, `modified` = %s WHERE `id` = %s"
-    num_good = EntryPlus.getCountEntryPlus(entry['id'])
-    val = (str(num_good), TODAY, str(entry['id']))
+    sql = "UPDATE `cs_entry_comment` SET `num_good` = %s, `modified` = %s WHERE `id` = %s"
+    num_good = EntryCommentPlus.getCountEntryCommentPlus(comment.get('entry_id'), comment.get('id'))
+    val = (num_good, TODAY, str(comment.get('id')))
     RDU.insertUpdate(sql, val)
-
-    module = Module.getModuleById(entry['module_id']) if entry['module_id'] else None
+    entry = Entry.getEntryById(comment.get('entry_id'))
+    module = Module.getModuleById(entry.get('module_id')) if entry.get('module_id') else None
     reaction_ids = None
     if module:  reaction_ids = module['reaction_ids']
     response_body = {}
     response_body['reactions'] = {}
     response_body['reactions']['total'] = num_good
-
-    response_body['reactions']["items"] = Reaction.getOptionReactions(reaction_ids, entry['id'])
+    response_body['reactions']["items"] = Reaction.getOptionReactions(reaction_ids, comment.get('entry_id'), comment.get('id'), True)
     response_body['actionStatus'] = {}
     response_body['actionStatus']['reaction'] = None
-    print(response_body)
     return {
         'result_code': 0,
         'data': response_body

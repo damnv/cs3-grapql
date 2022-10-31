@@ -8,10 +8,12 @@ import model.entry_spot as EntrySpot
 import model.user_follow as UserFollow
 import model.user_mute as UserMute
 import model.entry_plus as EntryPlus
+import model.entry_comment as EntryComment
 import pytz
 
 tokyoTz = pytz.timezone("Asia/Tokyo")
 
+NOW = datetime.now(tokyoTz).strftime('%Y-%m-%d %H:%M:%S')
 STATUS_NEW       = '1'
 STATUS_APPROVAL  = '2'
 
@@ -30,26 +32,26 @@ def sortCondition(sort):
     return switcher.get(sort, "created DESC")
 
 def getEntries(input, limit = 10, offset = 0):
-    now = datetime.now(tokyoTz).strftime('%Y-%m-%d %H:%M:%S')
     query = "SELECT `es`.*, `us`.`profile_img`, `us`.`nickname`, `ess`.`name`, `ess`.`region`, `ess`.`city` "
     query += "FROM `cs_entry` AS `es` INNER JOIN `cs_user` AS `us` ON es.user_id = us.id LEFT JOIN `cs_entry_spot` AS `ess` ON es.id = ess.entry_id "
-    query += "WHERE (es.deleted IS NULL) AND (us.deleted IS NULL) AND (ess.deleted IS NULL) AND (es.status in (" + STATUS_NEW + ", " + STATUS_APPROVAL + ")) AND (es.opened is null or es.opened <= '" + str(now) + "') AND (es.closed is null or es.closed >= '" + str(now) + "')" 
+    query += "WHERE (es.deleted IS NULL) AND (us.deleted IS NULL) AND (ess.deleted IS NULL) AND (es.status in (" + STATUS_NEW + ", " + STATUS_APPROVAL + ")) AND (es.opened is null or es.opened <= '" + str(NOW) + "') AND (es.closed is null or es.closed >= '" + str(NOW) + "')"
 
-    if 'module_id' in input and input['module_id']: query += " AND (es.module_id = " + str(input['module_id']) + ")"
+    if input.get('module_id'): query += " AND (es.module_id = " + str(input.get('module_id')) + ")"
 
-    if 'sort' in input and input['sort']: query += " ORDER BY es." + str(input['sort'])
+    if input.get('sort'): query += " ORDER BY es." + str(input.get('sort'))
     if limit:
         if offset: query += " LIMIT " + str(limit) + " OFFSET " + str(offset)
         else: query += " LIMIT " + str(limit)
     return RDU.fetchAll(query)
 
 def getTotalEntries(input):
-    now = datetime.now(tokyoTz).strftime('%Y-%m-%d %H:%M:%S')
-    query ="SELECT COUNT(`es`.id) as cnt FROM `cs_entry` AS `es` INNER JOIN `cs_user` AS `us` ON es.user_id = us.id LEFT JOIN `cs_entry_spot` AS `ess` ON es.id = ess.entry_id WHERE (es.deleted IS NULL) AND (us.deleted IS NULL) AND (ess.deleted IS NULL) AND (es.status in (" + STATUS_NEW + ", " + STATUS_APPROVAL + ")) AND (es.opened is null or es.opened <= '" + str(now) + "') AND (es.closed is null or es.closed >= '" + str(now) + "')" 
+    query = "SELECT COUNT(`es`.id) as cnt "
+    query += "FROM `cs_entry` AS `es` INNER JOIN `cs_user` AS `us` ON es.user_id = us.id LEFT JOIN `cs_entry_spot` AS `ess` ON es.id = ess.entry_id "
+    query += "WHERE (es.deleted IS NULL) AND (us.deleted IS NULL) AND (ess.deleted IS NULL) AND (es.status in (" + STATUS_NEW + ", " + STATUS_APPROVAL + ")) AND (es.opened is null or es.opened <= '" + str(NOW) + "') AND (es.closed is null or es.closed >= '" + str(NOW) + "')"
 
-    if 'module_id' in input and input['module_id']: query += " AND (es.module_id = " + str(input['module_id']) + ")"
+    if input.get('module_id'): query += " AND (es.module_id = " + str(input.get('module_id')) + ")"
 
-    if 'sort' in input and input['sort']: query += " ORDER BY es." + str(input['sort'])
+    if input.get('sort'): query += " ORDER BY es." + str(input.get('sort'))
 
     result = RDU.fetchOne(query)
 
@@ -150,3 +152,18 @@ def convertImage(item):
         images.append(image)
 
     return images
+
+def doUpdateComment(entry_id):
+    total = EntryComment.countComment(entry_id)
+    sql = "UPDATE `cs_entry` SET `num_comment` = %s, `modified` = %s WHERE `id` = %s"
+    val = (total, NOW, entry_id)
+    RDU.insertUpdate(sql, val)
+
+    return True
+
+def doUpdateNumView(entry_id, num_view):
+    sql = "UPDATE `cs_entry` SET `num_view` = %s,`modified` = %s WHERE `id` = %s"
+    val = (num_view, NOW, entry_id)
+    RDU.insertUpdate(sql, val)
+
+    return True

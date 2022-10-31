@@ -1,7 +1,7 @@
 import services.rds_utils as RDU
 from datetime import datetime
 import model.entry_plus as EntryPlus
-
+import model.entry_comment_plus as EntryCommentPlus
 
 def getReactions(ids = None):
     query = "SELECT `cs_reaction_master`.* FROM `cs_reaction_master` WHERE (deleted IS NULL)"
@@ -10,7 +10,7 @@ def getReactions(ids = None):
 
     return RDU.fetchAll(query)
 
-def getOptionReactions(reaction_ids, entry_id):
+def getOptionReactions(reaction_ids, entry_id, comment_id = None, is_comment = False):
     reactions = []
     if not reaction_ids: return reactions
     result = getReactions(reaction_ids)
@@ -20,7 +20,11 @@ def getOptionReactions(reaction_ids, entry_id):
             reaction['id'] = item['id']
             reaction['icon'] = item['reaction_img']
             reaction['name'] = item['reaction_name']
-            reaction['count'] = EntryPlus.getCountEntryPlus(entry_id, item['id'])
+            if is_comment:
+                reaction['count'] = EntryCommentPlus.getCountEntryCommentPlus(entry_id, comment_id, item['id'])
+            else:
+                reaction['count'] = EntryPlus.getCountEntryPlus(entry_id, item['id'])
+
             reactions.append(reaction)
 
     return reactions
