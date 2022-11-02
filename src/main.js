@@ -15,9 +15,11 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 // import { createUploadLink } from "apollo-upload-client";
 import { Auth0Plugin } from "./plugins/auth0";
 import { domain, clientId, audience } from "./auth_config.json";
+import { getToken } from "@/utils/auth";
 
 const BASE_URL_GRAPQL = process.env.VUE_APP_API_GRAPHQL_URL;
 const API_KEY = process.env.VUE_APP_API_KEY;
+const accessToken = getToken();
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -25,6 +27,7 @@ const httpLink = createHttpLink({
   uri: BASE_URL_GRAPQL,
   headers: {
     "x-api-key": API_KEY,
+    Authorization: `Bearer ${accessToken}`,
   },
 });
 
@@ -54,6 +57,7 @@ Vue.use(Auth0Plugin, {
         : window.location.pathname
     );
   },
+  scope: "openid profile email offline_access",
 });
 
 const apolloProvider = new VueApollo({

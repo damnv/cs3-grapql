@@ -10,10 +10,10 @@
         ></div>
       </template>
       <ul class="cs-context-menu__items">
-        <li class="cs-context-menu__item">
+        <li class="cs-context-menu__item" v-if="!hiddenEdit">
           <p class="cs-context-menu__link">編集する</p>
         </li>
-        <li class="cs-context-menu__item" @click="handleShowModalDelete">
+        <li class="cs-context-menu__item" @click="handleShowModalDelete" v-if="!hiddenDelete">
           <p
             data-csmodal="trigger"
             class="cs-context-menu__link cs-context-menu__link"
@@ -24,6 +24,7 @@
         <li
           class="cs-context-menu__item"
           @click.prevent="handleShowModalReport"
+          v-if="!hiddenReport"
         >
           <p class="cs-context-menu__link">報告する</p>
         </li>
@@ -57,7 +58,7 @@
           <!-- フォーム-->
           <div data-modal-report-type="init" class="isShow">
             <div class="cs-modal-report__heading">
-              <div class="cs-modal-report__title">投稿の報告</div>
+              <div class="cs-modal-report__title">投稿の報告 {{ reportValue }}</div>
               <div class="cs-modal-report__body">
                 「cs3
                 grapql」内において、利用規約に違反する疑いがある投稿を発見された場合は、こちらより該当する理由を選択の上報告ください。
@@ -73,87 +74,18 @@
             <form id="js-modal-report-form" data-modal-report-el="form">
               <div
                 data-modal-report-el="form-input-list"
-                class="cs-modal-report__input-list"
+                class="cs-modal-report__input-list" v-if="reportList.length"
               >
-                <label class="cs-modal-report__label"
-                  ><input
+                <label class="cs-modal-report__label" v-for="(report, index) in reportList" :key="index">
+                  <input
+                    @click="handleReport(report)"
                     type="radio"
                     class="cs-modal-report__radio"
                     name="violate_type"
-                    id="violate_type-1"
-                    value="1"
+                    :id="report.key"
+                    :value="report.type"
                   /><span class="cs-modal-report__radio-text"
-                    >宣伝、広告的な利用</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-2"
-                    value="2"
-                  /><span class="cs-modal-report__radio-text"
-                    >投稿内容が重複している</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-3"
-                    value="3"
-                  /><span class="cs-modal-report__radio-text"
-                    >不適切な投稿</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-4"
-                    value="4"
-                  /><span class="cs-modal-report__radio-text"
-                    >カテゴリ違いの投稿</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-5"
-                    value="5"
-                  /><span class="cs-modal-report__radio-text"
-                    >個人情報の掲載</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-6"
-                    value="6"
-                  /><span class="cs-modal-report__radio-text"
-                    >悪質なリンク</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-7"
-                    value="7"
-                  /><span class="cs-modal-report__radio-text"
-                    >不適切な画像の掲載</span
-                  ></label
-                ><label class="cs-modal-report__label"
-                  ><input
-                    type="radio"
-                    class="cs-modal-report__radio"
-                    name="violate_type"
-                    id="violate_type-8"
-                    value="8"
-                  /><span class="cs-modal-report__radio-text"
-                    >その他</span
+                    >{{ report.name }}</span
                   ></label
                 >
               </div>
@@ -236,8 +168,8 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
+import { DELETE_ENTRY_MUTATION, REPORT_MUTATION } from "@/graphql/mutations"
 
 export default {
   name: "EntryMenus",
@@ -247,15 +179,95 @@ export default {
       type: String,
       default: () => "",
     },
+    entryId: {
+      type: Number,
+      default: () => 0,
+    },
+    userId: {
+      type: Number,
+      default: () => 0,
+    },
+    customReport: {
+      type: Function
+    },
+    customDetele: {
+      type: Function
+    },
+    isCustomDelete: {
+      type: Boolean,
+      default: () => false,
+    },
+    hiddenReport: {
+      type: Boolean,
+      default: () => false,
+    },
+    hiddenDelete: {
+      type: Boolean,
+      default: () => false,
+    },
+    hiddenEdit: {
+      type: Boolean,
+      default: () => false,
+    },
   },
   data() {
     return {
       dialogDelete: false,
       dialogReport: false,
-      reason: "",
+      reportValue: {},
+      reportList: [
+        {
+          name: '宣伝、広告的な利用',
+          key: 'violate_type-1',
+          type: 1
+        },
+        {
+          name: '宣伝、広告的な利用',
+          key: 'violate_type-2',
+          type: 2
+        },
+        {
+          name: '投稿内容が重複している',
+          key: 'violate_type-3',
+          type: 3
+        },
+        {
+          name: '不適切な投稿',
+          key: 'violate_type-4',
+          type: 4
+        },
+        {
+          name: 'カテゴリ違いの投稿',
+          key: 'violate_type-5',
+          type: 5
+        },
+        {
+          name: '個人情報の掲載',
+          key: 'violate_type-6',
+          type: 6
+        },
+        {
+          name: '悪質なリンク',
+          key: 'violate_type-7',
+          type: 7
+        },
+        {
+          name: '不適切な画像の掲載',
+          key: 'violate_type-8',
+          type: 8
+        },
+        {
+          name: 'その他',
+          key: 'violate_type-9',
+          type: 9
+        },
+      ]
     };
   },
   methods: {
+    handleReport(value){
+      this.reportValue = value
+    },
     handleShowModalDelete() {
       this.dialogDelete = true;
     },
@@ -269,86 +281,79 @@ export default {
       this.dialogReport = false;
     },
     onDelete() {
-      this.$apollo
-        .mutate({
-          mutation: gql`
-            mutation MyMutation($entryId: Int!, $userId: Int!) {
-              deleteEntry(entry_id: $entryId, user_id: $userId) {
-                result_code
-              }
-            }
-          `,
-          variables: {
-            entryId: 1,
-            userId: 1,
-          },
-          update: () => {},
-        })
-        .then(() => {
-          this.dialogDelete = false;
-          this.$router.push({ name: "placegallery-list" });
-          setTimeout(() => {
-            this.newToast({
-              type: "success",
-              message: "Delete entry success",
-            });
-          }, 0);
-        })
-        .catch((error) => {
-          this.dialogDelete = false;
-          if (error.graphQLErrors) {
-            error.graphQLErrors.forEach(({ message }) => {
+      if(this.isCustomDelete){
+        this.customDetele();
+        // this.dialogDelete = false;
+      }
+      else{
+        this.$apollo
+          .mutate({
+            mutation: DELETE_ENTRY_MUTATION,
+            variables: {
+              entryId: this.entryId,
+              accessToken: '',
+            },
+            update: () => {},
+          })
+          .then(() => {
+            this.dialogDelete = false;
+            this.$router.push({ name: "placegallery-list" });
+            setTimeout(() => {
               this.newToast({
-                type: "error",
-                message: message,
+                type: "success",
+                message: "Delete entry success",
               });
-            });
-          }
-        });
+            }, 0);
+          })
+          .catch((error) => {
+            this.dialogDelete = false;
+            if (error.graphQLErrors) {
+              error.graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          });
+      }
     },
     onReport() {
-      this.$apollo
-        .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $entryId: Int!
-              $userId: Int!
-              $reason: String!
-            ) {
-              createEntryReport(
-                input: { entry_id: $entryId, user_id: $userId, reason: $reason }
-              ) {
-                result_code
-              }
-            }
-          `,
-          variables: {
-            entryId: 1,
-            userId: 1,
-            reason: this.reason,
-          },
-          update: () => {},
-        })
-        .then(() => {
-          this.dialogReport = false;
-          setTimeout(() => {
-            this.newToast({
-              type: "success",
-              message: "Report success",
-            });
-          }, 0);
-        })
-        .catch((error) => {
-          this.dialogReport = false;
-          if (error.graphQLErrors) {
-            error.graphQLErrors.forEach(({ message }) => {
+      if(this.isCustomReport) this.customReport()
+      else {
+        this.$apollo
+          .mutate({
+            mutation: REPORT_MUTATION,
+            variables: {
+              entryId: this.entryId,
+              accessToken: '',
+              targetTable: '',
+              violateDetail: this.reportValue.name,
+              violateType: this.reportValue.type,
+            },
+            update: () => {},
+          })
+          .then(() => {
+            this.dialogReport = false;
+            setTimeout(() => {
               this.newToast({
-                type: "error",
-                message: message,
+                type: "success",
+                message: "Report success",
               });
-            });
-          }
-        });
+            }, 0);
+          })
+          .catch((error) => {
+            this.dialogReport = false;
+            if (error.graphQLErrors) {
+              error.graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          });
+      }
     },
   },
 };

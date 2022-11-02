@@ -170,3 +170,71 @@ export const DELETE_ENTRY_PLUS_MUTATION = gql`
     }
   }
 `;
+
+export const DELETE_COMMENT_MUTATION = gql`
+mutation MyMutation($accessToken: String!, $id: Int!) {
+  deleteComment(access_token: $accessToken, id: $id) {
+    result_code
+  }
+}`;
+
+export const DELETE_ENTRY_MUTATION = gql`
+mutation MyMutation($entryId: Int!, $accessToken: String!) {
+  deleteEntry(entry_id: $entryId, access_token: $accessToken) {
+    result_code
+  }
+}
+`;
+
+export const REPORT_MUTATION = gql`
+mutation MyMutation(
+  $entryId: Int!
+  $accessToken: String!
+  $targetTable: String
+  $url: String
+  $violateDetail: String
+  $violateType: String!
+
+) {
+  createEntryReport(
+    entry_id: $entryId
+    access_token: $accessToken
+    target_table: $targetTable
+    url: $url
+    violate_detail: $violateDetail
+    violate_type: $violateType
+  ) {
+    result_code
+  }
+}
+`;
+export const CLIP_ENTRY_MUTATION = gql`
+mutation MyMutation(
+  $entryId: Int!
+  $accessToken: String!
+  $url: String!
+  $caption: String
+  $img: String
+) {
+  createEntryClip(
+    access_token: $accessToken
+      entry_id: $entryId
+      url: $url
+      caption: $caption
+      img: $img
+  ) {
+    result_code
+  }
+}
+`;
+
+export const  FOLLOW_USER_MUTATION = gql`
+mutation MyMutation($followingUserId: Int!, $accessToken: String!) {
+  createUserFollow(
+    following_user_id: $followingUserId
+    access_token: $accessToken
+  ) {
+    result_code
+  }
+}
+`;

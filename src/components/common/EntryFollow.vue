@@ -15,6 +15,7 @@
 <script>
 import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
+import { FOLLOW_USER_MUTATION } from "@/graphql/mutations"
 
 export default {
   name: "EntryFollow",
@@ -43,19 +44,10 @@ export default {
     onFollow() {
       this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation($followingUserId: Int!, $userId: Int!) {
-              createUserFollow(
-                following_user_id: $followingUserId
-                user_id: $userId
-              ) {
-                result_code
-              }
-            }
-          `,
+          mutation: FOLLOW_USER_MUTATION,
           variables: {
             followingUserId: this.followingUserId,
-            userId: this.userId,
+            accessToken: '',
           },
         })
         .then(({ data }) => {

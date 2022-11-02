@@ -231,61 +231,61 @@ export const GET_ENTRIES_QUERY = gql`
 `;
 
 export const GET_SUB_COMMENTS_QUERY = gql`
-  query MyQuery(
-    $commentId: Int
-    $entryId: Int
-    $accessToken: String
-    $currentPage: Int
-    $limit: Int
-    $sort: String
-    $moduleId: Int
+query MyQuery(
+  $commentId: Int!
+  $entryId: Int!
+  $accessToken: String
+  $currentPage: Int
+  $limit: Int
+  $sort: String
+  $moduleId: Int
+) {
+  getSubComments(
+    comment_id: $commentId
+    entry_id: $entryId
+    access_token: $accessToken
+    currentPage: $currentPage
+    limit: $limit
+    sort: $sort
+    module_id: $moduleId
   ) {
-    getSubComments(
-      comment_id: $commentId
-      entry_id: $entryId
-      access_token: $accessToken
-      currentPage: $currentPage
-      limit: $limit
-      sort: $sort
-      module_id: $moduleId
-    ) {
-      result_code
-      data {
-        total
-        sort
-        limit
-        items {
-          actionStatus {
-            clip
-            follow
-            mute
-            reaction
-          }
-          id
-          entryId
-          createdTime
-          content
-          comments
-          commentId
-          reactions {
-            items {
-              id
-              icon
-              count
-              caption
-            }
-            total
-          }
-          user {
-            id
-            isAdmin
-            nickname
-            profileImg
-            title
-          }
+    result_code
+    data {
+      total
+      sort
+      limit
+      items {
+        actionStatus {
+          clip
+          follow
+          mute
+          reaction
         }
-        currentPage
+        id
+        entryId
+        createdTime
+        content
+        comments
+        commentId
+        reactions {
+          items {
+            id
+            icon
+            count
+            caption
+          }
+          total
+        }
+        user {
+          id
+          isAdmin
+          nickname
+          profileImg
+          title
+        }
       }
+      currentPage
     }
   }
+}
 `;

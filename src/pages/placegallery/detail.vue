@@ -146,7 +146,10 @@
                           :userId="1"
                         ></EntryClip>
                       </div>
-                      <EntryMenus></EntryMenus>
+                      <EntryMenus
+                        :user-id="1"
+                        :entry-id="entry.id"
+                      ></EntryMenus>
                     </div>
                   </div>
                 </div>

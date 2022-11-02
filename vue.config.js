@@ -9,5 +9,5 @@ module.exports = defineConfig({
     },
   },
   lintOnSave: false,
-  publicPath: '/'
+  publicPath: "/",
 });

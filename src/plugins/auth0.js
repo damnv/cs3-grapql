@@ -2,6 +2,7 @@ import Vue from "vue";
 import createAuth0Client from "@auth0/auth0-spa-js";
 import apiService from "@/services/apiService";
 import { mapMutations } from "vuex";
+import { setToken } from "@/utils/auth";
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () =>
@@ -124,7 +125,9 @@ export const useAuth0 = ({
         this.user = await this.auth0Client.getUser();
         this.loading = false;
         if (this.isAuthenticated) {
-          let idToken = await this.$auth.getIdTokenClaims();
+          const idToken = await this.$auth.getIdTokenClaims();
+          const accessToken = await this.$auth.getTokenSilently();
+          setToken(accessToken);
 
           const graphqlQuery = {
             operationName: "MyQuery",

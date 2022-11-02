@@ -97,6 +97,8 @@
                         </div>
                         <EntryMenus
                           class-content="pm-pla-list-item__header-right"
+                          :user-id="1"
+                          :entry-id="entry.id"
                         ></EntryMenus>
                       </div>
                       <router-link

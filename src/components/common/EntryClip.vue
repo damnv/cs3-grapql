@@ -21,6 +21,7 @@
 <script>
 import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
+import { CLIP_ENTRY_MUTATION } from "@/graphql/mutations"
 
 export default {
   name: "EntryClip",
@@ -50,30 +51,10 @@ export default {
     onCreate() {
       this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $entryId: Int!
-              $userId: Int!
-              $url: String!
-              $caption: String
-              $img: String
-            ) {
-              createEntryClip(
-                input: {
-                  entry_id: $entryId
-                  user_id: $userId
-                  url: $url
-                  caption: $caption
-                  img: $img
-                }
-              ) {
-                result_code
-              }
-            }
-          `,
+          mutation: CLIP_ENTRY_MUTATION,
           variables: {
             entryId: this.entryId,
-            userId: this.userId,
+            accessToken: '',
             url: this.$route.path,
             caption: "",
             img: "",
