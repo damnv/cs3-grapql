@@ -164,7 +164,6 @@ export default {
             mutation: DELETE_COMMENT_MUTATION,
             variables: {
               id: this.comment.id,
-              accessToken: '',
             },
             update: () => {},
           })
@@ -196,7 +195,6 @@ export default {
         .mutate({
           mutation: CREATE_COMMENT_MUTATION,
           variables: {
-            accessToken: "",
             entryId: this.comment.entryId,
             description: this.description,
             commentImg: this.commentImg,
@@ -228,7 +226,6 @@ export default {
             query MyQuery(
               $commentId: Int!
               $entryId: Int!
-              $accessToken: String
               $currentPage: Int
               $limit: Int
               $sort: String
@@ -237,7 +234,6 @@ export default {
               getSubComments(
                 comment_id: $commentId
                 entry_id: $entryId
-                access_token: $accessToken
                 currentPage: $currentPage
                 limit: $limit
                 sort: $sort
@@ -284,7 +280,6 @@ export default {
             }
           `,
           variables: {
-            accessToken: "",
             entryId: this.comment.entryId,
             commentId: this.comment.id,
             currentPage: this.comment.replies.currentPage + 1,

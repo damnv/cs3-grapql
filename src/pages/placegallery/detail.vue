@@ -220,33 +220,33 @@ export default {
     entryId: null,
   }),
   apollo: {
-    getUserReactionsByEntryId: {
-      query: gql`
-        query MyQuery {
-          getUserReactionsByEntryId(entry_id: 10) {
-            data {
-              current_page
-              is_last
-              total_count
-            }
-          }
-        }
-      `,
-      update({ getUserReactionsByEntryId }) {
-        this.userReactions = getUserReactionsByEntryId.data.user_reactions;
-        this.totalUserReactions = getUserReactionsByEntryId.data.total_count;
-      },
-      error(error) {
-        if (error.graphQLErrors) {
-          error.graphQLErrors.forEach(({ message }) => {
-            this.newToast({
-              type: "error",
-              message: message,
-            });
-          });
-        }
-      },
-    },
+    // getUserReactionsByEntryId: {
+    //   query: gql`
+    //     query MyQuery {
+    //       getUserReactionsByEntryId(entry_id: 10) {
+    //         data {
+    //           current_page
+    //           is_last
+    //           total_count
+    //         }
+    //       }
+    //     }
+    //   `,
+    //   update({ getUserReactionsByEntryId }) {
+    //     this.userReactions = getUserReactionsByEntryId.data.user_reactions;
+    //     this.totalUserReactions = getUserReactionsByEntryId.data.total_count;
+    //   },
+    //   error(error) {
+    //     if (error.graphQLErrors) {
+    //       error.graphQLErrors.forEach(({ message }) => {
+    //         this.newToast({
+    //           type: "error",
+    //           message: message,
+    //         });
+    //       });
+    //     }
+    //   },
+    // },
   },
   computed: {
     currentUser() {

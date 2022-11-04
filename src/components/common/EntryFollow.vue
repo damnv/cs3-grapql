@@ -47,7 +47,6 @@ export default {
           mutation: FOLLOW_USER_MUTATION,
           variables: {
             followingUserId: this.followingUserId,
-            accessToken: '',
           },
         })
         .then(({ data }) => {

@@ -291,7 +291,6 @@ export default {
             mutation: DELETE_ENTRY_MUTATION,
             variables: {
               entryId: this.entryId,
-              accessToken: '',
             },
             update: () => {},
           })
@@ -326,7 +325,6 @@ export default {
             mutation: REPORT_MUTATION,
             variables: {
               entryId: this.entryId,
-              accessToken: '',
               targetTable: '',
               violateDetail: this.reportValue.name,
               violateType: this.reportValue.type,

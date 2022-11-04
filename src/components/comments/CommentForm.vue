@@ -139,7 +139,6 @@ export default {
         .mutate({
           mutation: CREATE_COMMENT_MUTATION,
           variables: {
-            accessToken: "",
             entryId: this.entryId,
             description: this.description,
             commentImg: this.commentImg,

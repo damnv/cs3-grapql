@@ -67,7 +67,6 @@ export default {
             mutation: DELETE_COMMENT_MUTATION,
             variables: {
               id: this.reply.id,
-              accessToken: '',
             },
             update: () => {},
           })

@@ -129,7 +129,6 @@ export default {
           variables: {
             entryId: this.entryId,
             reactionId: reactionId,
-            accessToken: "",
           },
           update: () => {},
         })
@@ -158,7 +157,6 @@ export default {
           mutation: DELETE_ENTRY_PLUS_MUTATION,
           variables: {
             entryId: this.entryId,
-            accessToken: "",
           },
           update: () => {},
         })

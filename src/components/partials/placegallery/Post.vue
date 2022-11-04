@@ -158,8 +158,8 @@
   </v-row>
 </template>
 <script>
-import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
+import { PLA_POST_MUTATION } from "@/graphql/mutations"
 
 export default {
   name: "PlacegalleryPost",
@@ -199,40 +199,12 @@ export default {
     async handleSubmit() {
       await this.$apollo
         .mutate({
-          mutation: gql`
-            mutation MyMutation(
-              $caption: String!
-              $moduleId: Int!
-              $description: String!
-              $images: String!
-              $categoryId: Int!
-              $userId: Int!
-            ) {
-              createEntry(
-                input: {
-                  caption: $caption
-                  images: $images
-                  module_id: $moduleId
-                  description: $description
-                  category_l_id: $categoryId
-                  user_id: $userId
-                }
-              ) {
-                result_code
-                data {
-                  caption
-                  created
-                  id
-                  description
-                }
-              }
-            }
-          `,
+          mutation: PLA_POST_MUTATION,
           variables: {
             caption: this.form.description,
             moduleId: 1,
             description: this.form.description,
-            images: this.images,
+            images: '/image/test.png',
             categoryId: this.form.cateId,
             userId: 1,
           },

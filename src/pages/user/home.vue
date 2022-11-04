@@ -37,8 +37,10 @@ import UserBadge from "../../components/user/UserBadge.vue";
 import UserClip from "../../components/user/UserClip.vue";
 import UserHistory from "../../components/user/UserHistory.vue";
 import UserActivity from "../../components/user/UserActivity.vue";
+import commonMixins from "@/mixins/common";
 export default {
   name: "UserHome",
+  mixins: [ commonMixins ],
   data() {
     return {
       dataMockup: [

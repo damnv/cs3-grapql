@@ -4,7 +4,6 @@ export const GET_COMMENT_ENTRY_QUERY = gql`
   query MyQuery(
     $currentPage: Int
     $entryId: Int
-    $accessToken: String
     $sort: String
     $limit: Int
   ) {
@@ -14,7 +13,6 @@ export const GET_COMMENT_ENTRY_QUERY = gql`
       limit: $limit
       module_id: 35
       sort: $sort
-      access_token: $accessToken
     ) {
       result_code
       data {
@@ -95,8 +93,8 @@ export const GET_COMMENT_ENTRY_QUERY = gql`
 `;
 
 export const GET_ENTRY_QUERY = gql`
-  query MyQuery($entryId: Int!, $accessToken: String) {
-    getEntryById(id: $entryId, access_token: $accessToken) {
+  query MyQuery($entryId: Int!) {
+    getEntryById(id: $entryId) {
       data {
         actionStatus {
           clip
@@ -156,13 +154,11 @@ export const GET_ENTRIES_QUERY = gql`
     $currentPage: Int
     $limit: Int
     $sort: String
-    $accessToken: String
   ) {
     getEntries(
       currentPage: $currentPage
       limit: $limit
       sort: $sort
-      access_token: $accessToken
     ) {
       result_code
       data {
@@ -234,7 +230,6 @@ export const GET_SUB_COMMENTS_QUERY = gql`
 query MyQuery(
   $commentId: Int!
   $entryId: Int!
-  $accessToken: String
   $currentPage: Int
   $limit: Int
   $sort: String
@@ -243,7 +238,6 @@ query MyQuery(
   getSubComments(
     comment_id: $commentId
     entry_id: $entryId
-    access_token: $accessToken
     currentPage: $currentPage
     limit: $limit
     sort: $sort

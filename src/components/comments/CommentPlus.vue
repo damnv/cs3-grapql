@@ -86,7 +86,6 @@ export default {
           variables: {
             commentId: 1,
             reactionId: 1,
-            accessToken: "",
           },
           update: () => {},
         })

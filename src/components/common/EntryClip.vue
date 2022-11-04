@@ -54,7 +54,6 @@ export default {
           mutation: CLIP_ENTRY_MUTATION,
           variables: {
             entryId: this.entryId,
-            accessToken: '',
             url: this.$route.path,
             caption: "",
             img: "",
