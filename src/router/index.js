@@ -4,6 +4,8 @@ import { DEFAULT_TITLE } from "@/constants/common";
 import Home from "@/pages/Home.vue";
 import PlacegalleryList from "@/pages/placegallery/index";
 import PlacegalleryDetail from "@/pages/placegallery/detail";
+import PlacegalleryPost from "@/pages/placegallery/post";
+import PlacegalleryEdit from "@/pages/placegallery/edit";
 import UserHome from "@/pages/user/home";
 import UserProfile from "@/pages/user/profile";
 import Login from "@/pages/auth/login";
@@ -19,14 +21,20 @@ const routes = [
     component: Home,
   },
   {
-    path: "/cs3-demo",
-    name: "home",
-    component: Home,
-  },
-  {
     path: "/placegallery",
     name: "placegallery-list",
     component: PlacegalleryList,
+  },
+
+  {
+    path: "/placegallery/post",
+    name: "placegallery-post",
+    component: PlacegalleryPost,
+  },
+  {
+    path: "/placegallery/edit/:id",
+    name: "placegallery-edit",
+    component: PlacegalleryEdit,
   },
   {
     path: "/placegallery/:id",

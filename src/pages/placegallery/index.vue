@@ -73,19 +73,28 @@
                     >
                       <div class="pm-pla-list-item__header">
                         <div class="cs-avatar-2" v-if="entry.user">
-                          <a
-                            href="#"
+                          <router-link
+                            :to="{
+                              name: 'user-profile',
+                              params: { id: entry.user.id },
+                            }"
+                            class="cs-avatar-2__photo"
                             v-bind:style="{
                               'background-image':
                                 'url(' + entry.user.profileImg + ')',
                             }"
-                            class="cs-avatar-2__photo"
-                          ></a>
+                          >
+                          </router-link>
                           <div class="cs-avatar-2__info">
                             <div class="cs-avatar-2__name-group">
-                              <a href="#" class="cs-avatar-2__name">{{
-                                entry.user.nickname
-                              }}</a>
+                              <router-link
+                                :to="{
+                                  name: 'user-profile',
+                                  params: { id: entry.user.id },
+                                }"
+                                class="cs-avatar-2__name"
+                                >{{ entry.user.nickname }}</router-link
+                              >
                             </div>
                             <div class="cs-avatar-2__opt">
                               {{ entry.createdTime | convertDateTime }}
@@ -99,6 +108,7 @@
                           class-content="pm-pla-list-item__header-right"
                           :user-id="1"
                           :entry-id="entry.id"
+                          @onEdit="onEdit(entry)"
                         ></EntryMenus>
                       </div>
                       <router-link
@@ -169,14 +179,8 @@
                   </div>
                   <div class="pm-pla-list__button-more" v-if="isLoadmore">
                     <div
-                      data-cscomments="indicator"
-                      class="pm-pla-list__button-more__indicator is-hidden"
-                    >
-                      <div class="cs-spinner-a--m">読み込み中</div>
-                    </div>
-                    <div
+                      @click="onLoadmore"
                       data-cscomments="trigger"
-                      data-api-query="{&amp;quot;hoge&amp;quot;:&amp;quot;test&amp;quot;, &amp;quot;fuga&amp;quot;: &amp;quot;fugafuga&amp;quot;}"
                       class="cs-button-b--3-xl cs-button--w-100p"
                     >
                       もっと見る
@@ -189,7 +193,6 @@
         </div>
       </div>
     </div>
-    <Post v-if="isCreate" @onClose="onClose" @onChangeData="getData"></Post>
   </div>
   <!-- end module-->
 </template>
@@ -199,26 +202,33 @@ import EntryPlus from "@/components/common/EntryPlus";
 import EntryComment from "@/components/common/EntryComment";
 import EntryView from "@/components/common/EntryView";
 import EntryMenus from "@/components/common/EntryMenus.vue";
-import Post from "@/components/partials/placegallery/Post.vue";
 import { GET_ENTRIES_QUERY } from "@/graphql/queries";
 
 export default {
   name: "PlacegalleryList",
   mixins: [commonMixins],
   props: {},
-  components: { EntryPlus, EntryComment, EntryView, EntryMenus, Post },
+  components: { EntryPlus, EntryComment, EntryView, EntryMenus },
+  computed: {
+    totalPage() {
+      return Math.ceil(this.totalCount / this.limit);
+    },
+    isLoadmore() {
+      return this.currentPage < this.totalPage;
+    },
+  },
   data() {
     return {
       isCreate: false,
       entries: [],
       totalCount: 0,
-      isLoadmore: false,
-      test: "test",
+      limit: 9,
+      currentPage: 1,
     };
   },
   methods: {
     onCreate() {
-      this.isCreate = true;
+      this.$router.push({ name: "placegallery-post" });
     },
     onClose() {
       this.isCreate = false;
@@ -229,10 +239,9 @@ export default {
         .query({
           query: GET_ENTRIES_QUERY,
           variables: {
-            currentPage: 1,
-            limit: 0,
+            page: this.currentPage,
+            limit: this.limit,
             sort: "new",
-            accsetToken: "27655",
           },
           update: () => {},
           error(error) {
@@ -242,7 +251,8 @@ export default {
         .then(({ data }) => {
           this.entries = data.getEntries.data.items;
           this.totalCount = data.getEntries.data.total;
-          this.isLoadmore = false;
+          this.limit = data.getEntries.data.limit;
+          this.currentPage = data.getEntries.data.currentPage;
           this.setLoading(false);
         })
         .catch(({ graphQLErrors, networkError }) => {
@@ -275,12 +285,57 @@ export default {
         }
       });
     },
+    onLoadmore() {
+      this.setLoading(true);
+      this.$apollo
+        .query({
+          query: GET_ENTRIES_QUERY,
+          variables: {
+            page: this.currentPage + 1,
+            limit: this.limit,
+            sort: "new",
+          },
+          update: () => {},
+          error(error) {
+            console.log(error);
+          },
+        })
+        .then(({ data }) => {
+          this.entries = this.entries.concat(data.getEntries.data.items);
+          this.totalCount = data.getEntries.data.total;
+          this.limit = data.getEntries.data.limit;
+          this.currentPage = data.getEntries.data.currentPage;
+          this.setLoading(false);
+        })
+        .catch(({ graphQLErrors, networkError }) => {
+          this.setLoading(false);
+          setTimeout(() => {
+            if (graphQLErrors) {
+              graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+            if (networkError) {
+              networkError.result.errors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          }, 200);
+        });
+    },
   },
   apollo: {},
-  computed: {},
   created() {},
-  async mounted() {
-    await this.getData();
+  mounted() {
+    setTimeout(() => {
+      this.getData();
+    }, 2000);
   },
 };
 </script>

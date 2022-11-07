@@ -1,14 +1,9 @@
 import gql from "graphql-tag";
 
 export const GET_COMMENT_ENTRY_QUERY = gql`
-  query MyQuery(
-    $currentPage: Int
-    $entryId: Int
-    $sort: String
-    $limit: Int
-  ) {
+  query MyQuery($page: Int, $entryId: Int, $sort: String, $limit: Int) {
     getCommentsByEntryId(
-      currentPage: $currentPage
+      page: $page
       entry_id: $entryId
       limit: $limit
       module_id: 35
@@ -150,16 +145,8 @@ export const GET_ENTRY_QUERY = gql`
 `;
 
 export const GET_ENTRIES_QUERY = gql`
-  query MyQuery(
-    $currentPage: Int
-    $limit: Int
-    $sort: String
-  ) {
-    getEntries(
-      currentPage: $currentPage
-      limit: $limit
-      sort: $sort
-    ) {
+  query MyQuery($page: Int, $limit: Int, $sort: String) {
+    getEntries(page: $page, limit: $limit, sort: $sort) {
       result_code
       data {
         currentPage
@@ -227,59 +214,59 @@ export const GET_ENTRIES_QUERY = gql`
 `;
 
 export const GET_SUB_COMMENTS_QUERY = gql`
-query MyQuery(
-  $commentId: Int!
-  $entryId: Int!
-  $currentPage: Int
-  $limit: Int
-  $sort: String
-  $moduleId: Int
-) {
-  getSubComments(
-    comment_id: $commentId
-    entry_id: $entryId
-    currentPage: $currentPage
-    limit: $limit
-    sort: $sort
-    module_id: $moduleId
+  query MyQuery(
+    $commentId: Int!
+    $entryId: Int!
+    $currentPage: Int
+    $limit: Int
+    $sort: String
+    $moduleId: Int
   ) {
-    result_code
-    data {
-      total
-      sort
-      limit
-      items {
-        actionStatus {
-          clip
-          follow
-          mute
-          reaction
-        }
-        id
-        entryId
-        createdTime
-        content
-        comments
-        commentId
-        reactions {
-          items {
-            id
-            icon
-            count
-            caption
+    getSubComments(
+      comment_id: $commentId
+      entry_id: $entryId
+      currentPage: $currentPage
+      limit: $limit
+      sort: $sort
+      module_id: $moduleId
+    ) {
+      result_code
+      data {
+        total
+        sort
+        limit
+        items {
+          actionStatus {
+            clip
+            follow
+            mute
+            reaction
           }
-          total
-        }
-        user {
           id
-          isAdmin
-          nickname
-          profileImg
-          title
+          entryId
+          createdTime
+          content
+          comments
+          commentId
+          reactions {
+            items {
+              id
+              icon
+              count
+              caption
+            }
+            total
+          }
+          user {
+            id
+            isAdmin
+            nickname
+            profileImg
+            title
+          }
         }
+        currentPage
       }
-      currentPage
     }
   }
-}
 `;

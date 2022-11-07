@@ -46,7 +46,7 @@
                     :isFollowing="entry.actionStatus.follow"
                     :updateFollowing="updateFollowing"
                     :userId="currentUser"
-                    :followingUserId="entry.userId"
+                    :followingUserId="entry.user.id"
                   ></EntryFollow>
                   <!-- Instagramのとき -->
                   <!-- classは、.cs-icn-sns--instagram -->
@@ -194,7 +194,6 @@ import commonMixins from "@/mixins/common";
 
 import { GET_COMMENT_ENTRY_QUERY, GET_ENTRY_QUERY } from "@/graphql/queries";
 
-import gql from "graphql-tag";
 export default {
   name: "PlacegalleryDetail",
   mixins: [commonMixins],
@@ -343,7 +342,7 @@ export default {
         .query({
           query: GET_COMMENT_ENTRY_QUERY,
           variables: {
-            currentPage: 1,
+            page: 1,
             entryId: entryId,
             limit: 10,
             sort: "new",
@@ -386,9 +385,11 @@ export default {
         });
     },
   },
-  async created() {
-    await this.getEntryById(this.$route.params.id);
-    await this.getCommentByEntryId(this.$route.params.id);
+  created() {
+    setTimeout(() => {
+      this.getEntryById(this.$route.params.id);
+      this.getCommentByEntryId(this.$route.params.id);
+    }, 2000);
   },
 };
 </script>

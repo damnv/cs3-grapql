@@ -132,8 +132,8 @@ export const useAuth0 = ({
           const graphqlQuery = {
             operationName: "MyQuery",
             query:
-              " query MyQuery($idToken: String) { login(id_token: $idToken) {data { id nickname } result_code } }",
-            variables: { idToken: idToken.__raw },
+              " query MyQuery($token: String) { login(token: $token) {data { id nickname } result_code } }",
+            variables: { token: accessToken },
           };
 
           await apiService

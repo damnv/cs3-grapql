@@ -15,7 +15,7 @@
 <script>
 import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
-import { FOLLOW_USER_MUTATION } from "@/graphql/mutations"
+import { FOLLOW_USER_MUTATION } from "@/graphql/mutations";
 
 export default {
   name: "EntryFollow",

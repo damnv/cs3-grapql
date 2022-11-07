@@ -11,9 +11,13 @@
       </template>
       <ul class="cs-context-menu__items">
         <li class="cs-context-menu__item" v-if="!hiddenEdit">
-          <p class="cs-context-menu__link">編集する</p>
+          <p class="cs-context-menu__link" @click="onEdit">編集する</p>
         </li>
-        <li class="cs-context-menu__item" @click="handleShowModalDelete" v-if="!hiddenDelete">
+        <li
+          class="cs-context-menu__item"
+          @click="handleShowModalDelete"
+          v-if="!hiddenDelete"
+        >
           <p
             data-csmodal="trigger"
             class="cs-context-menu__link cs-context-menu__link"
@@ -58,7 +62,9 @@
           <!-- フォーム-->
           <div data-modal-report-type="init" class="isShow">
             <div class="cs-modal-report__heading">
-              <div class="cs-modal-report__title">投稿の報告 {{ reportValue }}</div>
+              <div class="cs-modal-report__title">
+                投稿の報告 {{ reportValue }}
+              </div>
               <div class="cs-modal-report__body">
                 「cs3
                 grapql」内において、利用規約に違反する疑いがある投稿を発見された場合は、こちらより該当する理由を選択の上報告ください。
@@ -74,9 +80,14 @@
             <form id="js-modal-report-form" data-modal-report-el="form">
               <div
                 data-modal-report-el="form-input-list"
-                class="cs-modal-report__input-list" v-if="reportList.length"
+                class="cs-modal-report__input-list"
+                v-if="reportList.length"
               >
-                <label class="cs-modal-report__label" v-for="(report, index) in reportList" :key="index">
+                <label
+                  class="cs-modal-report__label"
+                  v-for="(report, index) in reportList"
+                  :key="index"
+                >
                   <input
                     @click="handleReport(report)"
                     type="radio"
@@ -84,9 +95,9 @@
                     name="violate_type"
                     :id="report.key"
                     :value="report.type"
-                  /><span class="cs-modal-report__radio-text"
-                    >{{ report.name }}</span
-                  ></label
+                  /><span class="cs-modal-report__radio-text">{{
+                    report.name
+                  }}</span></label
                 >
               </div>
               <div class="cs-modal-report__button-group">
@@ -169,7 +180,7 @@
 
 <script>
 import commonMixins from "@/mixins/common";
-import { DELETE_ENTRY_MUTATION, REPORT_MUTATION } from "@/graphql/mutations"
+import { DELETE_ENTRY_MUTATION, REPORT_MUTATION } from "@/graphql/mutations";
 
 export default {
   name: "EntryMenus",
@@ -188,10 +199,10 @@ export default {
       default: () => 0,
     },
     customReport: {
-      type: Function
+      type: Function,
     },
     customDetele: {
-      type: Function
+      type: Function,
     },
     isCustomDelete: {
       type: Boolean,
@@ -217,56 +228,56 @@ export default {
       reportValue: {},
       reportList: [
         {
-          name: '宣伝、広告的な利用',
-          key: 'violate_type-1',
-          type: 1
+          name: "宣伝、広告的な利用",
+          key: "violate_type-1",
+          type: 1,
         },
         {
-          name: '宣伝、広告的な利用',
-          key: 'violate_type-2',
-          type: 2
+          name: "宣伝、広告的な利用",
+          key: "violate_type-2",
+          type: 2,
         },
         {
-          name: '投稿内容が重複している',
-          key: 'violate_type-3',
-          type: 3
+          name: "投稿内容が重複している",
+          key: "violate_type-3",
+          type: 3,
         },
         {
-          name: '不適切な投稿',
-          key: 'violate_type-4',
-          type: 4
+          name: "不適切な投稿",
+          key: "violate_type-4",
+          type: 4,
         },
         {
-          name: 'カテゴリ違いの投稿',
-          key: 'violate_type-5',
-          type: 5
+          name: "カテゴリ違いの投稿",
+          key: "violate_type-5",
+          type: 5,
         },
         {
-          name: '個人情報の掲載',
-          key: 'violate_type-6',
-          type: 6
+          name: "個人情報の掲載",
+          key: "violate_type-6",
+          type: 6,
         },
         {
-          name: '悪質なリンク',
-          key: 'violate_type-7',
-          type: 7
+          name: "悪質なリンク",
+          key: "violate_type-7",
+          type: 7,
         },
         {
-          name: '不適切な画像の掲載',
-          key: 'violate_type-8',
-          type: 8
+          name: "不適切な画像の掲載",
+          key: "violate_type-8",
+          type: 8,
         },
         {
-          name: 'その他',
-          key: 'violate_type-9',
-          type: 9
+          name: "その他",
+          key: "violate_type-9",
+          type: 9,
         },
-      ]
+      ],
     };
   },
   methods: {
-    handleReport(value){
-      this.reportValue = value
+    handleReport(value) {
+      this.reportValue = value;
     },
     handleShowModalDelete() {
       this.dialogDelete = true;
@@ -280,12 +291,14 @@ export default {
     handleCloseModalReport() {
       this.dialogReport = false;
     },
+    onEdit(){
+      this.$router.push({name: 'placegallery-edit', params:{ id: this.entryId}})
+    },
     onDelete() {
-      if(this.isCustomDelete){
+      if (this.isCustomDelete) {
         this.customDetele();
         // this.dialogDelete = false;
-      }
-      else{
+      } else {
         this.$apollo
           .mutate({
             mutation: DELETE_ENTRY_MUTATION,
@@ -318,14 +331,14 @@ export default {
       }
     },
     onReport() {
-      if(this.isCustomReport) this.customReport()
+      if (this.isCustomReport) this.customReport();
       else {
         this.$apollo
           .mutate({
             mutation: REPORT_MUTATION,
             variables: {
               entryId: this.entryId,
-              targetTable: '',
+              targetTable: "",
               violateDetail: this.reportValue.name,
               violateType: this.reportValue.type,
             },

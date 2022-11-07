@@ -76,7 +76,7 @@ export default {
         .query({
           query: GET_COMMENT_ENTRY_QUERY,
           variables: {
-            currentPage: this.currentPage + 1,
+            page: this.currentPage + 1,
             entryId: this.entryId,
             limit: this.limit,
             sort: "new",

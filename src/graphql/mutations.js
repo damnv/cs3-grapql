@@ -10,12 +10,12 @@ export const PLA_POST_MUTATION = gql`
     $spot: String
   ) {
     createEntry(
-        caption: $caption
-        images: $images
-        module_id: $moduleId
-        description: $description
-        category_l_id: $categoryId
-        spot: $spot
+      caption: $caption
+      images: $images
+      module_id: $moduleId
+      description: $description
+      category_l_id: $categoryId
+      spot: $spot
     ) {
       result_code
       data {
@@ -88,14 +88,8 @@ export const CREATE_COMMENT_MUTATION = gql`
 `;
 
 export const CREATE_COMMENT_PLUS_MUTATION = gql`
-  mutation MyMutation(
-    $commentId: Int!
-    $reactionId: Int!
-  ) {
-    createCommentPlus(
-      comment_id: $commentId
-      reaction_id: $reactionId
-    ) {
+  mutation MyMutation($commentId: Int!, $reactionId: Int!) {
+    createCommentPlus(comment_id: $commentId, reaction_id: $reactionId) {
       result_code
       data {
         reactions {
@@ -118,10 +112,7 @@ export const CREATE_COMMENT_PLUS_MUTATION = gql`
 
 export const CREATE_ENTRY_PLUS_MUTATION = gql`
   mutation MyMutation($entryId: Int!, $reactionId: Int!) {
-    createEntryPlus(
-      entry_id: $entryId
-      reaction_id: $reactionId
-    ) {
+    createEntryPlus(entry_id: $entryId, reaction_id: $reactionId) {
       data {
         actionStatus {
           reaction
@@ -164,64 +155,62 @@ export const DELETE_ENTRY_PLUS_MUTATION = gql`
 `;
 
 export const DELETE_COMMENT_MUTATION = gql`
-mutation MyMutation($id: Int!) {
-  deleteComment(id: $id) {
-    result_code
+  mutation MyMutation($id: Int!) {
+    deleteComment(id: $id) {
+      result_code
+    }
   }
-}`;
+`;
 
 export const DELETE_ENTRY_MUTATION = gql`
-mutation MyMutation($entryId: Int!) {
-  deleteEntry(entry_id: $entryId) {
-    result_code
+  mutation MyMutation($entryId: Int!) {
+    deleteEntry(entry_id: $entryId) {
+      result_code
+    }
   }
-}
 `;
 
 export const REPORT_MUTATION = gql`
-mutation MyMutation(
-  $entryId: Int!
-  $targetTable: String
-  $url: String
-  $violateDetail: String
-  $violateType: String!
-
-) {
-  createEntryReport(
-    entry_id: $entryId
-    target_table: $targetTable
-    url: $url
-    violate_detail: $violateDetail
-    violate_type: $violateType
+  mutation MyMutation(
+    $entryId: Int!
+    $targetTable: String
+    $url: String
+    $violateDetail: String
+    $violateType: Int!
   ) {
-    result_code
+    createEntryReport(
+      entry_id: $entryId
+      target_table: $targetTable
+      url: $url
+      violate_detail: $violateDetail
+      violate_type: $violateType
+    ) {
+      result_code
+    }
   }
-}
 `;
 export const CLIP_ENTRY_MUTATION = gql`
-mutation MyMutation(
-  $entryId: Int!
-  $url: String!
-  $caption: String
-  $img: String
-) {
-  createEntryClip(
+  mutation MyMutation(
+    $entryId: Int!
+    $url: String!
+    $caption: String
+    $img: String
+  ) {
+    createEntryClip(
       entry_id: $entryId
       url: $url
       caption: $caption
       img: $img
-  ) {
-    result_code
+    ) {
+      result_code
+    }
   }
-}
 `;
 
-export const  FOLLOW_USER_MUTATION = gql`
-mutation MyMutation($followingUserId: Int!) {
-  createUserFollow(
-    following_user_id: $followingUserId
-  ) {
-    result_code
+export const FOLLOW_USER_MUTATION = gql`
+  mutation MyMutation($followingUserId: Int!) {
+    createUserFollow(following_user_id: $followingUserId) {
+      result_code
+    }
   }
-}
 `;

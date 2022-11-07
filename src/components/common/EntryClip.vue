@@ -21,7 +21,7 @@
 <script>
 import gql from "graphql-tag";
 import commonMixins from "@/mixins/common";
-import { CLIP_ENTRY_MUTATION } from "@/graphql/mutations"
+import { CLIP_ENTRY_MUTATION } from "@/graphql/mutations";
 
 export default {
   name: "EntryClip",

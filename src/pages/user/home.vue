@@ -40,7 +40,7 @@ import UserActivity from "../../components/user/UserActivity.vue";
 import commonMixins from "@/mixins/common";
 export default {
   name: "UserHome",
-  mixins: [ commonMixins ],
+  mixins: [commonMixins],
   data() {
     return {
       dataMockup: [

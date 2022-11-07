@@ -2,7 +2,12 @@
   <li class="cs-cmt-item js-thread-item">
     <div class="cs-cmt-item__header">
       <div class="cs-cmt-menu">
-        <EntryMenus hidden-edit hidden-report is-custom-delete :customDetele="customDetele"></EntryMenus>
+        <EntryMenus
+          hidden-edit
+          hidden-report
+          is-custom-delete
+          :customDetele="customDetele"
+        ></EntryMenus>
       </div>
       <div class="cs-cmt-item__header-author">
         <a href="#" class="cs-avatar--black">
@@ -121,7 +126,7 @@ import gql from "graphql-tag";
 import {
   CREATE_COMMENT_MUTATION,
   GET_SUB_COMMENTS_QUERY,
-  DELETE_COMMENT_MUTATION
+  DELETE_COMMENT_MUTATION,
 } from "@/graphql/mutations";
 
 export default {
@@ -160,31 +165,31 @@ export default {
   methods: {
     customDetele() {
       this.$apollo
-          .mutate({
-            mutation: DELETE_COMMENT_MUTATION,
-            variables: {
-              id: this.comment.id,
-            },
-            update: () => {},
-          })
-          .then(() => {
-            setTimeout(() => {
+        .mutate({
+          mutation: DELETE_COMMENT_MUTATION,
+          variables: {
+            id: this.comment.id,
+          },
+          update: () => {},
+        })
+        .then(() => {
+          setTimeout(() => {
+            this.newToast({
+              type: "success",
+              message: "Delete comment success",
+            });
+          }, 0);
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
               this.newToast({
-                type: "success",
-                message: "Delete comment success",
+                type: "error",
+                message: message,
               });
-            }, 0);
-          })
-          .catch((error) => {
-            if (error.graphQLErrors) {
-              error.graphQLErrors.forEach(({ message }) => {
-                this.newToast({
-                  type: "error",
-                  message: message,
-                });
-              });
-            }
-          });
+            });
+          }
+        });
     },
     onReply() {
       this.isReply = true;

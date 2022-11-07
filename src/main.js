@@ -27,7 +27,7 @@ const httpLink = createHttpLink({
   uri: BASE_URL_GRAPQL,
   headers: {
     "x-api-key": API_KEY,
-    Authorization: `Bearer ${accessToken}`,
+    Authorization: `${accessToken}`,
   },
 });
 

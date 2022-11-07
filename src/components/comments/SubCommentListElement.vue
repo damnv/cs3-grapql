@@ -2,7 +2,12 @@
   <li class="cs-cmt-subitem fx-fade fx-in" id="27715">
     <div class="cs-cmt-subitem__header">
       <div class="cs-cmt-menu">
-        <EntryMenus hidden-edit hidden-report is-custom-delete :customDetele="customDetele"></EntryMenus>
+        <EntryMenus
+          hidden-edit
+          hidden-report
+          is-custom-delete
+          :customDetele="customDetele"
+        ></EntryMenus>
       </div>
       <div class="cs-cmt-subitem__header-author">
         <a href="/user/profile/27555/" class="cs-avatar--black">
@@ -46,10 +51,9 @@ import commonMixins from "@/mixins/common";
 
 import { DELETE_COMMENT_MUTATION } from "@/graphql/mutations";
 
-
 export default {
   name: "SubCommentListElement",
-  mixins: [ commonMixins ],
+  mixins: [commonMixins],
   data() {
     return {};
   },
@@ -63,31 +67,31 @@ export default {
     },
     customDetele() {
       this.$apollo
-          .mutate({
-            mutation: DELETE_COMMENT_MUTATION,
-            variables: {
-              id: this.reply.id,
-            },
-            update: () => {},
-          })
-          .then(() => {
-            setTimeout(() => {
+        .mutate({
+          mutation: DELETE_COMMENT_MUTATION,
+          variables: {
+            id: this.reply.id,
+          },
+          update: () => {},
+        })
+        .then(() => {
+          setTimeout(() => {
+            this.newToast({
+              type: "success",
+              message: "Delete comment success",
+            });
+          }, 0);
+        })
+        .catch((error) => {
+          if (error.graphQLErrors) {
+            error.graphQLErrors.forEach(({ message }) => {
               this.newToast({
-                type: "success",
-                message: "Delete comment success",
+                type: "error",
+                message: message,
               });
-            }, 0);
-          })
-          .catch((error) => {
-            if (error.graphQLErrors) {
-              error.graphQLErrors.forEach(({ message }) => {
-                this.newToast({
-                  type: "error",
-                  message: message,
-                });
-              });
-            }
-          });
+            });
+          }
+        });
     },
   },
   components: { CommentPlus, EntryMenus },

@@ -1,4 +1,5 @@
 {
   "domain": "dev-cs2.us.auth0.com",
-  "clientId": "16IDSJaWalTMaNi2pT5TCHTrw4peR7Ba"
+  "clientId": "16IDSJaWalTMaNi2pT5TCHTrw4peR7Ba",
+  "audience": ""
 }
