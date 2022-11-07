@@ -17,6 +17,10 @@ export const PLA_POST_MUTATION = gql`
       category_l_id: $categoryId
       spot: $spot
     ) {
+      error{
+        error_code
+        error_message
+      }
       result_code
       data {
         id
@@ -165,6 +169,10 @@ export const DELETE_COMMENT_MUTATION = gql`
 export const DELETE_ENTRY_MUTATION = gql`
   mutation MyMutation($entryId: Int!) {
     deleteEntry(entry_id: $entryId) {
+      error {
+        error_code
+        error_message
+      }
       result_code
     }
   }

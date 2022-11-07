@@ -194,16 +194,16 @@ export default {
               message: data.createEntry.error.error_message,
             });
           } else {
-              this.$router.push({
-                  name: "placegallery-detail",
-                  params: { id: data.createEntry.data.id },
-                });
-                setTimeout(() => {
-                    this.newToast({
-                      type: "success",
-                      message: "Create Post Success",
-                    });
-            }, 100)
+            this.$router.push({
+              name: "placegallery-detail",
+              params: { id: data.createEntry.data.id },
+            });
+            setTimeout(() => {
+              this.newToast({
+                type: "success",
+                message: "Create Post Success",
+              });
+            }, 100);
           }
           // this.$emit("onChangeData", data);
         })

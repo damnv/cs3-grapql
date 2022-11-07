@@ -92,9 +92,27 @@ export const useAuth0 = ({
       logout(o) {
         return this.auth0Client.logout(o);
       },
+      getConfig(){
+        const graphqlQuery = {
+          operationName: "MyQuery",
+          query:
+            " query MyQuery{ getConfigs{data { auth0 { domain secret } } result_code } }",
+        };
+        apiService
+        .post("", graphqlQuery)
+        .then(({ data }) => {
+          const config = data.data.getConfigs.data[0].auth0;
+          // options.domain = config.domain;
+          // options.clientId = config.secret
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
     },
     /** Use this lifecycle method to instantiate the SDK client */
     async created() {
+      await this.getConfig();
       // Create a new instance of the SDK client using members of the given options object
       this.auth0Client = await createAuth0Client({
         ...options,
@@ -125,7 +143,7 @@ export const useAuth0 = ({
         this.user = await this.auth0Client.getUser();
         this.loading = false;
         if (this.isAuthenticated) {
-          const idToken = await this.$auth.getIdTokenClaims();
+          // const idToken = await this.$auth.getIdTokenClaims();
           const accessToken = await this.$auth.getTokenSilently();
           setToken(accessToken);
 

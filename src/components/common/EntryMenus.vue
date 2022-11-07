@@ -291,8 +291,11 @@ export default {
     handleCloseModalReport() {
       this.dialogReport = false;
     },
-    onEdit(){
-      this.$router.push({name: 'placegallery-edit', params:{ id: this.entryId}})
+    onEdit() {
+      this.$router.push({
+        name: "placegallery-edit",
+        params: { id: this.entryId },
+      });
     },
     onDelete() {
       if (this.isCustomDelete) {
@@ -307,15 +310,22 @@ export default {
             },
             update: () => {},
           })
-          .then(() => {
+          .then(({ data }) => {
             this.dialogDelete = false;
-            this.$router.push({ name: "placegallery-list" });
-            setTimeout(() => {
+            if (data.deleteEntry.result_code == 1) {
               this.newToast({
-                type: "success",
-                message: "Delete entry success",
+                type: "error",
+                message: data.deleteEntry.error.error_message,
               });
-            }, 0);
+            } else {
+              this.$router.push({ name: "placegallery-list" });
+              setTimeout(() => {
+                this.newToast({
+                  type: "success",
+                  message: "Delete entry success",
+                });
+              }, 0);
+            }
           })
           .catch((error) => {
             this.dialogDelete = false;
