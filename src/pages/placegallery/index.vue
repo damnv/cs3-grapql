@@ -106,7 +106,8 @@
                         </div>
                         <EntryMenus
                           class-content="pm-pla-list-item__header-right"
-                          :user-id="1"
+                          :user-id="$auth.user.id"
+                          :author-id="entry.user.id"
                           :entry-id="entry.id"
                           @onEdit="onEdit(entry)"
                         ></EntryMenus>
@@ -203,6 +204,7 @@ import EntryComment from "@/components/common/EntryComment";
 import EntryView from "@/components/common/EntryView";
 import EntryMenus from "@/components/common/EntryMenus.vue";
 import { GET_ENTRIES_QUERY } from "@/graphql/queries";
+import { getToken } from "@/utils/auth";
 
 export default {
   name: "PlacegalleryList",
@@ -333,9 +335,10 @@ export default {
   apollo: {},
   created() {},
   mounted() {
+    const timeDelay = getToken ? 0 : 2000;
     setTimeout(() => {
       this.getData();
-    }, 2000);
+    }, timeDelay);
   },
 };
 </script>

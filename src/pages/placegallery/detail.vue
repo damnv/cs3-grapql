@@ -147,7 +147,8 @@
                         ></EntryClip>
                       </div>
                       <EntryMenus
-                        :user-id="1"
+                        :user-id="$auth.user.id"
+                        :author-id="entry.user.id"
                         :entry-id="entry.id"
                       ></EntryMenus>
                     </div>
@@ -192,6 +193,7 @@ import CommentBlock from "../../components/comments/CommentBlock.vue";
 import EntryFollow from "@/components/common/EntryFollow.vue";
 import commonMixins from "@/mixins/common";
 
+import { getToken } from "@/utils/auth";
 import { GET_COMMENT_ENTRY_QUERY, GET_ENTRY_QUERY } from "@/graphql/queries";
 
 export default {
@@ -395,10 +397,11 @@ export default {
     }
   },
   created() {
+    const timeDelay = getToken ? 0 : 2000;
     setTimeout(() => {
       this.getEntryById(this.$route.params.id);
       this.getCommentByEntryId(this.$route.params.id);
-    }, 2000);
+    }, timeDelay);
   },
 };
 </script>

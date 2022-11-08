@@ -332,7 +332,7 @@ export default {
   mounted() {
     if (!this.$auth.user){
       this.$router.push({
-        name: "not-found",
+        name: "placegallery-list",
       });
     }
     else {

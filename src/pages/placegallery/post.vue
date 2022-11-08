@@ -272,6 +272,13 @@ export default {
       this.images = value;
     },
   },
+  created(){
+    if (!this.$auth.user){
+      this.$router.push({
+        name: "placegallery-list",
+      });
+    }
+  }
 };
 </script>
 
