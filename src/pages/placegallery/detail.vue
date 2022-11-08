@@ -311,7 +311,12 @@ export default {
           },
         })
         .then(({ data }) => {
-          this.entry = data.getEntryById.data;
+          if(data.getEntryById.result_code == 1){
+            this.$router.push({ name: 'placegallery-list'})
+          }
+          else{
+            this.entry = data.getEntryById.data;
+          }
           this.setLoading(false);
         })
         .catch(({ graphQLErrors, networkError }) => {
@@ -384,6 +389,10 @@ export default {
           }, 200);
         });
     },
+    isNumeric(str) {
+      if (typeof str != "string") return false 
+      return !isNaN(str) &&  !isNaN(parseFloat(str))
+    }
   },
   created() {
     setTimeout(() => {
