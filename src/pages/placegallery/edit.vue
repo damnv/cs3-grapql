@@ -134,7 +134,8 @@
 </template>
 <script>
 import commonMixins from "@/mixins/common";
-import { PLA_POST_MUTATION } from "@/graphql/mutations";
+import { PLA_POST_MUTATION, UPDATE_ENTRY_MUTATION } from "@/graphql/mutations";
+import { GET_ENTRY_QUERY } from '@/graphql/queries';
 
 export default {
   name: "PlacegalleryEdit",
@@ -154,6 +155,7 @@ export default {
       imageFiles: [],
       desLength: 0,
       isDisabled: false,
+      entryId: parseInt(this.$route.params.id),
     };
   },
   watch: {
@@ -168,19 +170,65 @@ export default {
     },
   },
   methods: {
+    getData() {
+      this.setLoading(true);
+      this.$apollo
+        .query({
+          query: GET_ENTRY_QUERY,
+          variables: {
+            entryId: this.entryId
+          },
+          update: () => {},
+          error(error) {
+            console.log(error);
+          },
+        })
+        .then(({ data }) => {
+          this.form.tags = data.getEntryById.data.tags;
+          this.form.cateId = data.getEntryById.data.category.id;
+          this.form.moduleId = data.getEntryById.data.module.id;
+          this.form.description = data.getEntryById.data.description;
+          this.form.images = data.getEntryById.data.medias;
+          this.getUrlImages(this.form.images);
+          this.setLoading(false);
+        })
+        .catch(({ graphQLErrors, networkError }) => {
+          this.setLoading(false);
+          setTimeout(() => {
+            if (graphQLErrors) {
+              graphQLErrors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+            if (networkError) {
+              networkError.result.errors.forEach(({ message }) => {
+                this.newToast({
+                  type: "error",
+                  message: message,
+                });
+              });
+            }
+          }, 200);
+        });
+    },
     handleClose() {
       this.$emit("onClose");
     },
     async handleSubmit() {
+      console.log(this.form.description);
       await this.$apollo
         .mutate({
-          mutation: PLA_POST_MUTATION,
+          mutation: UPDATE_ENTRY_MUTATION,
           variables: {
-            caption: this.form.description,
-            moduleId: this.form.moduleId,
             description: this.form.description,
+            entry_id: this.entryId,
             images: this.form.images,
-            categoryId: this.form.cateId,
+            caption: this.form.description,
+            category_l_id: this.form.cateId,
+            module_id: this.form.moduleId,
           },
           context: {
             hasUpload: true,
@@ -188,21 +236,23 @@ export default {
           update: () => {},
         })
         .then(({ data }) => {
-          console.log(data.createEntry);
-          if (data.createEntry.result_code == 1) {
+          console.log(data.updateEntry);
+          if (data.updateEntry.result_code == 1) {
             this.newToast({
               type: "error",
-              message: data.createEntry.message,
+              message: data.updateEntry.error.error_message,
             });
           } else {
-            this.newToast({
-              type: "success",
-              message: "Create Post Success",
-            });
             this.$router.push({
               name: "placegallery-detail",
-              params: { id: data.createEntry.data.id },
+              params: { id: data.updateEntry.data.id },
             });
+            setTimeout(() => {
+              this.newToast({
+                type: "success",
+                message: "Update Entry Success",
+              });
+            }, 100);
           }
           // this.$emit("onChangeData", data);
         })
@@ -270,6 +320,26 @@ export default {
       console.log(value);
       this.images = value;
     },
+    getUrlImages(formImages) {
+      for(let i = 0; i < formImages.length; i++){
+        this.images.push(formImages[i].url);
+      }
+    }
+  },
+  apollo: {},
+  created() {
+  },
+  mounted() {
+    if (!this.$auth.user){
+      this.$router.push({
+        name: "not-found",
+      });
+    }
+    else {
+      setTimeout(() => {
+        this.getData();
+      }, 2000);
+    }
   },
 };
 </script>

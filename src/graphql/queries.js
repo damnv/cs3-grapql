@@ -98,6 +98,12 @@ export const GET_ENTRY_QUERY = gql`
           mute
         }
         caption
+        category {
+          caption
+          description
+          id
+          img
+        }
         comment
         createdTime
         curationSource
