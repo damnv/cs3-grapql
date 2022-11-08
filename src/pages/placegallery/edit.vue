@@ -215,7 +215,7 @@ export default {
         });
     },
     handleClose() {
-      this.$emit("onClose");
+      this.$router.push({ name: "placegallery-list" });
     },
     async handleSubmit() {
       console.log(this.form.description);

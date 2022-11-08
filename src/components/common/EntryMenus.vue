@@ -10,13 +10,13 @@
         ></div>
       </template>
       <ul class="cs-context-menu__items">
-        <li class="cs-context-menu__item" v-if="$auth.user && $auth.user.id && (!hiddenEdit || (this.userId != this.authorId))">
+        <li class="cs-context-menu__item" v-if="$auth.user && $auth.user.id && (!hiddenEdit && (this.userId == this.authorId))">
           <p class="cs-context-menu__link" @click="onEdit">編集する</p>
         </li>
         <li
           class="cs-context-menu__item"
           @click="handleShowModalDelete"
-          v-if="$auth.user && $auth.user.id && !hiddenDelete && (!hiddenEdit || (this.userId != this.authorId))"
+          v-if="$auth.user && $auth.user.id && !hiddenDelete && (!hiddenEdit && (this.userId == this.authorId))"
         >
           <p
             data-csmodal="trigger"

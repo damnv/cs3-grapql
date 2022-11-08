@@ -169,7 +169,7 @@ export default {
   },
   methods: {
     handleClose() {
-      this.$emit("onClose");
+      this.$router.push({ name: "placegallery-list" });
     },
     async handleSubmit() {
       await this.$apollo
