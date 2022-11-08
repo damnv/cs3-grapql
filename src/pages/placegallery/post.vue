@@ -148,7 +148,7 @@ export default {
         moduleId: 97,
         existImgs: [],
         description: "",
-        images: "/_var/images/article/3121/63370347a6f54.png",
+        images: ["/_var/images/article/3121/63370347a6f54.png"],
       },
       images: [],
       imageFiles: [],
@@ -179,7 +179,7 @@ export default {
             caption: this.form.description,
             moduleId: this.form.moduleId,
             description: this.form.description,
-            images: this.form.images,
+            images: this.form.images.join(),
             categoryId: this.form.cateId,
           },
           context: {

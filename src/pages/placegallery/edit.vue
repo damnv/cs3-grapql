@@ -218,14 +218,20 @@ export default {
       this.$router.push({ name: "placegallery-list" });
     },
     async handleSubmit() {
-      console.log(this.form.description);
+      let images = [];
+      if(this.form.images.length){
+        this.form.images.forEach(item => {
+          if(!images.includes(item.url)) images.push(item.url);
+        }
+       )
+      }
       await this.$apollo
         .mutate({
           mutation: UPDATE_ENTRY_MUTATION,
           variables: {
             description: this.form.description,
             entry_id: this.entryId,
-            images: this.form.images,
+            images: images.join(),
             caption: this.form.description,
             category_l_id: this.form.cateId,
             module_id: this.form.moduleId,
@@ -236,7 +242,6 @@ export default {
           update: () => {},
         })
         .then(({ data }) => {
-          console.log(data.updateEntry);
           if (data.updateEntry.result_code == 1) {
             this.newToast({
               type: "error",
@@ -266,8 +271,6 @@ export default {
             });
           }
         });
-
-      await this.handleClose();
     },
     addImage(e) {
       const tmpFiles = e.target.files;
@@ -317,7 +320,6 @@ export default {
       this.$refs.file.disabled = disabled;
     },
     onUpdateImage(value) {
-      console.log(value);
       this.images = value;
     },
     getUrlImages(formImages) {
