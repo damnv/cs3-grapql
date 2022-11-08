@@ -134,7 +134,7 @@
 </template>
 <script>
 import commonMixins from "@/mixins/common";
-import { PLA_POST_MUTATION, UPDATE_ENTRY_MUTATION } from "@/graphql/mutations";
+import { UPDATE_ENTRY_MUTATION } from "@/graphql/mutations";
 import { GET_ENTRY_QUERY } from '@/graphql/queries';
 
 export default {
@@ -145,11 +145,11 @@ export default {
       form: {
         tags: [],
         items: [],
-        cateId: 10,
-        moduleId: 97,
+        cateId: "",
+        moduleId: "",
         existImgs: [],
         description: "",
-        images: "/_var/images/article/3121/63370347a6f54.png",
+        images: "",
       },
       images: [],
       imageFiles: [],
@@ -336,9 +336,7 @@ export default {
       });
     }
     else {
-      setTimeout(() => {
-        this.getData();
-      }, 2000);
+      this.getData();
     }
   },
 };
