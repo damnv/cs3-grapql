@@ -222,3 +222,33 @@ export const FOLLOW_USER_MUTATION = gql`
     }
   }
 `;
+
+export const UPDATE_ENTRY_MUTATION = gql`
+  mutation MyMutation (
+    $description: String!
+    $entry_id: Int!
+    $images: String!
+    $caption: String!
+    $category_l_id: Int!
+    $module_id: Int!
+  ) {
+    updateEntry(
+      description: $description
+      entry_id: $entry_id
+      images: $images
+      caption: $caption
+      category_l_id: $category_l_id
+      module_id: $module_id
+    ) {
+      data {
+        id
+      }
+      result_code
+      error {
+        error_code
+        error_message
+        error_params
+      }
+    }
+  }
+`;
