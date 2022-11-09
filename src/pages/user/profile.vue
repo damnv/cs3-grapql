@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import { GET_ENTRIES_USER_QUERY } from '@/graphql/queries';
 import UserInfomation from "../../components/user/UserInfomation.vue";
 import UserPoint from "../../components/user/UserPoint.vue";
 import UserBadge from "../../components/user/UserBadge.vue";
@@ -41,7 +41,10 @@ export default {
     return {
       entries: [],
       totalCount: 0,
-      isLoadmore: false,
+      limit: 9,
+      currentPage: 1,
+      sort: "",
+      userId: parseInt(this.$route.params.id),
     };
   },
   components: {
@@ -52,42 +55,27 @@ export default {
     UserHistory,
     UserActivity,
   },
+  computed: {
+    isLoadmore() {
+      return (this.limit * this.currentPage) < this.totalCount;
+    }
+  },
   apollo: {},
   methods: {
     getData() {
       this.$apollo
         .query({
-          query: gql`
-            query MyQuery {
-              getEntriesByUserId(user_id: 10) {
-                result_code
-                data {
-                  current_page
-                  is_last
-                  total_count
-                  entries {
-                    caption
-                    created
-                    num_view
-                    num_good
-                    num_comment
-                    module_type
-                    id
-                    img
-                    user {
-                      nickname
-                      profile_img
-                    }
-                  }
-                }
-              }
-            }
-          `,
+          query: GET_ENTRIES_USER_QUERY,
+          variables: {
+            limit: this.limit,
+            page: this.currentPage,
+            sort: this.sort,
+            user_id: this.userId,
+          }
         })
         .then(({ data }) => {
-          this.entries = data.getEntriesByUserId.data.entries;
-          this.totalCount = data.getEntries.data.total_count;
-          this.isLoadmore = data.getEntries.data.is_last;
+          this.entries = data.getEntriesByUserId.data.items;
+          this.totalCount = data.getEntriesByUserId.data.total;
         })
         .catch(({ graphQLErrors, networkError }) => {
           setTimeout(() => {

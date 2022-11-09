@@ -62,7 +62,6 @@ export default {
       limit: 9,
       currentPage: 1,
       sort: "",
-      isLoadmore: false,
     };
   },
   components: {
@@ -72,6 +71,11 @@ export default {
     UserClip,
     UserHistory,
     UserActivity,
+  },
+  computed: {
+    isLoadmore() {
+      return (this.limit * this.currentPage) < this.totalCount;
+    }
   },
   apollo: {},
   methods: {
