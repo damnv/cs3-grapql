@@ -276,3 +276,86 @@ export const GET_SUB_COMMENTS_QUERY = gql`
     }
   }
 `;
+
+export const GET_ENTRIES_USER_QUERY = gql`
+  query MyQuery(
+    $limit: Int!
+    $page: Int!
+    $sort: String!
+    $user_id: Int!
+  ) {
+    getEntriesByUserId(
+      limit: $limit
+      page: $page
+      sort: $sort
+      user_id: $user_id) {
+      data {
+        currentPage
+        items {
+          caption
+          actionStatus {
+            clip
+            follow
+            mute
+            reaction
+          }
+          comment
+          category {
+            caption
+            description
+            id
+            img
+          }
+          createdTime
+          curationSource
+          description
+          id
+          medias {
+            type
+            url
+          }
+          module {
+            alias
+            caption
+            id
+          }
+          reactions {
+            total
+            items {
+              caption
+              count
+              icon
+              id
+            }
+          }
+          spot {
+            city
+            country
+            name
+            region
+            street
+          }
+          tags
+          thumbnail
+          view
+          user {
+            title
+            id
+            isAdmin
+            nickname
+            profileImg
+          }
+        }
+        limit
+        sort
+        total
+      }
+      error {
+        error_code
+        error_message
+        error_params
+      }
+      result_code
+    }
+  }
+`;
