@@ -5,7 +5,7 @@
         <a
           href="#"
           v-bind:style="{
-            'background-image': 'url(' + entry.user.profile_img + ')',
+            'background-image': 'url(' + entry.user.profileImg + ')',
           }"
           class="cs-avatar-2__photo"
         ></a>
