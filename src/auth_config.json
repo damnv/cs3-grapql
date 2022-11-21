@@ -1,5 +1,7 @@
 {
-  "domain": "dev-cs2.us.auth0.com",
-  "clientId": "16IDSJaWalTMaNi2pT5TCHTrw4peR7Ba",
-  "audience": ""
+  "domain": "https://test-cs3.us.auth0.com",
+  "clientId": "hrTKytoxhsplCVvWCiz9wUEemdscdCG5",
+  "audience": "https://test-cs3.us.auth0.com/api/v2/",
+  "clientSecret": "ch16s13GerZzh_c_lDIbJIFsqUREr4Qn7ZWTTAJstW-gh8y1xuDM7den-e-6Fr0s",
+  "grantType": "client_credentials"
 }

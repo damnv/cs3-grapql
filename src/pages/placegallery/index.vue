@@ -106,7 +106,7 @@
                         </div>
                         <EntryMenus
                           class-content="pm-pla-list-item__header-right"
-                          :user-id="$auth.user.id"
+                          :user-id="$auth.user && $auth.user.id"
                           :author-id="entry.user.id"
                           :entry-id="entry.id"
                           @onEdit="onEdit(entry)"

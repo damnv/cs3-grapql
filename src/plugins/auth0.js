@@ -143,8 +143,9 @@ export const useAuth0 = ({
         this.user = await this.auth0Client.getUser();
         this.loading = false;
         if (this.isAuthenticated) {
-          // const idToken = await this.$auth.getIdTokenClaims();
-          const accessToken = await this.$auth.getTokenSilently();
+          const idToken = await this.$auth.getIdTokenClaims();
+          console.log(idToken);
+          // const accessToken = await this.$auth.getTokenSilently();
           setToken(accessToken);
 
           const graphqlQuery = {

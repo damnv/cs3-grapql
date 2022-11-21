@@ -147,7 +147,7 @@
                         ></EntryClip>
                       </div>
                       <EntryMenus
-                        :user-id="$auth.user.id"
+                        :user-id="$auth.user && $auth.user.id"
                         :author-id="entry.user.id"
                         :entry-id="entry.id"
                       ></EntryMenus>
@@ -167,7 +167,7 @@
             :total-comments="totalComments"
             :comments="comments"
             :entryId="entry.id"
-            :userId="$auth.user.id"
+            :userId="$auth.user && $auth.user.id"
             :loadmore="isLoadmoreComments"
             :current-page="currentPage"
             :limit="limitOfPage"
@@ -251,7 +251,7 @@ export default {
   },
   computed: {
     currentUser() {
-      return this.$auth.user.id;
+      return this.$auth.user && this.$auth.user.id;
     },
   },
   methods: {

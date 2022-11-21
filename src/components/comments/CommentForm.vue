@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$auth.user">
     <form data-cscmt="form"></form>
     <div class="cs-cmt__header">
       <div class="cs-cmt-header">

@@ -1,7 +1,26 @@
+## get list entries
 curl -g \
 -X POST \
 -H "Content-Type: application/json" \
--H "x-api-key: da2-4qafbyrj4fcy3hdzg75st42cr4" \
--H "Authorization: Bearer 8c7dbd270cb98e83f9d8d57fb8a2ab7bac9d7501905fb013c69995ebf1b2a719" \
--d '{"query":"query{getEntries(currentPage: 1, limit: 10){ result_code data{ currentPage items{ id caption}} }}"}' \
-https://qtyuc3ggqnd65cg2ir2pjpwmde.appsync-api.us-west-2.amazonaws.com/graphql
+-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Il9zaGVfNWxuMVFYRGJiOTQ1UWxBaCJ9.eyJpc3MiOiJodHRwczovL3Rlc3QtY3MzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJoclRLeXRveGhzcGxDVnZXQ2l6OXdVRWVtZHNjZENHNUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LWNzMy51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY2ODQwNzcxMSwiZXhwIjoxNjY4NDk0MTExLCJhenAiOiJoclRLeXRveGhzcGxDVnZXQ2l6OXdVRWVtZHNjZENHNSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.Pd3fcNwDPhYXnVlUeK_7La2z-qvSXeg3uXx2mtFZ3TalMwcmTmRWTpbakYMgQA9PeOZQ9ZdYAg6vZ_eMztr173o1w35TrlWbpa4PDNYjFycJ-R3LJWU02LuOuiX7wOhhMxXiuRTQaCdVqJIRAXDZ72wll5XHi3p9rimdnrkGGIeEKgsjallpRXPUdhXLyaeddh-awMGJFbn_08x4bWim12XpMWO4J9wCyPFV_xm-LRu6GW4uDquWVb6FYjupBrfHmO3xmItt7munPBYgKdV5bLGNR-Nd9ch9tUUtECCDzMh1R-S058sfOHy3HPx7Uzf3jKwRoUhM6HQ5jhy7pQg4vg" \
+-d '{"query":"query {getEntries(page: 1, limit: 10){ result_code data{ currentPage items{ id caption }} }}"}' \
+https://d4lnxcyf25aupcypl4sh6xlfla.appsync-api.us-west-2.amazonaws.com/graphql
+
+## get entry
+
+curl -g \
+-X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Il9zaGVfNWxuMVFYRGJiOTQ1UWxBaCJ9.eyJpc3MiOiJodHRwczovL3Rlc3QtY3MzLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJoclRLeXRveGhzcGxDVnZXQ2l6OXdVRWVtZHNjZENHNUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LWNzMy51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY2ODQwNzcxMSwiZXhwIjoxNjY4NDk0MTExLCJhenAiOiJoclRLeXRveGhzcGxDVnZXQ2l6OXdVRWVtZHNjZENHNSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.Pd3fcNwDPhYXnVlUeK_7La2z-qvSXeg3uXx2mtFZ3TalMwcmTmRWTpbakYMgQA9PeOZQ9ZdYAg6vZ_eMztr173o1w35TrlWbpa4PDNYjFycJ-R3LJWU02LuOuiX7wOhhMxXiuRTQaCdVqJIRAXDZ72wll5XHi3p9rimdnrkGGIeEKgsjallpRXPUdhXLyaeddh-awMGJFbn_08x4bWim12XpMWO4J9wCyPFV_xm-LRu6GW4uDquWVb6FYjupBrfHmO3xmItt7munPBYgKdV5bLGNR-Nd9ch9tUUtECCDzMh1R-S058sfOHy3HPx7Uzf3jKwRoUhM6HQ5jhy7pQg4vg" \
+-d '{"query":"query {getEntryById(id: 3123){ result_code data{ id caption } }}"}' \
+https://d4lnxcyf25aupcypl4sh6xlfla.appsync-api.us-west-2.amazonaws.com/graphql
+
+## create entry
+
+curl -g \
+-X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Il9zaGVfNWxuMVFYRGJiOTQ1UWxBaCJ9.eyJnaXZlbl9uYW1lIjoiTGUiLCJmYW1pbHlfbmFtZSI6Ik5hbSIsIm5pY2tuYW1lIjoibGUudmFuLm5hbSIsIm5hbWUiOiJMZSBOYW0iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUxtNXd1Mi1xR0tLYnlBNGZlNDhOVTZBVmM0MlluVWRVYWJVSmxaaE1ScEk9czk2LWMiLCJsb2NhbGUiOiJqYSIsInVwZGF0ZWRfYXQiOiIyMDIyLTExLTE0VDA3OjA1OjA4LjIzNloiLCJlbWFpbCI6ImxlLnZhbi5uYW1AZWxpZmUuY28uanAiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly90ZXN0LWNzMy51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTQ1OTkxMzExMjU4MTI1NDIwMDMiLCJhdWQiOiJoclRLeXRveGhzcGxDVnZXQ2l6OXdVRWVtZHNjZENHNSIsImlhdCI6MTY2ODQ3NjQ4OSwiZXhwIjoxNjY4NTEyNDg5LCJzaWQiOiJJX1V2X1NxNEMzQjExVnJLeWpRdml6dkhDTnl6NktTRyIsIm5vbmNlIjoiVnpOWk1scHRUamRTYjJGTlpIQklMV05ZWjJOdlRqVk9hRnBTZDB4WmVHTnZlQzAzUzJwSlNrdHRYdz09In0.YEXjZERq-clqjjCx-if2WsyrfGfQlT57jMZfC07qXeewhh5BLiIsmuyBuWwF4JRRz9TjHOQb-KmBD5OV1M99YG8lZjSMpWM9-OEKPKa6PyiuoRvlBIXloAMFA4y0KO_7X0014nPx87P4J5xw8Hj_S-m6LBW_OxxwM7Yn2LxIMU2lR6xzL33BJfmgxNS9LV2Kku3fXfWXFblR161Zi5IxW9vs2GqbnIstAzeHlvdVhGJN3mTq7IuJ3ws-TOxjtvCpjCQWGqPcXYCFnzEmcSDbJcp3Tqyx7FxBCXwaRQwJywbYgdfwCrVAohdEbc2k8BcGCZZ47GBcqtgENbj3ag0M_Q" \
+-d '{"query":"mutation {createEntry(module_id: 10, caption: \"テキスト\", description: \"テキスト\", category_l_id: 1 , images: \"image/example1.png,image/example2.png\"){ result_code data{ id } }}"}' \
+https://d4lnxcyf25aupcypl4sh6xlfla.appsync-api.us-west-2.amazonaws.com/graphql
+
